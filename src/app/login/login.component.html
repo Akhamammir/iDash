@@ -1,0 +1,38 @@
+<nb-layout windowMode>
+  <nb-layout-column class="highlightCol">
+    <div class="p-grid p-ai-center" style="height: 100vh;">
+      
+      <div class="p-col"></div>
+
+      <div class="p-col">
+        <div class="p-grid">
+
+          <div class="p-col-12">
+            <img class="mainImg" src="assets/img/ecommerce.png"
+             height="40"
+            />
+          </div>
+
+          <div class="p-col-12" style="height: 5vh;"></div>
+
+          <div class="p-col-12" style="height: 5vh;">
+            <input nbInput fullWidth shape="semi-round" [(ngModel)]="usrNo"/>
+          </div>
+
+          <div class="p-col-12" style="height: 5vh;"></div>
+
+          <div class="p-col-12">
+            <button pButton pRipple type="button"
+             label="Ingresar" class="p-button-raised p-button-success fullPrimeButton"
+             (click)="Forward()"
+            ></button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="p-col"></div>
+
+    </div>
+  </nb-layout-column>
+</nb-layout>

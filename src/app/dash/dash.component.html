@@ -1,0 +1,107 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid vertical-container">
+
+      <div class="p-col-3">
+        <button nbButton status="primary" size="large" shape="semi-round" class="mainButt" fullWidth>
+          <nb-icon icon="layers-outline"></nb-icon>Generar Reporte
+        </button>
+      </div>
+      <div class="p-col-2">
+        <div class="p-grid p-nogutter p-ai-center vertical-container">
+          <div class="p-col-12">
+            <div class="p-text-capitalize p-text-bold miniTitle">Totales</div>
+          </div>
+          <div class="p-col-3">
+            <nb-icon icon="bar-chart-outline" [options]="{ animation: { type: 'pulse' } }" class="barIcon"></nb-icon>
+          </div>
+          <div class="p-col-9">
+            <div class="p-text-capitalize p-text-bold medLetter">{{0 + ' kgs'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-grid p-nogutter p-ai-center vertical-container">
+          <div class="p-col-12">
+            <div class="p-text-capitalize p-text-bold miniTitle">Cajas</div>
+          </div>
+          <div class="p-col-3">
+            <nb-icon icon="keypad-outline" [options]="{ animation: { type: 'pulse' } }" class="barIcon"></nb-icon>
+          </div>
+          <div class="p-col-9">
+            <div class="p-text-capitalize p-text-bold medLetter p-text-center">{{0 + '
+              unidades'}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-grid p-nogutter p-ai-center vertical-container">
+          <div class="p-col-12">
+            <div class="p-text-capitalize p-text-bold miniTitle">Capacidad</div>
+          </div>
+          <div class="p-col-3">
+            <nb-icon icon="loader-outline" [options]="{ animation: { type: 'pulse' } }" class="barIcon"></nb-icon>
+          </div>
+          <div class="p-col-9">
+            <div class="p-text-capitalize p-text-bold medLetter p-text-center">{{((1/21000) | number) + ' %'}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-col-12"></div>
+      
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12">
+        <div class="p-text-center" style="font-size: 24px;">¿Qué operación deseas realizar?</div>
+      </div>
+
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+
+      <div class="p-col-4"></div>
+      <div class="p-col-2" style="height: 26rem;">
+        <div class="p-grid p-nogutter p-ai-center vertical-container">
+          <div class="p-col-12">
+            <button pButton pRipple type="button" 
+              label="Alta / Renovación de Ebox" 
+              class="p-button-raised p-button-success blockbtn centerbtn"></button>
+          </div>
+          <div class="p-col-12" style="height: 3rem;"></div>
+          <div class="p-col-12">
+            <button pButton pRipple type="button" 
+              label="Vender Paquete" 
+              class="p-button-raised p-button-help blockbtn centerbtn"></button>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-grid p-nogutter p-ai-center vertical-container">
+          <div class="p-col-12">
+            <button pButton pRipple type="button" 
+              label="Vender Guía" 
+              class="p-button-raised p-button-info blockbtn centerbtn"></button>
+          </div>
+          <div class="p-col-12" style="height: 3rem;"></div>
+          <div class="p-col-12">
+            <button pButton pRipple type="button" 
+              label="Registrar Correo de Salida" 
+              class="p-button-raised p-button-danger blockbtn centerbtn"></button>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-4"></div>
+
+      <div class="p-col-1">
+        <!--<nb-select placeholder="Entradas" [(selected)]="selView" shape="semi-round" fullWidth
+          (selectedChange)="sum({filteredValue:almacen})">
+          <nb-option value="files">Por Filas</nb-option>
+          <nb-option value="id">Por SKU</nb-option>
+          <nb-option value="folio">Por Folio</nb-option>
+        </nb-select>-->
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>
