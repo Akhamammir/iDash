@@ -1,0 +1,167 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid vertical-container">
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+      <div class="p-col">
+        <app-stepper-detail></app-stepper-detail>
+      </div>
+
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          Llene los datos para poder calcular el importe de la guia
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-5"></div>
+      <div class="p-col-1">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Cancel"
+          class="p-button-danger"
+        ></button>
+      </div>
+      <div class="p-col-1">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Previous"
+          class="p-button-secondary"
+        ></button>
+      </div>
+      <div class="p-col-1">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Next"
+          class="p-button-success"
+        ></button>
+      </div>
+      <div class="p-col-4"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-2"></div>
+      <div class="p-col-4">
+        <h3>Destino</h3>
+        <div class="p-grid">
+          <div class="p-col-6">
+            <div class="p-field-radiobutton">
+              <p-radioButton
+                name="destiny"
+                value="Internacional"
+                [(ngModel)]="destiny"
+                inputId="destiny1"
+              ></p-radioButton>
+              <label for="destiny1">Internacional</label>
+            </div>
+            <div class="p-field-radiobutton">
+              <p-radioButton
+                name="destiny"
+                value="Nacional"
+                [(ngModel)]="destiny"
+                inputId="destiny2"
+              ></p-radioButton>
+              <label for="destiny2">Nacional</label>
+            </div>
+          </div>
+          <div class="p-col-6">
+            <div class="p-field-checkbox">
+              <p-checkbox
+                name="group1"
+                value="Area Extendida"
+                [(ngModel)]="selectedValues"
+                inputId="ny"
+              ></p-checkbox>
+              <label for="ny">Area Extendida</label>
+            </div>
+            <div class="p-field-checkbox">
+              <p-checkbox
+                name="group1"
+                value="Cargo Entrega Residencial"
+                [(ngModel)]="selectedValues"
+                inputId="ny"
+              ></p-checkbox>
+              <label for="ny">Cargo Entrega Residencial</label>
+            </div>
+          </div>
+          <div class="p-col-12">
+            <p-dropdown
+              [options]="cities"
+              [(ngModel)]="selectedCity"
+              placeholder="Selecciona una cuidad"
+              optionLabel="name"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-4">
+        <h3>Caracteristicas</h3>
+
+        <div class="p-grid p-fluid">
+          <div class="p-col-12 p-md-6 p-lg-4">
+            <span>Peso real</span>
+            <p-inputMask mask="999999" placeholder="KG"></p-inputMask>
+          </div>
+
+          <div class="p-col-12 p-md-6 p-lg-4">
+            <span>Peso</span>
+            <p-inputMask mask="999999" placeholder="KG"></p-inputMask>
+          </div>
+
+          <div class="p-col-12 p-md-6 p-lg-4">
+            <span>Ancho</span>
+            <p-inputMask mask="999" placeholder="CM"></p-inputMask>
+          </div>
+
+          <div class="p-col-12 p-md-6 p-lg-4">
+            <span>Largo</span>
+            <p-inputMask mask="999" placeholder="CM"></p-inputMask>
+          </div>
+
+          <div class="p-col-12 p-md-6 p-lg-4">
+            <span>Alto</span>
+            <p-inputMask mask="999" placeholder="CM"></p-inputMask>
+          </div>
+
+          <div class="p-col-12 p-md-6 p-lg-4">
+            <span>Precio</span>
+            <p-inputMask mask="9999999.9999" placeholder="$"></p-inputMask>
+          </div>
+        </div>
+        <div class="p-col-12"></div>
+        <div class="p-col-12"></div>
+
+        <div class="p-grid">
+          <div class="p-col-12">
+            <p-checkbox
+              name="group1"
+              value="Area Extendida"
+              [(ngModel)]="selectedValuesFeactures"
+              inputId="ny"
+            ></p-checkbox>
+            <label for="ny"> Seleccionar LTR para UPS y FEDEX</label>
+          </div>
+          <div class="p-col-12">
+            <div class="p-field-checkbox">
+              <p-checkbox
+                name="group1"
+                value="Cargo Entrega Residencial"
+                [(ngModel)]="selectedValuesFeactures"
+                inputId="ny"
+              ></p-checkbox>
+              <label for="ny">Seleccionar Manejo ESP para UPS</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-2"></div>
+    </div>
+  </nb-layout-column>
+</nb-layout>
