@@ -16,34 +16,35 @@
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-5"></div>
-      <div class="p-col-1">
+      <div class="p-d-flex">
         <button
           pButton
           pRipple
           type="button"
+          style="background: #eb5757; color: #ffffff"
           label="Cancel"
           class="p-button-danger"
         ></button>
-      </div>
-      <div class="p-col-1">
+
         <button
           pButton
           pRipple
           type="button"
+          style="background: #ffffff; border: 1px solid #c1c9d2"
           label="Previous"
-          class="p-button-secondary"
+          class="p-mx-2"
         ></button>
-      </div>
-      <div class="p-col-1">
+
         <button
           pButton
           pRipple
           type="button"
+          style="background: #27ae60; color: #ffffff"
           label="Next"
           class="p-button-success"
         ></button>
       </div>
-      <div class="p-col-4"></div>
+      <div class="p-col-5"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
@@ -56,8 +57,10 @@
               <p-radioButton
                 name="destiny"
                 value="Internacional"
+                styleClass="form-control-input-feature"
                 [(ngModel)]="destiny"
                 inputId="destiny1"
+
               ></p-radioButton>
               <label for="destiny1">Internacional</label>
             </div>
@@ -65,6 +68,7 @@
               <p-radioButton
                 name="destiny"
                 value="Nacional"
+                styleClass="form-control-input-feature"
                 [(ngModel)]="destiny"
                 inputId="destiny2"
               ></p-radioButton>
@@ -107,32 +111,56 @@
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Peso real</span>
-            <p-inputMask mask="999999" placeholder="KG"></p-inputMask>
+            <p-inputMask
+              styleClass="form-control-input-feature"
+              mask="999999"
+              placeholder="KG"
+            ></p-inputMask>
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Peso</span>
-            <p-inputMask mask="999999" placeholder="KG"></p-inputMask>
+            <p-inputMask
+              styleClass="form-control-input-feature"
+              mask="999999"
+              placeholder="KG"
+            ></p-inputMask>
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Ancho</span>
-            <p-inputMask mask="999" placeholder="CM"></p-inputMask>
+            <p-inputMask
+              styleClass="form-control-input-feature"
+              mask="999"
+              placeholder="CM"
+            ></p-inputMask>
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Largo</span>
-            <p-inputMask mask="999" placeholder="CM"></p-inputMask>
+            <p-inputMask
+              styleClass="form-control-input-feature"
+              mask="999"
+              placeholder="CM"
+            ></p-inputMask>
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Alto</span>
-            <p-inputMask mask="999" placeholder="CM"></p-inputMask>
+            <p-inputMask
+              styleClass="form-control-input-feature"
+              mask="999"
+              placeholder="CM"
+            ></p-inputMask>
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Precio</span>
-            <p-inputMask mask="9999999.9999" placeholder="$"></p-inputMask>
+            <p-inputMask
+              styleClass="form-control-input-feature"
+              mask="9999999.9999"
+              placeholder="$"
+            ></p-inputMask>
           </div>
         </div>
         <div class="p-col-12"></div>

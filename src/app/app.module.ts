@@ -16,14 +16,18 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import {RadioButtonModule} from 'primeng/radiobutton';
-import {CheckboxModule} from 'primeng/checkbox';
-import {InputMaskModule} from 'primeng/inputmask';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputMaskModule } from 'primeng/inputmask';
+import { StepsModule } from 'primeng/steps';
+import {ToastModule} from 'primeng/toast';
+import {CardModule} from 'primeng/card';
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FeaturesComponent } from './features/features.component';
 import { StepperDetailComponent } from './stepper-detail/stepper-detail.component';
+import { PricesComponent } from './prices/prices.component';
+import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,8 @@ import { StepperDetailComponent } from './stepper-detail/stepper-detail.componen
     DashComponent,
     FeaturesComponent,
     StepperDetailComponent,
+    PricesComponent,
+    CustomerComponent,
 
   ],
   imports: [
@@ -40,12 +46,12 @@ import { StepperDetailComponent } from './stepper-detail/stepper-detail.componen
     AppRoutingModule, FormsModule,
 
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
-    DropdownModule, NbStepperModule,RadioButtonModule,CheckboxModule,
-    InputMaskModule,
+    DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
+    InputMaskModule,ToastModule,CardModule,
 
     NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,
-    NbIconModule, NbButtonModule
+    NbIconModule, NbButtonModule, StepsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

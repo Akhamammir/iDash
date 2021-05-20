@@ -1,0 +1,159 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid vertical-container">
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+      <div class="p-col">
+        <app-stepper-detail></app-stepper-detail>
+      </div>
+
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          Seleccione uno de los proveedores para vender la guia
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-5"></div>
+      <div class="p-d-flex">
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #EB5757; color: #FFFFFF"
+          label="Cancel"
+          class="p-button-danger"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #FFFFFF;border:1px solid #C1C9D2"
+          label="Previous"
+          class=" p-mx-2"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+            style="background: #27AE60;color: #FFFFFF"
+          label="Next"
+          class="p-button-success"
+        ></button>
+      </div>
+      <div class="p-col-5"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3">
+        <img
+          style="width: 200px"
+          src="https://cdn.worldvectorlogo.com/logos/estafeta.svg"
+          alt=""
+        />
+      </div>
+      <div class="p-col-3">
+        <div class="p-grid p-jc-end p-ai-end vertical-container">
+          <div class="p-col">
+            <p-checkbox
+              name="group2"
+              value="estafeta"
+              [(ngModel)]="selectedValuesFeactures"
+            ></p-checkbox>
+            <label for="Estafeta"> Seleccionar Manejo EPS para UPS</label>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3">
+        <img
+          style="width: 200px"
+          src="https://logos-marcas.com/wp-content/uploads/2020/04/FedEx-Logo.png"
+          alt=""
+        />
+      </div>
+      <div class="p-col-3">
+        <div class="p-grid p-jc-end p-ai-end vertical-container">
+          <div class="p-col">
+            <p-checkbox
+              name="group2"
+              value="fedex"
+              [(ngModel)]="selectedValuesFeactures"
+              inputId="ny"
+            ></p-checkbox>
+            <label for=""> Seleccionar Manejo EPS para UPS</label>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3">
+        <img
+          style="width: 200px"
+          src="data:image/png;base64,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"
+          alt=""
+        />
+      </div>
+      <div class="p-col-3">
+        <div class="p-grid p-jc-end p-ai-end vertical-container">
+          <div class="p-col">
+            <p-checkbox
+              name="group2"
+              value="dhl"
+              [(ngModel)]="selectedValuesFeactures"
+            ></p-checkbox>
+            <label for=""> Seleccionar Manejo EPS para UPS</label>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3">
+        <img
+          style="width: 200px"
+          src="https://logodownload.org/wp-content/uploads/2014/04/ups-logo-0.png"
+          alt="asdasd"
+        />
+      </div>
+      <div class="p-col-3">
+        <div class="p-grid p-jc-end p-ai-end vertical-container">
+          <div class="p-col">
+            <p-checkbox
+              name="group2"
+              value="ups"
+              [(ngModel)]="selectedValuesFeactures"
+              inputId="ny"
+            ></p-checkbox>
+            <label for=""> Seleccionar Manejo EPS para UPS</label>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3"></div>
+      <div class="p-col-3">
+        <img
+          src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0018/7983/brand.gif?itok=qHvw5cy6"
+          alt=""
+        />
+      </div>
+      <div class="p-col-3">
+        <div class="p-grid p-jc-end">
+          <div class="p-col">
+            <p-checkbox
+              name="group2"
+              value="redpack"
+              [(ngModel)]="selectedValuesFeactures"
+              inputId="ny"
+            ></p-checkbox>
+            <label for=""> Seleccionar Manejo EPS para UPS</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

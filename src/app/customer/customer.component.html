@@ -1,0 +1,599 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid vertical-container">
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+      <div class="p-col">
+        <app-stepper-detail></app-stepper-detail>
+      </div>
+
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          Seleccione uno de los proveedores para vender la guia
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-5"></div>
+      <div class="p-d-flex">
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #EB5757; color: #FFFFFF"
+          label="Cancel"
+          class="p-button-danger"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #FFFFFF;border:1px solid #C1C9D2"
+          label="Previous"
+          class=" p-mx-2"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+            style="background: #27AE60;color: #FFFFFF"
+          label="Next"
+          class="p-button-success"
+        ></button>
+      </div>
+      <div class="p-col-5"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-1"></div>
+      <!--  Inicio  Seccion Formulario -- DE: -->
+      <div class="p-col-5">
+        <h2>DE:</h2>
+        <div class="p-fluid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                type="text"
+                class="form-control-input"
+                pInputText
+                [(ngModel)]="nombreDe"
+              />
+              <label for="inputtext" class="form-control-label">Nombre</label>
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="empresaDe"
+              />
+              <label for="inputtext" class="form-control-label">Empresa</label>
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="paisDe"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Pais / Territorio</label
+              >
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="direccionDe"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Dirección</label
+              >
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="direccion2De"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Dirección 2</label
+              >
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="direccion3De"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Dirección 3</label
+              >
+            </span>
+          </div>
+          <div class="p-d-flex">
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="codigoPostalDe"
+                />
+                <label for="inputtext" class="form-control-label"
+                  >Codigo Postal</label
+                >
+              </span>
+            </div>
+            <div class="p-field p-mx-2">
+              <span class="p-float-label">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="cuidadDe"
+                />
+                <label for="inputtext" class="form-control-label">Ciudad</label>
+              </span>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="estadoDe"
+                />
+                <label for="inputtext" class="form-control-label">Estado</label>
+              </span>
+            </div>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="emailDe"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Dirección de email</label
+              >
+            </span>
+          </div>
+          <div class="p-d-flex">
+            <div class="p-field">
+              <span class="p-float-label">
+                <p-dropdown
+                  inputId="dropdown"
+                  [autoDisplayFirst]="false"
+                  [options]="phones"
+                  class="form-control-ckb"
+                  [(ngModel)]="tipoTelefonoDe"
+                  optionLabel="name"
+                ></p-dropdown>
+                <label for="dropdown" class="form-control-label"
+                  >Seleccionar</label
+                >
+              </span>
+            </div>
+
+            <div class="p-field">
+              <span class="p-float-label p-mx-2">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="codigoDe"
+                />
+                <label for="inputtext" class="form-control-label">Código</label>
+              </span>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="telefonoDe"
+                />
+                <label for="inputtext" class="form-control-label"
+                  >Teléfono</label
+                >
+              </span>
+            </div>
+          </div>
+          <div class="p-d-flex">
+            <div class="p-field">
+              <p-checkbox
+                name="group1"
+                value=" Direccion Residencial"
+                [(ngModel)]="selectedValuesFeactures"
+                inputId="ny"
+              ></p-checkbox>
+              <label for="ny" style="color: black;">
+                Dirección Residencial
+              </label>
+            </div>
+            <div class="p-field p-mx-2">
+              <p-checkbox
+                name="group1"
+                value="Notificaciones Email"
+                [(ngModel)]="selectedValuesFeactures"
+                inputId="ny"
+              ></p-checkbox>
+              <label for="ny" style="color: black;">
+                Notificaciones Email
+              </label>
+            </div>
+            <div class="p-field">
+              <p-checkbox
+                name="group1"
+                value=" Notificaciones SMS"
+                [(ngModel)]="selectedValuesFeactures"
+                inputId="ny"
+              ></p-checkbox>
+              <label for="ny" style="color: black;">
+                Notificaciones SMS</label
+              >
+            </div>
+          </div>
+          <div class="p-d-flex p-jc-end">
+            <div>
+              <button
+                pButton
+                pRipple
+                style="
+                  background: #5e72e4;
+                  margin: 15px 1px 15px 1px;
+                  padding: 1em;
+                "
+                type="button"
+                label="AGREGAR OTRO"
+                class="label-button-warning p-button-warning"
+              ></button>
+            </div>
+          </div>
+          <div class="p-d-flex">
+            <button
+              pButton
+              pRipple
+              style="background: #fb9b14"
+              type="button"
+              label=" GUARDAR NUEVO CONTACTO"
+              class="label-button-warning p-button-warning"
+            ></button>
+            <button
+              pButton
+              pRipple
+              style="background: #fb9b14"
+              type="button"
+              label="ACTUALIZAR CONTACTO"
+              class="label-button-warning p-button-warning p-mx-2"
+            ></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              style="background: #47a7dd"
+              label=" LIMPIAR DIRECCION"
+              class="label-button-warning p-button-success"
+            ></button>
+          </div>
+        </div>
+      </div>
+      <!--  Fin Seccion Formulario -- DE: -->
+      <div class="p-col-1"></div>
+      <!--  Inicio Seccion Formulario -- A: -->
+      <div class="p-col-5">
+        <h2>A:</h2>
+        <div class="p-fluid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                type="text"
+                class="form-control-input"
+                pInputText
+                [(ngModel)]="nombreA"
+              />
+              <label for="inputtext" class="form-control-label">Nombre</label>
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="empresaA"
+              />
+              <label for="inputtext" class="form-control-label">Empresa</label>
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="paisA"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Pais / Territorio</label
+              >
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="direccionA"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Dirección</label
+              >
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="direccion2A"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Dirección 2</label
+              >
+            </span>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="direccion3A"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Dirección 3</label
+              >
+            </span>
+          </div>
+          <div class="p-d-flex">
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="codigoPostalA"
+                />
+                <label for="inputtext" class="form-control-label"
+                  >Codigo Postal</label
+                >
+              </span>
+            </div>
+            <div class="p-field p-mx-2">
+              <span class="p-float-label">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="cuidadA"
+                />
+                <label for="inputtext" class="form-control-label">Ciudad</label>
+              </span>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="estadoA"
+                />
+                <label for="inputtext" class="form-control-label">Estado</label>
+              </span>
+            </div>
+          </div>
+          <div class="p-field">
+            <span class="p-float-label">
+              <input
+                style="width: 100%"
+                type="text"
+                id="inputtext"
+                pInputText
+                class="form-control-input"
+                [(ngModel)]="emailA"
+              />
+              <label for="inputtext" class="form-control-label"
+                >Dirección de email</label
+              >
+            </span>
+          </div>
+          <div class="p-d-flex">
+            <div class="p-field">
+              <span class="p-float-label">
+                <p-dropdown
+                  inputId="dropdown"
+                  [autoDisplayFirst]="false"
+                  [options]="phones"
+                  class="form-control-ckb"
+                  [(ngModel)]="tipoTelefonoA"
+                  optionLabel="name"
+                ></p-dropdown>
+                <label for="dropdown" class="form-control-label"
+                  >Seleccionar</label
+                >
+              </span>
+            </div>
+
+            <div class="p-field">
+              <span class="p-float-label p-mx-2">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="codigoA"
+                />
+                <label for="inputtext" class="form-control-label">Código</label>
+              </span>
+            </div>
+            <div class="p-field">
+              <span class="p-float-label">
+                <input
+                  style="width: 100%"
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  class="form-control-input"
+                  [(ngModel)]="telefonoA"
+                />
+                <label for="inputtext" class="form-control-label"
+                  >Teléfono</label
+                >
+              </span>
+            </div>
+          </div>
+          <div class="p-d-flex">
+            <div class="p-field">
+              <p-checkbox
+                name="group2"
+                value=" Direccion Residencial A"
+                [(ngModel)]="selectedValuesFeactures"
+                inputId="ny"
+              ></p-checkbox>
+              <label for=" Direccion Residencial A" style="color: black;">
+                Dirección Residencial
+              </label>
+            </div>
+            <div class="p-field p-mx-2">
+              <p-checkbox
+                name="group2"
+                value="Notificaciones Email A"
+                [(ngModel)]="selectedValuesFeactures"
+                inputId="ny"
+              ></p-checkbox>
+              <label for="Notificaciones Email A" style="color: black;">
+                Notificaciones Email
+              </label>
+            </div>
+            <div class="p-field">
+              <p-checkbox
+                name="group2"
+                value=" Notificaciones SMS A"
+                [(ngModel)]="selectedValuesFeactures"
+                inputId="Notificaciones SMS A"
+              ></p-checkbox>
+              <label for="Notificaciones SMS A" style="color: black;">
+                Notificaciones SMS</label
+              >
+            </div>
+          </div>
+          <div class="p-d-flex p-jc-end">
+            <div>
+              <button
+                pButton
+                pRipple
+                style="
+                  background: #5e72e4;
+                  margin: 15px 1px 15px 1px;
+                  padding: 1em;
+                "
+                type="button"
+                label="AGREGAR OTRO"
+                class="label-button-warning p-button-warning"
+              ></button>
+            </div>
+          </div>
+          <div class="p-d-flex">
+            <button
+              pButton
+              pRipple
+              style="background: #fb9b14"
+              type="button"
+              label=" GUARDAR NUEVO CONTACTO"
+              class="label-button-warning p-button-warning"
+            ></button>
+            <button
+              pButton
+              pRipple
+              style="background: #fb9b14"
+              type="button"
+              label="ACTUALIZAR CONTACTO"
+              class="label-button-warning p-button-warning p-mx-2"
+            ></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              style="background: #47a7dd"
+              label=" LIMPIAR DIRECCION"
+              class="label-button-warning p-button-success"
+            ></button>
+          </div>
+        </div>
+      </div>
+      <!--  Fin Seccion Formulario -- A: -->
+    </div>
+  </nb-layout-column>
+</nb-layout>
