@@ -6,6 +6,8 @@ import { DashComponent } from './dash/dash.component'
 import { FeaturesComponent } from './features/features.component';
 import { PricesComponent } from './prices/prices.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ProcessComponent } from './process/process.component';
+import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
@@ -22,6 +24,12 @@ const routes: Routes = [
       },
       {
         path: 'customer/:id', component: CustomerComponent,
+      },
+      {
+        path: 'process/:id', component: ProcessComponent,
+      },
+      {
+        path: 'confirmation/:id', component: ConfirmacionComponent,
       },
     ]
   }

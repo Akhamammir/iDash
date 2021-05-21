@@ -22,12 +22,16 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { StepsModule } from 'primeng/steps';
 import {ToastModule} from 'primeng/toast';
 import {CardModule} from 'primeng/card';
+import {KeyFilterModule} from 'primeng/keyfilter';
+
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FeaturesComponent } from './features/features.component';
 import { StepperDetailComponent } from './stepper-detail/stepper-detail.component';
 import { PricesComponent } from './prices/prices.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ProcessComponent } from './process/process.component';
+import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import { CustomerComponent } from './customer/customer.component';
     StepperDetailComponent,
     PricesComponent,
     CustomerComponent,
+    ProcessComponent,
+    ConfirmacionComponent,
 
   ],
   imports: [
@@ -47,7 +53,7 @@ import { CustomerComponent } from './customer/customer.component';
 
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
     DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
-    InputMaskModule,ToastModule,CardModule,
+    InputMaskModule,ToastModule,CardModule,KeyFilterModule,
 
     NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,

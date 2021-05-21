@@ -57,10 +57,8 @@
               <p-radioButton
                 name="destiny"
                 value="Internacional"
-                styleClass="form-control-input-feature"
                 [(ngModel)]="destiny"
                 inputId="destiny1"
-
               ></p-radioButton>
               <label for="destiny1">Internacional</label>
             </div>
@@ -68,7 +66,6 @@
               <p-radioButton
                 name="destiny"
                 value="Nacional"
-                styleClass="form-control-input-feature"
                 [(ngModel)]="destiny"
                 inputId="destiny2"
               ></p-radioButton>
@@ -81,18 +78,18 @@
                 name="group1"
                 value="Area Extendida"
                 [(ngModel)]="selectedValues"
-                inputId="ny"
+                inputId="Area Extendida"
               ></p-checkbox>
-              <label for="ny">Area Extendida</label>
+              <label for="Area Extendida">Area Extendida</label>
             </div>
             <div class="p-field-checkbox">
               <p-checkbox
-                name="group1"
+                name="group2"
                 value="Cargo Entrega Residencial"
                 [(ngModel)]="selectedValues"
-                inputId="ny"
+                inputId="Cargo Entrega Residencial"
               ></p-checkbox>
-              <label for="ny">Cargo Entrega Residencial</label>
+              <label for="Cargo Entrega Residencial">Cargo Entrega Residencial</label>
             </div>
           </div>
           <div class="p-col-12">
@@ -111,56 +108,62 @@
         <div class="p-grid p-fluid">
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Peso real</span>
-            <p-inputMask
-              styleClass="form-control-input-feature"
-              mask="999999"
+            <input
+              type="text"
+              pKeyFilter="num"
               placeholder="KG"
-            ></p-inputMask>
+              class="form-control-input-feature"
+            />
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Peso</span>
-            <p-inputMask
-              styleClass="form-control-input-feature"
-              mask="999999"
+            <input
+              type="text"
+              pKeyFilter="num"
               placeholder="KG"
-            ></p-inputMask>
+              class="form-control-input-feature"
+            />
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Ancho</span>
-            <p-inputMask
-              styleClass="form-control-input-feature"
-              mask="999"
+            <input
+              type="text"
+              pKeyFilter="num"
               placeholder="CM"
-            ></p-inputMask>
+              class="form-control-input-feature"
+            />
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Largo</span>
-            <p-inputMask
-              styleClass="form-control-input-feature"
-              mask="999"
+            <input
+              type="text"
+              pKeyFilter="num"
               placeholder="CM"
-            ></p-inputMask>
+              class="form-control-input-feature"
+            />
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Alto</span>
-            <p-inputMask
-              styleClass="form-control-input-feature"
-              mask="999"
+            <input
+              type="text"
+              pKeyFilter="num"
               placeholder="CM"
-            ></p-inputMask>
+              class="form-control-input-feature"
+            />
           </div>
 
           <div class="p-col-12 p-md-6 p-lg-4">
             <span>Precio</span>
-            <p-inputMask
-              styleClass="form-control-input-feature"
-              mask="9999999.9999"
+            <input
+              type="text"
+              pKeyFilter="num"
               placeholder="$"
-            ></p-inputMask>
+              class="form-control-input-feature"
+            />
           </div>
         </div>
         <div class="p-col-12"></div>
