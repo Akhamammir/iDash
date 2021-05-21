@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { City } from '../City';
 @Component({
   selector: 'app-features',
@@ -12,10 +13,10 @@ export class FeaturesComponent implements OnInit {
   selectedValuesFeactures: string[] = [];
   checked: boolean = false;
   cities: City[];
-
+  id: string = '';
   selectedCity: City | undefined;
 
-  constructor() {
+  constructor(private router: Router, private AR: ActivatedRoute) {
     this.cities = [
       { name: 'Acapulco, GRO', code: 'GRO' },
       { name: 'Aguaprieta, SON.', code: 'SON' },
@@ -25,5 +26,6 @@ export class FeaturesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }
