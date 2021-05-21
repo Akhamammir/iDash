@@ -11,9 +11,9 @@ export class FeaturesComponent implements OnInit {
   selectedValues: string[] = [];
   selectedValuesFeactures: string[] = [];
   checked: boolean = false;
-  cities: City[];
+  //cities: City[];
 
-  selectedCity: City | undefined;
+  selectedCity: any | undefined;
 
   constructor() {
     this.cities = [
