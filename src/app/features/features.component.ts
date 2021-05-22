@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { City } from '../City';
+import { City } from '../city';
 @Component({
   selector: 'app-features',
   templateUrl: './features.component.html',
