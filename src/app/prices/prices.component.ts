@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import { City } from '../City';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-prices',
@@ -10,11 +11,11 @@ export class PricesComponent implements OnInit {
 
 
   selectedValuesFeactures: string[] = [];
-
- constructor() { }
+  id: string = '';
+ constructor(private AR: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.id = this.AR.snapshot.paramMap.get('id')!
   }
 
 }

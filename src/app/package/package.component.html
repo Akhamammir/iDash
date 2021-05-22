@@ -1,0 +1,382 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid package-container vertical-container">
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col">
+        <app-stepper-detail></app-stepper-detail>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          Registrar paquete
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-5"></div>
+      <!-- <div class="p-d-flex">
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #eb5757; color: #ffffff"
+          label="Cancel"
+          [routerLink]="['../../dash', id]"
+          class="p-button-danger"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #ffffff; border: 1px solid #c1c9d2"
+          label="Previous"
+          [routerLink]="['../../dash', id]"
+          class="p-mx-2"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #27ae60; color: #ffffff"
+          label="Next"
+          [routerLink]="['../../prices', id]"
+          class="p-button-success"
+        ></button>
+      </div> -->
+      <div class="p-col-5"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+
+      <!-- Inicio Primera Fila  -->
+      <div class="p-col-4">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Nombre del cliente</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Código cliente</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="destinys"
+                class="form-control-ckb"
+                [(ngModel)]="Destino"
+                optionLabel="name"
+              ></p-dropdown>
+              <label for="dropdown" class="form-control-label"
+                >Seleccionar</label
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-4"></div>
+      <!-- Fin Primera Fila  -->
+
+      <!-- Inicio Segunda Fila  -->
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Guia de Referencia</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Proveedor</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="valijas"
+                class="form-control-ckb"
+                [(ngModel)]="Destino"
+                optionLabel="name"
+              ></p-dropdown>
+              <label for="dropdown" class="form-control-label"
+                >Tipo de Valija</label
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-6"></div>
+      <!-- Fin Segunda Fila  -->
+
+      <!-- Inicio Tercera Fila  -->
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              pKeyFilter="num"
+              class="form-control-input"
+              type="tel"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label">Cantidad</label>
+          </span>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Descripción</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-4">
+        <div class="p-fluid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="contenido"
+                class="form-control-ckb"
+                [(ngModel)]="Destino"
+                optionLabel="name"
+              ></p-dropdown>
+              <label for="dropdown" class="form-control-label"
+                >Tipo de Contenido</label
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <div class="p-field">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="pais"
+                class="form-control-ckb"
+                [(ngModel)]="Destino"
+                optionLabel="name"
+              ></p-dropdown>
+              <label for="dropdown" class="form-control-label"
+                >País de Origen</label
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label">Marca</label>
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label">Modelo</label>
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label">Valor</label>
+          </span>
+        </div>
+      </div>
+      <!-- Fin Tercera Fila  -->
+
+      <!-- Inicio Cuarta Fila  -->
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              pKeyFilter="num"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label">Peso</label>
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              pKeyFilter="num"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Peso Real</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              pKeyFilter="num"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label">Largo</label>
+          </span>
+        </div>
+      </div>
+      <div class="p-col-9"></div>
+      <!-- Fin Cuarta Fila  -->
+
+      <!-- Inicio Quinto Fila  -->
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              pKeyFilter="num"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label">Alto</label>
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              pKeyFilter="num"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label">Ancho</label>
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              pKeyFilter="num"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Peso total</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-9"></div>
+      <!-- Fin Quinto Fila  -->
+
+      <div class="p-col-2">
+        <button
+          pButton
+          pRipple
+          style="
+            background: #5e72e4;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 15px 24px 15px 24px;
+          "
+          type="button"
+          label="Agregar"
+        ></button>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Phone } from '../phone';
 
 @Component({
@@ -7,8 +8,8 @@ import { Phone } from '../phone';
   styleUrls: ['./customer.component.styl']
 })
 export class CustomerComponent implements OnInit {
-
-  constructor() { }
+  id: string = '';
+  constructor(private AR: ActivatedRoute) { }
   phones: Phone[] = [];
   selectedValuesFeactures: string[] = [];
 
@@ -45,6 +46,7 @@ export class CustomerComponent implements OnInit {
       { name: 'Celular' },
       { name: 'Fijo' }
     ];
+    this.id = this.AR.snapshot.paramMap.get('id')!
   }
 
 }

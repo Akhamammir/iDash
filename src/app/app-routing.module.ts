@@ -8,6 +8,7 @@ import { PricesComponent } from './prices/prices.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ProcessComponent } from './process/process.component';
 import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
+import { PackageComponent } from './package/package.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
@@ -30,6 +31,9 @@ const routes: Routes = [
       },
       {
         path: 'confirmation/:id', component: ConfirmacionComponent,
+      },
+      {
+        path: 'package/:id', component: PackageComponent,
       },
     ]
   }

@@ -21,7 +21,8 @@
           pButton
           pRipple
           type="button"
-          style="background: #EB5757; color: #FFFFFF"
+          [routerLink]="['../../dash', id]"
+          style="background: #eb5757; color: #ffffff"
           label="Cancel"
           class="p-button-danger"
         ></button>
@@ -30,16 +31,18 @@
           pButton
           pRipple
           type="button"
-          style="background: #FFFFFF;border:1px solid #C1C9D2"
+          style="background: #ffffff; border: 1px solid #c1c9d2"
           label="Previous"
-          class=" p-mx-2"
+          [routerLink]="['../../prices', id]"
+          class="p-mx-2"
         ></button>
 
         <button
           pButton
           pRipple
           type="button"
-            style="background: #27AE60;color: #FFFFFF"
+          [routerLink]="['../../process', id]"
+          style="background: #27ae60; color: #ffffff"
           label="Next"
           class="p-button-success"
         ></button>
@@ -249,7 +252,7 @@
                 [(ngModel)]="selectedValuesFeactures"
                 inputId="ny"
               ></p-checkbox>
-              <label for="ny" style="color: black;">
+              <label for="ny" style="color: black">
                 Dirección Residencial
               </label>
             </div>
@@ -260,7 +263,7 @@
                 [(ngModel)]="selectedValuesFeactures"
                 inputId="ny"
               ></p-checkbox>
-              <label for="ny" style="color: black;">
+              <label for="ny" style="color: black">
                 Notificaciones Email
               </label>
             </div>
@@ -271,9 +274,7 @@
                 [(ngModel)]="selectedValuesFeactures"
                 inputId="ny"
               ></p-checkbox>
-              <label for="ny" style="color: black;">
-                Notificaciones SMS</label
-              >
+              <label for="ny" style="color: black"> Notificaciones SMS</label>
             </div>
           </div>
           <div class="p-d-flex p-jc-end">
@@ -522,7 +523,7 @@
                 [(ngModel)]="selectedValuesFeactures"
                 inputId="ny"
               ></p-checkbox>
-              <label for=" Direccion Residencial A" style="color: black;">
+              <label for=" Direccion Residencial A" style="color: black">
                 Dirección Residencial
               </label>
             </div>
@@ -533,7 +534,7 @@
                 [(ngModel)]="selectedValuesFeactures"
                 inputId="ny"
               ></p-checkbox>
-              <label for="Notificaciones Email A" style="color: black;">
+              <label for="Notificaciones Email A" style="color: black">
                 Notificaciones Email
               </label>
             </div>
@@ -544,7 +545,7 @@
                 [(ngModel)]="selectedValuesFeactures"
                 inputId="Notificaciones SMS A"
               ></p-checkbox>
-              <label for="Notificaciones SMS A" style="color: black;">
+              <label for="Notificaciones SMS A" style="color: black">
                 Notificaciones SMS</label
               >
             </div>

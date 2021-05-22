@@ -23,6 +23,7 @@
           type="button"
           style="background: #eb5757; color: #ffffff"
           label="Cancel"
+          [routerLink]="['../../dash', id]"
           class="p-button-danger"
         ></button>
 
@@ -32,6 +33,7 @@
           type="button"
           style="background: #ffffff; border: 1px solid #c1c9d2"
           label="Previous"
+          [routerLink]="['../../dash', id]"
           class="p-mx-2"
         ></button>
 
@@ -41,6 +43,7 @@
           type="button"
           style="background: #27ae60; color: #ffffff"
           label="Next"
+          [routerLink]="['../../prices', id]"
           class="p-button-success"
         ></button>
       </div>
