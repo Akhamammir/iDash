@@ -10,17 +10,18 @@ export class StepperDetailComponent implements OnInit {
 
   constructor(private AR: ActivatedRoute) { }
   id: string = '';
-
+  activeIndex: number = 1;
   items: MenuItem[] = [];
 
   ngOnInit(): void {
     this.id = this.AR.snapshot.paramMap.get('id')!
     this.items = [{
       label: 'Elegir Operación',
-      routerLink: ['../../dash', this.id]
+      routerLink: ['../../dash', this.id],
     },
     {
       label: 'Características',
+
       routerLink: ['../../features', this.id]
     },
     {
