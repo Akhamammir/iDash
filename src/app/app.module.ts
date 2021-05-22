@@ -34,6 +34,7 @@ import { PricesComponent } from './prices/prices.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ProcessComponent } from './process/process.component';
 import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
+import { PackageComponent } from './package/package.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
     CustomerComponent,
     ProcessComponent,
     ConfirmacionComponent,
+    PackageComponent,
 
   ],
   imports: [
