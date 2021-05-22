@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { City } from '../City';
+
 
 @Component({
   selector: 'app-prices',

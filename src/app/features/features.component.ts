@@ -12,9 +12,10 @@ export class FeaturesComponent implements OnInit {
   selectedValues: string[] = [];
   selectedValuesFeactures: string[] = [];
   checked: boolean = false;
+
   cities: City[];
   id: string = '';
-  selectedCity: City | undefined;
+  selectedCity: any | undefined;
 
   constructor(private AR: ActivatedRoute) {
     this.cities = [
