@@ -35,6 +35,9 @@ import { CustomerComponent } from './customer/customer.component';
 import { ProcessComponent } from './process/process.component';
 import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 import { PackageComponent } from './package/package.component';
+import { IboxComponent } from './ibox/ibox.component';
+import { NewcustomeriboxComponent } from './newcustomeribox/newcustomeribox.component';
+import { OutgoingmailComponent } from './outgoingmail/outgoingmail.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { PackageComponent } from './package/package.component';
     ProcessComponent,
     ConfirmacionComponent,
     PackageComponent,
+    IboxComponent,
+    NewcustomeriboxComponent,
+    OutgoingmailComponent,
 
   ],
   imports: [

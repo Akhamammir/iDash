@@ -9,6 +9,9 @@ import { CustomerComponent } from './customer/customer.component';
 import { ProcessComponent } from './process/process.component';
 import { ConfirmacionComponent } from './confirmacion/confirmacion.component';
 import { PackageComponent } from './package/package.component';
+import { IboxComponent } from './ibox/ibox.component';
+import { NewcustomeriboxComponent } from './newcustomeribox/newcustomeribox.component';
+import { OutgoingmailComponent } from './outgoingmail/outgoingmail.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
@@ -34,6 +37,15 @@ const routes: Routes = [
       },
       {
         path: 'package/:id', component: PackageComponent,
+      },
+      {
+        path: 'ebox/:id', component: IboxComponent,
+      },
+      {
+        path: 'newcustomerebox/:id', component: NewcustomeriboxComponent,
+      },
+      {
+        path: 'email/:id', component: OutgoingmailComponent,
       },
     ]
   }

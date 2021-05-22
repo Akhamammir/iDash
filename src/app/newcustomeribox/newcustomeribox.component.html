@@ -1,0 +1,330 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid package-container vertical-container">
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col">
+        <app-stepper-detail></app-stepper-detail>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          i-box
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-5"></div>
+      <div class="p-d-flex">
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #eb5757; color: #ffffff"
+          label="Cancel"
+          [routerLink]="['../../dash', id]"
+          class="p-button-danger"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #ffffff; border: 1px solid #c1c9d2"
+          label="Previous"
+          [routerLink]="['../../ebox', id]"
+          class="p-mx-2"
+        ></button>
+      </div>
+      <div class="p-col-5"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+
+      <!--    Inicio Fila Nombre // Pais/Territorio -->
+      <div class="p-col-1"></div>
+      <div class="p-col-5">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Nombre del cliente</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-5">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Pais / Territorio</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1"></div>
+      <!--    Fin Fila Nombre // Pais/Territorio -->
+
+      <!--    Inicio Direccion // Direccion 2-->
+      <div class="p-col-1"></div>
+      <div class="p-col-5">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Dirección</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-5">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Dirección 2</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1"></div>
+      <!--    Fin Direccion // Direccion 2-->
+
+      <!--    Inicio Codigo cuidad estado // email -->
+      <div class="p-col-1"></div>
+      <div class="p-col-5">
+        <div class="p-grid">
+          <div class="p-col-4">
+            <div class="p-fluid">
+              <span class="p-float-label">
+                <input
+                  id="float-input"
+                  class="form-control-input"
+                  type="text"
+                  pInputText
+                />
+                <label for="float-input" class="form-control-label"
+                  >Código Postal</label
+                >
+              </span>
+            </div>
+          </div>
+          <div class="p-col-4">
+            <div class="p-fluid">
+              <span class="p-float-label">
+                <input
+                  id="float-input"
+                  class="form-control-input"
+                  type="text"
+                  pInputText
+                />
+                <label for="float-input" class="form-control-label"
+                  >Cuidad</label
+                >
+              </span>
+            </div>
+          </div>
+          <div class="p-col-4">
+            <div class="p-fluid">
+              <span class="p-float-label">
+                <input
+                  id="float-input"
+                  class="form-control-input"
+                  type="text"
+                  pInputText
+                />
+                <label for="float-input" class="form-control-label"
+                  >Estado</label
+                >
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-5">
+        <div class="p-fluid">
+          <span class="p-float-label">
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              pInputText
+            />
+            <label for="float-input" class="form-control-label"
+              >Dirección de Correo</label
+            >
+          </span>
+        </div>
+      </div>
+      <div class="p-col-1"></div>
+      <!--    Fin Codigo cuidad estado // email -->
+
+      <!--    Inicio tipoTelefono codigo telefono -->
+      <div class="p-col-1"></div>
+      <div class="p-col-5">
+        <div class="p-grid">
+          <div class="p-col-4">
+            <div class="p-fluid">
+              <span class="p-float-label">
+                <p-dropdown
+                  inputId="dropdown"
+                  [autoDisplayFirst]="false"
+                  [options]="phones"
+                  class="form-control-ckb"
+                  [(ngModel)]="tipoTelefonoDe"
+                  optionLabel="name"
+                ></p-dropdown>
+                <label for="dropdown" class="form-control-label"
+                  >Seleccionar</label
+                >
+              </span>
+            </div>
+          </div>
+          <div class="p-col-4">
+            <div class="p-fluid">
+              <span class="p-float-label">
+                <input
+                  id="float-input"
+                  class="form-control-input"
+                  type="text"
+                  pInputText
+                />
+                <label for="float-input" class="form-control-label"
+                  >Código</label
+                >
+              </span>
+            </div>
+          </div>
+          <div class="p-col-4">
+            <div class="p-fluid">
+              <span class="p-float-label">
+                <input
+                  id="float-input"
+                  class="form-control-input"
+                  type="text"
+                  pInputText
+                />
+                <label for="float-input" class="form-control-label"
+                  >Telefono</label
+                >
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-col-6 p-mt-4">
+        <div class="p-formgroup-inline">
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="city3"
+              value="Forma 1583"
+              [(ngModel)]="notificaciones"
+              inputId="city3"
+            ></p-checkbox>
+            <label for="city3">Forma 1583</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="city4"
+              value="Notificaciones Email"
+              [(ngModel)]="notificaciones"
+              inputId="city4"
+            ></p-checkbox>
+            <label for="city4">Notificaciones Email</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="city4"
+              value="Notificaciones SMS"
+              [(ngModel)]="notificaciones"
+              inputId="city4"
+            ></p-checkbox>
+            <label for="city4">Notificaciones SMS</label>
+          </div>
+        </div>
+      </div>
+
+      <!--    Fin tipoTelefono codigo telefono -->
+
+      <!--  Butones -->
+      <div class="p-col-3"></div>
+      <div class="p-col-3">
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #fb9b14;
+              border: 1px solid #fb9b14;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 16px 5px 16px 5px;
+            "
+            type="button"
+            label="Subir Documentos"
+          ></button>
+        </div>
+      </div>
+      <div class="p-col-3">
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #fb9b14;
+              border: 1px solid #fb9b14;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 16px 5px 16px 5px;
+            "
+            type="button"
+            label="Guadar Nuevo Contacto"
+          ></button>
+        </div>
+      </div>
+      <div class="p-col-3">
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #fb9b14;
+              border: 1px solid #fb9b14;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 16px 5px 16px 5px;
+            "
+            type="button"
+            label="Actualizar Contacto"
+          ></button>
+        </div>
+      </div>
+
+      <div class="p-col-12"></div>
+    </div>
+  </nb-layout-column>
+</nb-layout>
