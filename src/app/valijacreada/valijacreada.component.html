@@ -1,0 +1,150 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid package-container vertical-container">
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col">
+        <app-stepper-detail></app-stepper-detail>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          Valija Creada
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-5"></div>
+      <div class="p-d-flex">
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #eb5757; color: #ffffff"
+          label="Cancel"
+          [routerLink]="['../../dash', id]"
+          class="p-button-danger"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #ffffff; border: 1px solid #c1c9d2"
+          label="Previous"
+          [routerLink]="['../../valija', id]"
+          class="p-mx-2"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #27ae60; color: #ffffff"
+          label="Next"
+          [routerLink]="['../../sellingpackage', id]"
+          class="p-button-success"
+        ></button>
+      </div>
+      <div class="p-col-5"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-2"></div>
+      <div class="p-col-8">
+        <div class="p-fluid">
+          <img src="assets/img/Frame.png" alt="" />
+        </div>
+      </div>
+      <div class="p-col-2"></div>
+      <div class="p-col-2"></div>
+      <div class="p-col-8">
+        <p class="texto-valija-exito">
+          La valija ha sido procesada correctamente con el número:
+          <span class="texto-valija-exito-numero">50221050401</span>
+        </p>
+      </div>
+      <div class="p-col-2"></div>
+
+      <div class="p-col-2"></div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #5e72e4;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 10px 24px 10px 24px;
+              margin-top: 10px;
+            "
+            type="button"
+            [routerLink]="['../../exitovalija', id]"
+            label="IMPRIMIR ETIQUETA"
+          ></button>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #fb9b14;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 10px 24px 10px 24px;
+              margin-top: 10px;
+            "
+            type="button"
+            [routerLink]="['../../exitovalija', id]"
+            label="IMPRIMIR CONTENIDO DE VALIJA"
+          ></button>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #fb9b14;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 10px 24px 10px 24px;
+              margin-top: 10px;
+            "
+            type="button"
+            [routerLink]="['../../exitovalija', id]"
+            label="IMPRIMIR REPORTE DE ARTICULOS"
+          ></button>
+        </div>
+      </div>
+      <div class="p-col-2">
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #47a7dd;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 10px 24px 10px 24px;
+              margin-top: 10px;
+            "
+            type="button"
+            [routerLink]="['../../exitovalija', id]"
+            label="IMPRIMIR PACKING LIST"
+          ></button>
+        </div>
+      </div>
+      <div class="p-col-2"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

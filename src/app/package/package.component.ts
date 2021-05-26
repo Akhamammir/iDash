@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ContenidoPackage } from '../contenidoPackage';
 import { CountrysPackage } from '../countrysPackage';
 import { Destiny } from '../destiny';
+import { Product } from '../product';
+import { ProductService } from '../productservice';
 import { Valija } from '../Valija';
 
 @Component({
@@ -12,7 +14,10 @@ import { Valija } from '../Valija';
 })
 export class PackageComponent implements OnInit {
   id: string = '';
-  constructor(private AR: ActivatedRoute) { }
+
+  products: Product[]= [];
+
+  constructor(private AR: ActivatedRoute, private productService: ProductService) { }
   destinys: Destiny[] = [];
   valijas: Valija[] = [];
   contenido: ContenidoPackage[] = [];
@@ -36,6 +41,9 @@ export class PackageComponent implements OnInit {
       { name: 'Mexico' }
     ];
     this.id = this.AR.snapshot.paramMap.get('id')!
+
+    this.productService.getProductsSmall().then(data => this.products = data);
+
   }
 
 }

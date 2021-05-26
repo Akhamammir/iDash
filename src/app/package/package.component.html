@@ -38,6 +38,15 @@
         ></button>
 
 
+        <button
+          pButton
+          pRipple
+          type="button"
+          style="background: #27ae60; color: #ffffff"
+          label="Next"
+          [routerLink]="['../../valija', id]"
+          class="p-button-success"
+        ></button>
       </div>
       <div class="p-col-5"></div>
       <div class="p-col-12"></div>
@@ -371,7 +380,68 @@
       </div>
       <div class="p-col-10"></div>
       <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <!-- Inicio Tabla Paquetes -->
+      <p class="labelTable">Lista de Paquetes</p>
+      <p-table [value]="products">
+        <ng-template pTemplate="header" styleClass="p-datatable-striped">
+          <tr>
+            <th>Paquete</th>
+            <th>Impuesto/Arancel</th>
+            <th>Tramite Aduanal</th>
+            <th>Manejo y Envió</th>
+            <th>Seguro</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <td>Aliento-VAN001</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+          </tr>
+          <tr>
+            <td>Aliento-VAN002</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+          </tr>
+          <tr>
+            <td>Aliento-VAN003</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+            <td>$0.00</td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <!-- Fin Tabla Paquetes -->
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-9"></div>
+      <div class="p-col-3">
+        <button
+          pButton
+          pRipple
+          style="
+            background: #13B497;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 16px 24px 16px 24px;
+          "
+          type="button"
+          label="REGISTAR PAQUETES"
+        ></button>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
 
+      <div class="p-col-12"></div>
     </div>
   </nb-layout-column>
 </nb-layout>

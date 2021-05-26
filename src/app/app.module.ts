@@ -23,8 +23,8 @@ import { StepsModule } from 'primeng/steps';
 import {ToastModule} from 'primeng/toast';
 import {CardModule} from 'primeng/card';
 import {KeyFilterModule} from 'primeng/keyfilter';
-
-
+import {TableModule} from 'primeng/table';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -38,6 +38,14 @@ import { PackageComponent } from './package/package.component';
 import { IboxComponent } from './ibox/ibox.component';
 import { NewcustomeriboxComponent } from './newcustomeribox/newcustomeribox.component';
 import { OutgoingmailComponent } from './outgoingmail/outgoingmail.component';
+
+
+import { ProductService } from './productservice';
+import { ValijaComponent } from './valija/valija.component';
+import { ValijacreadaComponent } from './valijacreada/valijacreada.component';
+import { SellpackageComponent } from './sellpackage/sellpackage.component';
+import { ExitopackageComponent } from './exitopackage/exitopackage.component';
+import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebox.component';
 
 @NgModule({
   declarations: [
@@ -55,21 +63,26 @@ import { OutgoingmailComponent } from './outgoingmail/outgoingmail.component';
     IboxComponent,
     NewcustomeriboxComponent,
     OutgoingmailComponent,
+    ValijaComponent,
+    ValijacreadaComponent,
+    SellpackageComponent,
+    ExitopackageComponent,
+    DocumentlegaleboxComponent,
 
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
-    AppRoutingModule, FormsModule,
+    AppRoutingModule, FormsModule,HttpClientModule,
 
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
     DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
-    InputMaskModule,ToastModule,CardModule,KeyFilterModule,
+    InputMaskModule,ToastModule,CardModule,KeyFilterModule,TableModule,
 
     NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,
     NbIconModule, NbButtonModule, StepsModule,
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
