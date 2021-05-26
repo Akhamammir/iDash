@@ -12,6 +12,11 @@ import { PackageComponent } from './package/package.component';
 import { IboxComponent } from './ibox/ibox.component';
 import { NewcustomeriboxComponent } from './newcustomeribox/newcustomeribox.component';
 import { OutgoingmailComponent } from './outgoingmail/outgoingmail.component';
+import { ValijaComponent } from './valija/valija.component';
+import { ValijacreadaComponent } from './valijacreada/valijacreada.component';
+import { SellpackageComponent } from './sellpackage/sellpackage.component';
+import { ExitopackageComponent } from './exitopackage/exitopackage.component';
+import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebox.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
@@ -46,6 +51,21 @@ const routes: Routes = [
       },
       {
         path: 'email/:id', component: OutgoingmailComponent,
+      },
+      {
+        path: 'valija/:id', component: ValijaComponent,
+      },
+      {
+        path: 'exitovalija/:id', component: ValijacreadaComponent,
+      },
+      {
+        path: 'sellingpackage/:id', component: SellpackageComponent,
+      },
+      {
+        path: 'exitopackage/:id', component: ExitopackageComponent,
+      },
+      {
+        path: 'documentolegal/:id', component: DocumentlegaleboxComponent,
       },
     ]
   }
