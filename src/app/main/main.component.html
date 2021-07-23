@@ -31,12 +31,12 @@
       <div class="p-col-2">
         <div class="p-inputgroup">
           <span class="p-inputgroup-addon topdropaddon"><i class="pi pi-calendar "></i></span>
-          <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" class="topdrop"></p-dropdown>
+          <p-dropdown  [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" class="topdrop"></p-dropdown>
         </div>
       </div>
     </div>
   </nb-layout-header>
-  <nb-sidebar>
+  <nb-sidebar responsive>
 
     <div class="p-grid p-ai-center">
       <div class="p-col-12"></div>
@@ -61,7 +61,7 @@
         <div class="p-text-left sidetextalt">Made with 💖 by Cookies🍪</div>
       </div>
     </div>
-  </nb-sidebar>
+  </nb-sidebar >
   <nb-layout-column>
     <router-outlet></router-outlet>
   </nb-layout-column>

@@ -59,99 +59,211 @@
       </div>
       <div class="p-col-12">
         <p-table
-          #dt
-          [value]="products"
-          [rows]="10"
-          [paginator]="true"
           [globalFilterFields]="[
             'name',
             'country.name',
             'representative.name',
             'status'
           ]"
-          [(selection)]="selectedProducts"
-          [rowHover]="true"
-          dataKey="id"
-          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-          [showCurrentPageReport]="true"
+          editMode="row"
         >
-          <ng-template pTemplate="caption">
-            <div class="p-d-flex p-ai-center p-jc-between">
-              <h5 class="p-m-0">Lista de Ibox</h5>
-              <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" placeholder="Search..." />
-              </span>
-            </div>
-          </ng-template>
           <ng-template pTemplate="header">
             <tr>
-              <th style="width: 3rem">
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              <th pSortableColumn="representative.name">
+                Representative
+                <p-sortIcon field="representative.name"></p-sortIcon>
               </th>
               <th pSortableColumn="name">
                 Name <p-sortIcon field="name"></p-sortIcon>
               </th>
-              <th pSortableColumn="price">
-                Price <p-sortIcon field="price"></p-sortIcon>
+              <th pSortableColumn="country.name">
+                Country <p-sortIcon field="country.name"></p-sortIcon>
               </th>
-              <th pSortableColumn="category">
-                Category <p-sortIcon field="category"></p-sortIcon>
+              <th pSortableColumn="company">
+                Company <p-sortIcon field="company"></p-sortIcon>
               </th>
-              <th pSortableColumn="rating">
-                Reviews <p-sortIcon field="rating"></p-sortIcon>
+              <th pSortableColumn="status">
+                Status <p-sortIcon field="status"></p-sortIcon>
               </th>
-              <th pSortableColumn="inventoryStatus">
-                Status <p-sortIcon field="inventoryStatus"></p-sortIcon>
+              <th pSortableColumn="date">
+                Date <p-sortIcon field="date"></p-sortIcon>
               </th>
               <th></th>
             </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-product>
             <tr>
+              <th>
+                <input
+                  pInputText
+                  type="text"
+                  placeholder="Search by Name"
+                  class="form-control-input-ibox"
+                />
+              </th>
+              <th>
+                <input
+                  pInputText
+                  type="text"
+                  placeholder="Search by Name"
+                  class="form-control-input-ibox"
+                />
+              </th>
+              <th>
+                <input
+                  pInputText
+                  type="text"
+                  placeholder="Search by Name"
+                  class="form-control-input-ibox"
+                />
+              </th>
+              <th>
+                <input
+                  pInputText
+                  type="text"
+                  placeholder="Search by Country"
+                  class="form-control-input-ibox"
+                />
+              </th>
+              <th>
+                <input
+                  pInputText
+                  type="text"
+                  placeholder="Search by Representative"
+                  class="form-control-input-ibox"
+                />
+              </th>
+              <th>
+                <input
+                  pInputText
+                  type="text"
+                  placeholder="Search by Status"
+                  class="form-control-input-ibox"
+                />
+              </th>
+            </tr>
+            <tr [pEditableRow]="product">
               <td>
-                <p-tableCheckbox [value]="product"></p-tableCheckbox>
-              </td>
-              <td>{{ product.name }}</td>
-              <td>{{ product.price | currency: "USD" }}</td>
-              <td>{{ product.category }}</td>
-              <td>
-                <p-rating
-                  [ngModel]="product.rating"
-                  [readonly]="true"
-                  [cancel]="false"
-                ></p-rating>
-              </td>
-              <td>
-                <span
-                  [class]="
-                    'product-badge status-' +
-                    product.inventoryStatus.toLowerCase()
-                  "
-                  >{{ product.inventoryStatus }}</span
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input
+                      pInputText
+                      class="form-control-input-ibox"
+                      type="text"
+                      [(ngModel)]="product.representative.name"
+                    />
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{ product.representative.name }} </ng-template
+                  >y</p-cellEditor
                 >
               </td>
               <td>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input
+                      pInputText
+                      class="form-control-input-ibox"
+                      type="text"
+                      [(ngModel)]="product.name"
+                    />
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{ product.name }} </ng-template
+                  >y</p-cellEditor
+                >
+              </td>
+              <td>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input
+                      pInputText
+                      class="form-control-input-ibox"
+                      type="text"
+                      [(ngModel)]="product.country.name"
+                    />
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{ product.country.name }} </ng-template
+                  >y</p-cellEditor
+                >
+              </td>
+              <td>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input
+                      pInputText
+                      class="form-control-input-ibox"
+                      type="text"
+                      [(ngModel)]="product.company"
+                    />
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{ product.company }} </ng-template
+                  >y</p-cellEditor
+                >
+              </td>
+              <td>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input
+                      pInputText
+                      class="form-control-input-ibox"
+                      type="text"
+                      [(ngModel)]="product.status"
+                    />
+                  </ng-template>
+                  <ng-template pTemplate="output" [class]="status">
+                    {{ product.status }} </ng-template
+                  >y</p-cellEditor
+                >
+              </td>
+              <td>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input
+                      pInputText
+                      class="form-control-input-ibox"
+                      type="text"
+                      [(ngModel)]="product.date"
+                    />
+                  </ng-template>
+                  <ng-template pTemplate="output">
+                    {{ product.date }} </ng-template
+                  >y</p-cellEditor
+                >
+              </td>
+              <td style="text-align: center">
                 <button
+                  *ngIf="!editing"
                   pButton
                   pRipple
+                  pInitEditableRow
+                  type="button"
                   icon="pi pi-pencil"
-                  class="p-button-rounded p-button-success p-mr-2"
-                  (click)="editProduct(product)"
+                  (click)="onRowEditInit(product)"
+                  class=""
                 ></button>
                 <button
+                  *ngIf="editing"
                   pButton
                   pRipple
-                  icon="pi pi-trash"
-                  class="p-button-rounded p-button-warning"
+                  pSaveEditableRow
+                  type="button"
+                  icon="pi pi-check"
+                  (click)="onRowEditSave(product)"
+                  class="p-mr-2"
+                ></button>
+                <button
+                  *ngIf="editing"
+                  pButton
+                  pRipple
+                  pCancelEditableRow
+                  type="button"
+                  icon="pi pi-times"
+                  (click)="onRowEditCancel(product, 1)"
+                  class=""
                 ></button>
               </td>
             </tr>
-          </ng-template>
-          <ng-template pTemplate="summary">
-            <div class="p-d-flex p-ai-center p-jc-between">
-              EL total son {{ products ? products.length : 0 }} de productos.
-            </div>
           </ng-template>
         </p-table>
       </div>
