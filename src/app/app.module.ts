@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -25,6 +24,8 @@ import {CardModule} from 'primeng/card';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import {TableModule} from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
+import {CalendarModule} from 'primeng/calendar';
+import {RatingModule} from 'primeng/rating';
 
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -76,11 +77,12 @@ import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebo
 
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
     DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
-    InputMaskModule,ToastModule,CardModule,KeyFilterModule,TableModule,
+    InputMaskModule,ToastModule,CardModule,KeyFilterModule,TableModule,CalendarModule,
+    RatingModule,
 
     NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,
-    NbIconModule, NbButtonModule, StepsModule,
+    NbIconModule, NbButtonModule, StepsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

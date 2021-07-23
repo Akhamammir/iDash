@@ -36,61 +36,10 @@
           [routerLink]="['../../dash', id]"
           class="p-mx-2"
         ></button>
-
-
       </div>
       <div class="p-col-5"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-12"></div>
-      <div class="p-col-2"></div>
-      <div class="p-col-4">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Nombre del cliente</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-1"></div>
-      <div class="p-col-2">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Codigo del cliente</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-3"></div>
-      <div class="p-col-4"></div>
-      <div class="p-col-2">
-        <button
-          pButton
-          pRipple
-          style="
-            background: #5e72e4;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 14px;
-            padding: 7px 35px 7px 35px;
-          "
-          type="button"
-          label="Buscar"
-        ></button>
-      </div>
+      <div class="p-col-10"></div>
       <div class="p-col-2">
         <button
           pButton
@@ -108,9 +57,108 @@
           label="Nuevo Cliente"
         ></button>
       </div>
+      <div class="p-col-12">
+        <p-table
+          #dt
+          [value]="products"
+          [rows]="10"
+          [paginator]="true"
+          [globalFilterFields]="[
+            'name',
+            'country.name',
+            'representative.name',
+            'status'
+          ]"
+          [(selection)]="selectedProducts"
+          [rowHover]="true"
+          dataKey="id"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [showCurrentPageReport]="true"
+        >
+          <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+              <h5 class="p-m-0">Lista de Ibox</h5>
+              <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search..." />
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 3rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
+              <th pSortableColumn="name">
+                Name <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="price">
+                Price <p-sortIcon field="price"></p-sortIcon>
+              </th>
+              <th pSortableColumn="category">
+                Category <p-sortIcon field="category"></p-sortIcon>
+              </th>
+              <th pSortableColumn="rating">
+                Reviews <p-sortIcon field="rating"></p-sortIcon>
+              </th>
+              <th pSortableColumn="inventoryStatus">
+                Status <p-sortIcon field="inventoryStatus"></p-sortIcon>
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="product"></p-tableCheckbox>
+              </td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.price | currency: "USD" }}</td>
+              <td>{{ product.category }}</td>
+              <td>
+                <p-rating
+                  [ngModel]="product.rating"
+                  [readonly]="true"
+                  [cancel]="false"
+                ></p-rating>
+              </td>
+              <td>
+                <span
+                  [class]="
+                    'product-badge status-' +
+                    product.inventoryStatus.toLowerCase()
+                  "
+                  >{{ product.inventoryStatus }}</span
+                >
+              </td>
+              <td>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-pencil"
+                  class="p-button-rounded p-button-success p-mr-2"
+                  (click)="editProduct(product)"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-warning"
+                ></button>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+              EL total son {{ products ? products.length : 0 }} de productos.
+            </div>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="p-col-8"></div>
+
       <div class="p-col-7"></div>
       <div class="p-col-12"></div>
-
     </div>
   </nb-layout-column>
 </nb-layout>
