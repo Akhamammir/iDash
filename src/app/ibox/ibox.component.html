@@ -148,11 +148,11 @@
                       pInputText
                       class="form-control-input-ibox"
                       type="text"
-                      [(ngModel)]="product.representative.name"
+                      [(ngModel)]="product.representative!.name"
                     />
                   </ng-template>
                   <ng-template pTemplate="output">
-                    {{ product.representative.name }} </ng-template
+                    {{ product.representative!.name }} </ng-template
                   >y</p-cellEditor
                 >
               </td>
@@ -178,11 +178,11 @@
                       pInputText
                       class="form-control-input-ibox"
                       type="text"
-                      [(ngModel)]="product.country.name"
+                      [(ngModel)]="product.country!.name"
                     />
                   </ng-template>
                   <ng-template pTemplate="output">
-                    {{ product.country.name }} </ng-template
+                    {{ product.country!.name }} </ng-template
                   >y</p-cellEditor
                 >
               </td>

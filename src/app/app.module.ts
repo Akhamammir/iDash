@@ -26,8 +26,9 @@ import {TableModule} from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import {CalendarModule} from 'primeng/calendar';
 import {RatingModule} from 'primeng/rating';
-
-
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {MessageService} from 'primeng/api';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FeaturesComponent } from './features/features.component';
 import { StepperDetailComponent } from './stepper-detail/stepper-detail.component';
@@ -82,9 +83,11 @@ import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebo
 
     NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,
-    NbIconModule, NbButtonModule, StepsModule
+    NbIconModule, NbButtonModule, StepsModule,
+
+    MessagesModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, MessageModule, MessagesModule, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
