@@ -75,64 +75,29 @@
         </div>
         <div class="p-fluid">
           <!-- Inicio Tabla Paquetes -->
-          <p-table>
+          <p-table [value]="packages">
             <ng-template pTemplate="header" styleClass="p-datatable-striped">
               <tr>
                 <th>Paquete</th>
                 <th>CODE</th>
                 <th>Tienda Destino</th>
-                <th>Contenido</th>
-                <th colspan="3">Descripción</th>
+                <th colspan="2">Contenido</th>
+                <th>Descripción</th>
                 <th>Peso</th>
                 <th>Tipo de Valija</th>
               </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-package>
               <tr>
                 <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
-                <td>50615020018</td>
+                <td>{{ package.Amount }}</td>
                 <td>502</td>
-                <td>Mercancia General</td>
-                <td colspan="3">
-                  Santina Franco Vera/24 Torres de vidrio (2 Tarros llegaron
-                  quebrados)
+                <td colspan="2">{{ package.TipoContenido }}</td>
+                <td colspan="1">
+                  {{ package.Description }}
                 </td>
-                <td>1000</td>
-                <td>A</td>
-              </tr>
-              <tr>
-                <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
-                <td>50615020018</td>
-                <td>502</td>
-                <td>Mercancia General</td>
-                <td colspan="3">
-                  Santina Franco Vera/24 Torres de vidrio (2 Tarros llegaron
-                  quebrados)
-                </td>
-                <td>1000</td>
-                <td>A</td>
-              </tr>
-              <tr>
-                <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
-                <td>50615020018</td>
-                <td>502</td>
-                <td>Mercancia General</td>
-                <td colspan="3">
-                  Santina Franco Vera/24 Torres de vidrio (2 Tarros llegaron
-                  quebrados)
-                </td>
-                <td>1000</td>
-                <td>A</td>
-              </tr>
-              <tr>
-                <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
-                <td>50615020018</td>
-                <td>502</td>
-                <td>Mercancia General</td>
-                <td colspan="3">
-                  Santina Franco Vera/24 Torres de vidrio (2 Tarros llegaron
-                  quebrados)
-                </td>
-                <td>1000</td>
-                <td>A</td>
+                <td>{{ package.Weight }}</td>
+                <td>{{ package.TipoValija }}</td>
               </tr>
             </ng-template>
           </p-table>
@@ -146,29 +111,36 @@
       <div class="p-col-2">
         <div class="p-fluid">
           <span class="p-float-label">
-            <input type="text" id="inputtext"   class="form-control-input-feature" pInputText />
-            <label for="inputtext"  class="form-control-label">Guia de Referencia</label>
+            <input
+              type="text"
+              id="inputtext"
+              class="form-control-input-feature"
+              pInputText
+            />
+            <label for="inputtext" class="form-control-label"
+              >Guia de Referencia</label
+            >
           </span>
         </div>
       </div>
       <div class="p-col-2">
-       <div class="p-fluid">
-        <button
-        pButton
-        pRipple
-        style="
-          background: #5e72e4;
-          color: #ffffff;
-          font-weight: 700;
-          font-size: 14px;
-          padding: 10px 24px 10px 24px;
-          margin-top:10px
-        "
-        type="button"
-        [routerLink]="['../../exitovalija', id]"
-        label="CREAR VALIJA"
-      ></button>
-       </div>
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #5e72e4;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 10px 24px 10px 24px;
+              margin-top: 10px;
+            "
+            type="button"
+            [routerLink]="['../../exitovalija', id]"
+            label="CREAR VALIJA"
+          ></button>
+        </div>
       </div>
     </div>
   </nb-layout-column>

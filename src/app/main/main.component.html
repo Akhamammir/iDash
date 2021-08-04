@@ -1,8 +1,8 @@
 <nb-layout>
   <nb-layout-header subheader>
-    <div class="p-grid p-ai-center p-nogutter" style="width:100%">
+    <div class="p-grid p-ai-center p-nogutter" style="width: 100%">
       <div class="p-col-1">
-        <div class="p-text-left" style="font-size: 28px;">POS</div>
+        <div class="p-text-left" style="font-size: 28px">POS</div>
       </div>
       <div class="p-col-2 p-offset-4">
         <span class="p-input-icon-right">
@@ -11,33 +11,56 @@
         </span>
       </div>
       <div class="p-col-3">
-        <div class="p-grid p-ai-center p-nogutter" style="width:100%">
-        <div class="p-col-3"></div>
+        <div class="p-grid p-ai-center p-nogutter" style="width: 100%">
+          <div class="p-col-3"></div>
           <div class="p-col-2">
-            <button pButton pRipple type="button" icon="pi pi-heart"
-              class="p-button-rounded p-button-help p-button-text centerbtn"></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-heart"
+              class="p-button-rounded p-button-help p-button-text centerbtn"
+            ></button>
           </div>
           <div class="p-col-2">
-            <button pButton pRipple type="button" icon="pi pi-heart"
-              class="p-button-rounded p-button-help p-button-text centerbtn"></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-heart"
+              class="p-button-rounded p-button-help p-button-text centerbtn"
+            ></button>
           </div>
           <div class="p-col-2">
-            <button pButton pRipple type="button" icon="pi pi-heart"
-              class="p-button-rounded p-button-help p-button-text centerbtn"></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-heart"
+              class="p-button-rounded p-button-help p-button-text centerbtn"
+            ></button>
           </div>
           <div class="p-col-3"></div>
         </div>
       </div>
       <div class="p-col-2">
         <div class="p-inputgroup">
-          <span class="p-inputgroup-addon topdropaddon"><i class="pi pi-calendar "></i></span>
-          <p-dropdown  [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" class="topdrop"></p-dropdown>
+          <span class="p-inputgroup-addon topdropaddon"
+            ><i class="pi pi-calendar"></i
+          ></span>
+          <p-dropdown
+            [options]="cities"
+            [(ngModel)]="selectedCity"
+            optionLabel="name"
+            class="topdrop"
+          ></p-dropdown>
         </div>
       </div>
     </div>
   </nb-layout-header>
-  <nb-sidebar responsive>
-
+  <nb-sidebar
+    responsive
+  >
     <div class="p-grid p-ai-center">
       <div class="p-col-12"></div>
 
@@ -55,13 +78,17 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
-        <div class="p-text-left sidetext" style="font-size: 14px;">ecommerce logistics system</div>
-        <div class="p-text-left p-text-light sidetext" style="font-size: 12px;">© 2021 All Rights Reserved</div>
+        <div class="p-text-left sidetext" style="font-size: 14px">
+          ecommerce logistics system
+        </div>
+        <div class="p-text-left p-text-light sidetext" style="font-size: 12px">
+          © 2021 All Rights Reserved
+        </div>
         <br />
         <div class="p-text-left sidetextalt">Made with 💖 by Cookies🍪</div>
       </div>
     </div>
-  </nb-sidebar >
+  </nb-sidebar>
   <nb-layout-column>
     <router-outlet></router-outlet>
   </nb-layout-column>

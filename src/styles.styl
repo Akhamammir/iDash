@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 sidebar = #2130B8
 whitey = #FDFDFD
+mainsidecustomer = #828894
 .nb-theme-corporate nb-layout .layout .highlightCol
   background sidebar !important
 
@@ -9,13 +10,21 @@ img
   display: block;
   margin-left: auto;
   margin-right: auto;
-
+.nb-theme-corporate nb-sidebar .sidebarCustomer
+  background-color #4F4F4F !important
+.sidebarCustomer
+  background-color #4F4F4F !important
 .fullPrimeButton
   width 100%
 
 .columns
   margin-top 20px
-
+.subheadaer
+  position fixed !important
+  width 85vw
+  z-index 99
+  box-shadow rgba(0, 0, 0, 0.16) 0px 3px 6px,
+   rgba(0, 0, 0, 0.23) 0px 3px 6px !important
 .subheader
   position fixed !important
   width 85vw
@@ -77,6 +86,11 @@ img
   color #252525 !important
   border-color #858585 !important
   border-radius 25px !important
+.topnotifaction.p-inputgroup-addon
+  color: whitey !important
+  background mainsidecustomer !important
+  border-radius: 50% !important
+  border none !important
 
 .topdropaddon
   background sidebar !important
@@ -168,7 +182,8 @@ img
   padding 0.8em !important
   &:active
      border 0px !important
-
+.p-column-filter-row p-columnfilterformelement > input
+   background #DADDE3 !important;
 .label-process
   font-weight: 700 !important
   font-size: 24px !important
@@ -243,7 +258,7 @@ img
   color: #13B497 !important
   line-height: 54px !important
 .p-datatable .p-datatable-header
- background: #f8f9fa !important;
+ background: transparent !important;
  color: #495057 !important;
 .p-paginator
  background: #f8f9fa !important;
@@ -257,8 +272,130 @@ img
 .p-paginator .p-paginator-pages .p-paginator-page.p-highlight
   color: #495057 !important;
 .form-control-input-ibox
+  background: #DADDE3 !important;
+  color: #495057 !important;
+
+.p-column-filter-row .p-column-filter-menu-button, .p-column-filter-row .p-column-filter-clear-button
+  color: #495057 !important;
+
+.p-dropdown .p-dropdown-trigger
+   color: #495057 !important;
+.p-column-filter-overlay
   background: #6b7280 !important;
   color: #ffff !important;
-  width: 150px !important
-.p-input-icon-left > i:first-of-type
-  color: #495057 !important;
+.status-success
+  background: #6FCF97 !important;
+  border: 1px solid #27AE60;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #ffff !important;
+.franjaRoja
+  background: #EB5757
+  padding: 4px 8px
+  color: #fff
+.boxBrown
+  background: #E0E0E0
+  padding: 8px 8px
+  font-size: 28px
+  font-weight: 600
+.boxRed
+  background: #EB5757
+  padding: 10px 8px
+
+.boxRed p
+  color: #fff !important
+  font-size: 28px !important
+  text-align: center
+.boxPrimary
+  background:#2F80ED
+  padding: 4px 25px
+  border-radius: 10px
+.boxPrimary p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxDark
+  background:#4F4F4F
+  padding: 4px 25px
+  border-radius: 10px
+.boxDark p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxYellow
+  background:#F2C94C
+  padding: 4px 25px
+  margin: 8px 0px
+  border-radius: 10px
+.boxYellow p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxOrange
+  background:#F2994A
+  padding: 4px 25px
+  margin: 8px 0px
+  border-radius: 10px
+.boxOrange p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxGreen
+  background:#27AE60
+  padding: 4px 25px
+  margin: 8px 0px
+  border-radius: 10px
+.boxGreen p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxLittleblue
+  background:#56CCF2
+  padding: 4px 25px
+  border-radius: 10px
+.boxLittleblue p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxPurple
+  background:#9B51E0
+  padding: 4px 25px
+  border-radius: 10px
+.boxPurple p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxLittlepurple
+  background:#BB6BD9
+  padding: 4px 25px
+  border-radius: 10px
+.boxLittlepurple p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.tableCenter
+  text-align: center !important
+.p-datatable .p-datatable-tbody > tr
+  background-color: #fff !important
+  color: #000 !important
+.tableCenterHeader
+  border-bottom: 1px solid #000 !important
+.tableBrown
+  background: #E0E0E0
+  padding: 8px 8px
+  border-radius: 15px !important
+.formBrown
+  background: #E0E0E0
+.titleFormBrown
+  background:#828282
+  color:#fff  !important
+  padding: 8px 8px

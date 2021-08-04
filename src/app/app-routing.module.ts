@@ -13,10 +13,13 @@ import { IboxComponent } from './ibox/ibox.component';
 import { NewcustomeriboxComponent } from './newcustomeribox/newcustomeribox.component';
 import { OutgoingmailComponent } from './outgoingmail/outgoingmail.component';
 import { ValijaComponent } from './valija/valija.component';
+import { CustormerDashComponent } from './custormer-dash/custormer-dash.component';
 import { ValijacreadaComponent } from './valijacreada/valijacreada.component';
 import { SellpackageComponent } from './sellpackage/sellpackage.component';
 import { ExitopackageComponent } from './exitopackage/exitopackage.component';
 import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebox.component';
+import { MainCustomerComponent } from './main-customer/main-customer.component';
+import { CotizarComponent } from './cotizar/cotizar.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
@@ -67,6 +70,18 @@ const routes: Routes = [
       {
         path: 'documentolegal/:id', component: DocumentlegaleboxComponent,
       },
+    ]
+  },
+  {
+    path: 'sideClient', component: MainCustomerComponent, children: [
+      {
+        path: 'dash/:id', component: CustormerDashComponent,
+      },
+      {
+        path: 'cotizar/:id', component: CotizarComponent
+      },
+
+
     ]
   }
 ];

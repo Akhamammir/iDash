@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { DashComponent } from './dash/dash.component';
-
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import {MessageService} from 'primeng/api';
+import {ChartModule} from 'primeng/chart';
 import { NbButton, NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbSidebarModule, NbThemeModule, NbStepperModule } from '@nebular/theme';
 
 import { ButtonModule } from 'primeng/button';
@@ -19,13 +22,13 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputMaskModule } from 'primeng/inputmask';
 import { StepsModule } from 'primeng/steps';
-import {ToastModule} from 'primeng/toast';
-import {CardModule} from 'primeng/card';
-import {KeyFilterModule} from 'primeng/keyfilter';
-import {TableModule} from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { CardModule } from 'primeng/card';
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
-import {CalendarModule} from 'primeng/calendar';
-import {RatingModule} from 'primeng/rating';
+import { CalendarModule } from 'primeng/calendar';
+import { RatingModule } from 'primeng/rating';
 
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -47,6 +50,9 @@ import { ValijacreadaComponent } from './valijacreada/valijacreada.component';
 import { SellpackageComponent } from './sellpackage/sellpackage.component';
 import { ExitopackageComponent } from './exitopackage/exitopackage.component';
 import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebox.component';
+import { CustormerDashComponent } from './custormer-dash/custormer-dash.component';
+import { MainCustomerComponent } from './main-customer/main-customer.component';
+import { CotizarComponent } from './cotizar/cotizar.component';
 
 @NgModule({
   declarations: [
@@ -69,22 +75,25 @@ import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebo
     SellpackageComponent,
     ExitopackageComponent,
     DocumentlegaleboxComponent,
+    CustormerDashComponent,
+    MainCustomerComponent,
+    CotizarComponent,
 
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
-    AppRoutingModule, FormsModule,HttpClientModule,
+    AppRoutingModule, FormsModule, HttpClientModule,ReactiveFormsModule,
 
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
     DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
-    InputMaskModule,ToastModule,CardModule,KeyFilterModule,TableModule,CalendarModule,
-    RatingModule,
+    InputMaskModule, ToastModule, CardModule, KeyFilterModule, TableModule, CalendarModule,
+    RatingModule, MessagesModule, MessageModule,ChartModule,
 
     NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,
     NbIconModule, NbButtonModule, StepsModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, MessagesModule, MessagesModule,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

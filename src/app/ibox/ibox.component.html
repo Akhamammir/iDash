@@ -58,101 +58,94 @@
         ></button>
       </div>
       <div class="p-col-12">
+        <p-toast></p-toast>
         <p-table
-          [globalFilterFields]="[
-            'name',
-            'country.name',
-            'representative.name',
-            'status'
-          ]"
+          [showCurrentPageReport]="true"
+          [rowsPerPageOptions]="[10, 25, 50]"
+          [globalFilterFields]="['name, status, country']"
+          [value]="iboxs!"
           editMode="row"
         >
+          <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+              <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input
+                  pInputText
+                  type="text"
+                  class="form-control-input-ibox"
+                  placeholder="Search keyword"
+                />
+              </span>
+            </div>
+          </ng-template>
           <ng-template pTemplate="header">
             <tr>
-              <th pSortableColumn="representative.name">
-                Representative
-                <p-sortIcon field="representative.name"></p-sortIcon>
-              </th>
-              <th pSortableColumn="name">
-                Name <p-sortIcon field="name"></p-sortIcon>
-              </th>
-              <th pSortableColumn="country.name">
-                Country <p-sortIcon field="country.name"></p-sortIcon>
-              </th>
-              <th pSortableColumn="company">
-                Company <p-sortIcon field="company"></p-sortIcon>
-              </th>
-              <th pSortableColumn="status">
-                Status <p-sortIcon field="status"></p-sortIcon>
-              </th>
-              <th pSortableColumn="date">
-                Date <p-sortIcon field="date"></p-sortIcon>
-              </th>
+              <th>#i-box</th>
+              <th>Clientes Asignados</th>
+              <th>Contenido</th>
+              <th>Status</th>
               <th></th>
             </tr>
             <tr>
               <th>
-                <input
-                  pInputText
+                <p-columnFilter
                   type="text"
-                  placeholder="Search by Name"
                   class="form-control-input-ibox"
-                />
+                  field="i-box"
+                ></p-columnFilter>
               </th>
               <th>
-                <input
-                  pInputText
-                  type="text"
-                  placeholder="Search by Name"
-                  class="form-control-input-ibox"
-                />
+                <p-columnFilter type="text" field="customer"></p-columnFilter>
               </th>
+              <th span="2"></th>
               <th>
-                <input
-                  pInputText
-                  type="text"
-                  placeholder="Search by Name"
-                  class="form-control-input-ibox"
-                />
-              </th>
-              <th>
-                <input
-                  pInputText
-                  type="text"
-                  placeholder="Search by Country"
-                  class="form-control-input-ibox"
-                />
-              </th>
-              <th>
-                <input
-                  pInputText
-                  type="text"
-                  placeholder="Search by Representative"
-                  class="form-control-input-ibox"
-                />
-              </th>
-              <th>
-                <input
-                  pInputText
-                  type="text"
-                  placeholder="Search by Status"
-                  class="form-control-input-ibox"
-                />
+                <p-columnFilter
+                  field="status"
+                  matchMode="equals"
+                  [showMenu]="false"
+                >
+                  <ng-template
+                    pTemplate="filter"
+                    let-value
+                    let-filter="filterCallback"
+                  >
+                    <p-dropdown
+                      [ngModel]="value"
+                      [options]="statuses"
+                      (onChange)="filter($event.value)"
+                      placeholder="Any"
+                      [showClear]="true"
+                    >
+                      <ng-template let-option pTemplate="item">
+                        <span
+                          [class]="'customer-badge status-' + option.value"
+                          >{{ option.label! }}</span
+                        >
+                      </ng-template>
+                    </p-dropdown>
+                  </ng-template>
+                </p-columnFilter>
               </th>
             </tr>
-            <tr [pEditableRow]="product">
-              <td>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-ibox let-rowIndex="rowIndex">
+            <tr [pEditableRow]="ibox">
+              <td
+
+              >
                 <p-cellEditor>
                   <ng-template pTemplate="input">
                     <input
                       pInputText
                       class="form-control-input-ibox"
                       type="text"
-                      [(ngModel)]="product.representative.name"
+                      [(ngModel)]="product.id"
                     />
                   </ng-template>
                   <ng-template pTemplate="output">
-                    {{ product.representative.name }} </ng-template
+                    {{ product.id }} </ng-template
                   >y</p-cellEditor
                 >
               </td>
@@ -163,74 +156,45 @@
                       pInputText
                       class="form-control-input-ibox"
                       type="text"
-                      [(ngModel)]="product.name"
+                      [(ngModel)]="ibox.name"
+                    />
+                  </ng-template>
+                  <ng-template pTemplate="output"> {{ ibox.name }} </ng-template
+                  >y</p-cellEditor
+                >
+              </td>
+              <td>
+                <p-cellEditor>
+                  <ng-template pTemplate="input">
+                    <input
+                      pInputText
+                      class="form-control-input-ibox"
+                      type="text"
+                      [(ngModel)]="product.country!.name"
                     />
                   </ng-template>
                   <ng-template pTemplate="output">
-                    {{ product.name }} </ng-template
+                    {{ product.country!.name }} </ng-template
                   >y</p-cellEditor
                 >
               </td>
+
               <td>
-                <p-cellEditor>
+                <p-cellEditor class="status-success">
                   <ng-template pTemplate="input">
                     <input
                       pInputText
                       class="form-control-input-ibox"
                       type="text"
-                      [(ngModel)]="product.country.name"
+                      [(ngModel)]="product.status!"
                     />
                   </ng-template>
                   <ng-template pTemplate="output">
-                    {{ product.country.name }} </ng-template
+                    {{ product.status! }} </ng-template
                   >y</p-cellEditor
                 >
               </td>
-              <td>
-                <p-cellEditor>
-                  <ng-template pTemplate="input">
-                    <input
-                      pInputText
-                      class="form-control-input-ibox"
-                      type="text"
-                      [(ngModel)]="product.company"
-                    />
-                  </ng-template>
-                  <ng-template pTemplate="output">
-                    {{ product.company }} </ng-template
-                  >y</p-cellEditor
-                >
-              </td>
-              <td>
-                <p-cellEditor>
-                  <ng-template pTemplate="input">
-                    <input
-                      pInputText
-                      class="form-control-input-ibox"
-                      type="text"
-                      [(ngModel)]="product.status"
-                    />
-                  </ng-template>
-                  <ng-template pTemplate="output" [class]="status">
-                    {{ product.status }} </ng-template
-                  >y</p-cellEditor
-                >
-              </td>
-              <td>
-                <p-cellEditor>
-                  <ng-template pTemplate="input">
-                    <input
-                      pInputText
-                      class="form-control-input-ibox"
-                      type="text"
-                      [(ngModel)]="product.date"
-                    />
-                  </ng-template>
-                  <ng-template pTemplate="output">
-                    {{ product.date }} </ng-template
-                  >y</p-cellEditor
-                >
-              </td>
+
               <td style="text-align: center">
                 <button
                   *ngIf="!editing"

@@ -42,368 +42,369 @@
       <div class="p-col-12"></div>
 
       <!--    Inicio Primera Fila  -->
+      <form class="p-grid">
+        <div class="p-col-1"></div>
+        <div class="p-col-2">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="shops"
+                class="form-control-ckb"
+                [(ngModel)]="tiendaOrigen"
+                optionLabel="name"
+              ></p-dropdown>
+              <label for="dropdown" class="form-control-label"
+                >Tienda Origen</label
+              >
+            </span>
+          </div>
+        </div>
+        <div class="p-col-4">
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="city1"
+              value="esPostal"
+              [(ngModel)]="tipodeEnvio"
+              inputId="city1"
+            ></p-checkbox>
+            <label for="city1">Seleccionar si es una postal</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="city2"
+              value="esPaquete"
+              [(ngModel)]="tipodeEnvio"
+              inputId="city2"
+            ></p-checkbox>
+            <label for="city2">Seleccionar si es un envio de un paquete</label>
+          </div>
+        </div>
+        <div class="p-col-1">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pKeyFilter="num"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label">Peso</label>
+            </span>
+          </div>
+        </div>
+        <div class="p-col-2">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="countrys"
+                class="form-control-ckb"
+                [(ngModel)]="paisDestino"
+                optionLabel="name"
+              ></p-dropdown>
+              <label for="dropdown" class="form-control-label"
+                >Pais destino</label
+              >
+            </span>
+          </div>
+        </div>
+        <div class="p-col-2">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="destiny"
+                class="form-control-ckb"
+                [(ngModel)]="zonaDestino"
+                optionLabel="name"
+              ></p-dropdown>
+              <label for="dropdown" class="form-control-label"
+                >Zona de destino</label
+              >
+            </span>
+          </div>
+        </div>
+        <div class="p-col-12"></div>
 
-      <div class="p-col-1"></div>
-      <div class="p-col-2">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <p-dropdown
-              inputId="dropdown"
-              [autoDisplayFirst]="false"
-              [options]="shops"
-              class="form-control-ckb"
-              [(ngModel)]="tiendaOrigen"
-              optionLabel="name"
-            ></p-dropdown>
-            <label for="dropdown" class="form-control-label"
-              >Tienda Origen</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-4">
-        <div class="p-field-checkbox">
-          <p-checkbox
-            name="city1"
-            value="esPostal"
-            [(ngModel)]="tipodeEnvio"
-            inputId="city1"
-          ></p-checkbox>
-          <label for="city1">Seleccionar si es una postal</label>
-        </div>
-        <div class="p-field-checkbox">
-          <p-checkbox
-            name="city2"
-            value="esPaquete"
-            [(ngModel)]="tipodeEnvio"
-            inputId="city2"
-          ></p-checkbox>
-          <label for="city2">Seleccionar si es un envio de un paquete</label>
-        </div>
-      </div>
-      <div class="p-col-1">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pKeyFilter="num"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label">Peso</label>
-          </span>
-        </div>
-      </div>
-      <div class="p-col-2">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <p-dropdown
-              inputId="dropdown"
-              [autoDisplayFirst]="false"
-              [options]="countrys"
-              class="form-control-ckb"
-              [(ngModel)]="paisDestino"
-              optionLabel="name"
-            ></p-dropdown>
-            <label for="dropdown" class="form-control-label"
-              >Pais destino</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-2">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <p-dropdown
-              inputId="dropdown"
-              [autoDisplayFirst]="false"
-              [options]="destiny"
-              class="form-control-ckb"
-              [(ngModel)]="zonaDestino"
-              optionLabel="name"
-            ></p-dropdown>
-            <label for="dropdown" class="form-control-label"
-              >Zona de destino</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-12"></div>
+        <!--    Fin Primera Fila  -->
+        <!--    Inicio Segunda Fila  -->
 
-      <!--    Fin Primera Fila  -->
-      <!--    Inicio Segunda Fila  -->
+        <div class="p-col-1"></div>
+        <div class="p-col-2">
+          <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
+            Tipo de servicio
+          </p>
+          <div class="p-field-radiobutton">
+            <p-radioButton
+              name="city5"
+              value="Fist Class"
+              [(ngModel)]="tipoServicio"
+              inputId="Fist Class"
+            ></p-radioButton>
+            <label for="Fist Class">Fist Class</label>
+          </div>
+          <div class="p-field-radiobutton">
+            <p-radioButton
+              name="city6"
+              value="Priority mail"
+              [(ngModel)]="tipoServicio"
+              inputId="Priority mail"
+            ></p-radioButton>
+            <label for="Priority mail">Priority mail</label>
+          </div>
+          <div class="p-field-radiobutton">
+            <p-radioButton
+              name="city6"
+              value="Express mail"
+              [(ngModel)]="tipoServicio"
+              inputId="Express mail"
+            ></p-radioButton>
+            <label for="Express mail">Express mail</label>
+          </div>
+        </div>
+        <div class="p-col-2">
+          <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
+            Servicios adicionales
+          </p>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="Certified mail"
+              value="Chicago"
+              [(ngModel)]="extraServices"
+              inputId="Certified mail"
+            ></p-checkbox>
+            <label for="Certified mail">Certified mail</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="Delivery confirmation"
+              value="Delivery confirmation"
+              [(ngModel)]="extraServices"
+              inputId="Delivery confirmation"
+            ></p-checkbox>
+            <label for="Delivery confirmation">Delivery confirmation</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="city2"
+              value="Return receipt"
+              [(ngModel)]="extraServices"
+              inputId="Return receipt"
+            ></p-checkbox>
+            <label for="Return receipt">Return receipt</label>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox
+              name="Signatureconfirmation"
+              value="Signatureconfirmation"
+              [(ngModel)]="extraServices"
+              inputId="Signatureconfirmation"
+            ></p-checkbox>
+            <label for="Signatureconfirmation">Signature confirmation</label>
+          </div>
+        </div>
+        <div class="p-col-2">
+          <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
+            Tipo de servicio
+          </p>
+          <div class="p-field-radiobutton">
+            <p-radioButton
+              value="Small"
+              [(ngModel)]="tipoServicioSize"
+              inputId="Small"
+            ></p-radioButton>
+            <label for="Small">Small</label>
+          </div>
+          <div class="p-field-radiobutton">
+            <p-radioButton
+              name="city6"
+              value="Large"
+              [(ngModel)]="tipoServicioSize"
+              inputId="Large"
+            ></p-radioButton>
+            <label for="Largel">Large</label>
+          </div>
+          <div class="p-field-radiobutton">
+            <p-radioButton
+              name="city6"
+              value="Parce"
+              [(ngModel)]="tipoServicioSize"
+              inputId="parce"
+            ></p-radioButton>
+            <label for="parce">Parce</label>
+          </div>
+        </div>
+        <div class="p-col-2">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pKeyFilter="num"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label"
+                >Parte o Estampilla</label
+              >
+            </span>
+          </div>
+        </div>
+        <div class="p-col-2">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label"
+                >Manejo/Envió</label
+              >
+            </span>
+          </div>
+        </div>
+        <div class="p-col-1">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pKeyFilter="num"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label">Total</label>
+            </span>
+          </div>
+        </div>
+        <!--    Fin Segunda Fila  -->
 
-      <div class="p-col-1"></div>
-      <div class="p-col-2">
-        <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
-          Tipo de servicio
-        </p>
-        <div class="p-field-radiobutton">
-          <p-radioButton
-            name="city5"
-            value="Fist Class"
-            [(ngModel)]="tipoServicio"
-            inputId="Fist Class"
-          ></p-radioButton>
-          <label for="Fist Class">Fist Class</label>
+        <!--    Inicio Tercera Fila  -->
+        <div class="p-col-1"></div>
+        <div class="p-col-4">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pKeyFilter="num"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label"
+                >Guia de Referencia</label
+              >
+            </span>
+          </div>
         </div>
-        <div class="p-field-radiobutton">
-          <p-radioButton
-            name="city6"
-            value="Priority mail"
-            [(ngModel)]="tipoServicio"
-            inputId="Priority mail"
-          ></p-radioButton>
-          <label for="Priority mail">Priority mail</label>
+        <div class="p-col-7"></div>
+        <!--    Fin Tercera Fila  -->
+        <!--    Inicio Cuarta Fila  -->
+        <div class="p-col-1"></div>
+        <div class="p-col-6">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pKeyFilter="num"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label"
+                >Descripción</label
+              >
+            </span>
+          </div>
         </div>
-        <div class="p-field-radiobutton">
-          <p-radioButton
-            name="city6"
-            value="Express mail"
-            [(ngModel)]="tipoServicio"
-            inputId="Express mail"
-          ></p-radioButton>
-          <label for="Express mail">Express mail</label>
+        <div class="p-col-5"></div>
+        <!--    Fin Cuarta Fila  -->
+        <!--    Inicio Quinta Fila  -->
+        <div class="p-col-1"></div>
+        <div class="p-col-6">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pKeyFilter="num"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label"
+                >Nombre del cliente</label
+              >
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="p-col-2">
-        <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
-          Servicios adicionales
-        </p>
-        <div class="p-field-checkbox">
-          <p-checkbox
-            name="Certified mail"
-            value="Chicago"
-            [(ngModel)]="extraServices"
-            inputId="Certified mail"
-          ></p-checkbox>
-          <label for="Certified mail">Certified mail</label>
+        <div class="p-col-2">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label"
+                >Código de cliente</label
+              >
+            </span>
+          </div>
         </div>
-        <div class="p-field-checkbox">
-          <p-checkbox
-            name="Delivery confirmation"
-            value="Delivery confirmation"
-            [(ngModel)]="extraServices"
-            inputId="Delivery confirmation"
-          ></p-checkbox>
-          <label for="Delivery confirmation">Delivery confirmation</label>
+        <div class="p-col-3"></div>
+        <!--    Fin Quinta Fila  -->
+        <!--    Inicio Quinta Fila  -->
+        <div class="p-col-1"></div>
+        <div class="p-col-8">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <input
+                id="float-input"
+                class="form-control-input"
+                type="text"
+                pKeyFilter="num"
+                pInputText
+              />
+              <label for="float-input" class="form-control-label"
+                >Dirección de destino</label
+              >
+            </span>
+          </div>
         </div>
-        <div class="p-field-checkbox">
-          <p-checkbox
-            name="city2"
-            value="Return receipt"
-            [(ngModel)]="extraServices"
-            inputId="Return receipt"
-          ></p-checkbox>
-          <label for="Return receipt">Return receipt</label>
-        </div>
-        <div class="p-field-checkbox">
-          <p-checkbox
-            name="Signatureconfirmation"
-            value="Signatureconfirmation"
-            [(ngModel)]="extraServices"
-            inputId="Signatureconfirmation"
-          ></p-checkbox>
-          <label for="Signatureconfirmation">Signature confirmation</label>
-        </div>
-      </div>
-      <div class="p-col-2">
-        <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
-          Tipo de servicio
-        </p>
-        <div class="p-field-radiobutton">
-          <p-radioButton
-            value="Small"
-            [(ngModel)]="tipoServicioSize"
-            inputId="Small"
-          ></p-radioButton>
-          <label for="Small">Small</label>
-        </div>
-        <div class="p-field-radiobutton">
-          <p-radioButton
-            name="city6"
-            value="Large"
-            [(ngModel)]="tipoServicioSize"
-            inputId="Large"
-          ></p-radioButton>
-          <label for="Largel">Large</label>
-        </div>
-        <div class="p-field-radiobutton">
-          <p-radioButton
-            name="city6"
-            value="Parce"
-            [(ngModel)]="tipoServicioSize"
-            inputId="parce"
-          ></p-radioButton>
-          <label for="parce">Parce</label>
-        </div>
-      </div>
-      <div class="p-col-2">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pKeyFilter="num"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Parte o Estampilla</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-2">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Manejo/Envió</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-1">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pKeyFilter="num"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label">Total</label>
-          </span>
-        </div>
-      </div>
-      <!--    Fin Segunda Fila  -->
 
-      <!--    Inicio Tercera Fila  -->
-      <div class="p-col-1"></div>
-      <div class="p-col-4">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pKeyFilter="num"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Guia de Referencia</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-7"></div>
-      <!--    Fin Tercera Fila  -->
-      <!--    Inicio Cuarta Fila  -->
-      <div class="p-col-1"></div>
-      <div class="p-col-6">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pKeyFilter="num"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Descripción</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-5"></div>
-      <!--    Fin Cuarta Fila  -->
-      <!--    Inicio Quinta Fila  -->
-      <div class="p-col-1"></div>
-      <div class="p-col-6">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pKeyFilter="num"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Nombre del cliente</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-2">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Código de cliente</label
-            >
-          </span>
-        </div>
-      </div>
-      <div class="p-col-3"></div>
-      <!--    Fin Quinta Fila  -->
-      <!--    Inicio Quinta Fila  -->
-      <div class="p-col-1"></div>
-      <div class="p-col-8">
-        <div class="p-fluid">
-          <span class="p-float-label">
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              pKeyFilter="num"
-              pInputText
-            />
-            <label for="float-input" class="form-control-label"
-              >Dirección de destino</label
-            >
-          </span>
-        </div>
-      </div>
+        <div class="p-col-3"></div>
+        <!--    Fin Quinta Fila  -->
 
-      <div class="p-col-3"></div>
-      <!--    Fin Quinta Fila  -->
+        <!--  Butones -->
+        <div class="p-col-9"></div>
 
-      <!--  Butones -->
-      <div class="p-col-9"></div>
-
-      <div class="p-col-3">
-        <div class="p-fluid">
-          <button
-            pButton
-            pRipple
-            style="
-              background: #13B497;
-              border: 1px solid #13B497;
-              color: #ffffff;
-              font-weight: 700;
-              font-size: 14px;
-              padding: 16px 5px 16px 5px;
-            "
-            type="button"
-            label="Registrar Correo"
-          ></button>
+        <div class="p-col-3">
+          <div class="p-fluid">
+            <button
+              pButton
+              pRipple
+              style="
+                background: #13b497;
+                border: 1px solid #13b497;
+                color: #ffffff;
+                font-weight: 700;
+                font-size: 14px;
+                padding: 16px 5px 16px 5px;
+              "
+              type="button"
+              label="Registrar Correo"
+            ></button>
+          </div>
         </div>
-      </div>
+      </form>
       <div class="p-col-12"></div>
     </div>
   </nb-layout-column>

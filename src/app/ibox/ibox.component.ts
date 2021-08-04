@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../product';
-import { ProductService } from '../productservice';
 import { ActivatedRoute } from '@angular/router';
 import { SelectItem } from 'primeng/api';
+import { MessageService } from 'primeng/api';
+import { HttpClient } from '@angular/common/http';
+import { IboxService } from '../SERVICES/ibox.service';
+import { Ibox } from '../ibox';
 @Component({
   selector: 'app-ibox',
   templateUrl: './ibox.component.html',
@@ -10,36 +13,27 @@ import { SelectItem } from 'primeng/api';
 })
 export class IboxComponent implements OnInit {
   id: string = '';
-  productDialog: boolean = false;
   editing: boolean = false;
   products: Product[] = [];
   rowGroupMetadata: any;
-  carname: string = 'asdasd';
   product: Product = {};
-  products1: Product[] = [];
-  products2: Product[] = [];
-
   statuses: SelectItem[] = [];
-
   clonedProducts: { [s: string]: Product; } = {};
-  selectedProducts: Product[] = [];
-
-  submitted: boolean = false;
-
-  constructor(private AR: ActivatedRoute, private productService: ProductService,) {
+  iboxs?: Ibox[];
+  constructor(private AR: ActivatedRoute, private messageService: MessageService, private http: HttpClient, private iboxService: IboxService) {
     this.product = {
-      "id": "1000",
-      "name": "James Butt",
+      "id": "1875",
+      "name": "Erick Torres",
       "country": {
-        "name": "Algeria",
+        "name": "Contenido 1        Contenido 2",
         "code": "dz"
       },
       "company": "Benton, John B Jr",
       "date": "2015-09-13",
-      "status": "unqualified",
+      "status": "active",
       "activity": 17,
       "representative": {
-        "name": "Ioni Bowcher",
+        "name": "1850",
         "image": "ionibowcher.png"
       }
 
@@ -48,7 +42,19 @@ export class IboxComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.AR.snapshot.paramMap.get('id')!
-    this.productService.getProducts().then(data => this.products = data);
+
+    this.retrieveIboxs()
+  }
+  retrieveIboxs(): void {
+    this.iboxService.getAll()
+      .subscribe(
+        data => {
+          this.iboxs = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
   onSort() {
     this.updateRowGroupMetaData();
@@ -57,10 +63,10 @@ export class IboxComponent implements OnInit {
   updateRowGroupMetaData() {
     this.rowGroupMetadata = {};
 
-    if (this.products !== null) {
-      for (let i = 0; i < this.products.length; i++) {
-        let rowData = this.products[i];
-        let representativeName = rowData.representative!.name;
+    if (this.iboxs !== null) {
+      for (let i = 0; i < this.iboxs!.length; i++) {
+        let rowData = this.iboxs![i];
+        let representativeName = rowData.name;
 
         if (i == 0) {
           this.rowGroupMetadata[representativeName!] = { index: 0, size: 1 };
@@ -84,10 +90,12 @@ export class IboxComponent implements OnInit {
 
   onRowEditSave(product: Product) {
 
-    if (product.price! > 0) {
-      delete this.clonedProducts[product.id!];
 
-    }
+    delete this.clonedProducts[product.id!];
+    this.messageService.add({ severity: 'success', summary: 'Bien Hecho', detail: 'I-box actualizado correctamente', });
+
+
+
     this.editing = !this.editing;
 
   }
