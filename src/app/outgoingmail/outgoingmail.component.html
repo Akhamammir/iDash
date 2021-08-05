@@ -42,7 +42,7 @@
       <div class="p-col-12"></div>
 
       <!--    Inicio Primera Fila  -->
-      <form class="p-grid">
+      <form [formGroup]="LoginForm!" (ngSubmit)="onSubmit()" class="p-grid">
         <div class="p-col-1"></div>
         <div class="p-col-2">
           <div class="p-fluid">
@@ -52,7 +52,7 @@
                 [autoDisplayFirst]="false"
                 [options]="shops"
                 class="form-control-ckb"
-                [(ngModel)]="tiendaOrigen"
+                formControlName="tiendaOrigen"
                 optionLabel="name"
               ></p-dropdown>
               <label for="dropdown" class="form-control-label"
@@ -66,7 +66,7 @@
             <p-checkbox
               name="city1"
               value="esPostal"
-              [(ngModel)]="tipodeEnvio"
+              formControlName="tipodeEnvio"
               inputId="city1"
             ></p-checkbox>
             <label for="city1">Seleccionar si es una postal</label>
@@ -75,7 +75,7 @@
             <p-checkbox
               name="city2"
               value="esPaquete"
-              [(ngModel)]="tipodeEnvio"
+              formControlName="tipodeEnvio"
               inputId="city2"
             ></p-checkbox>
             <label for="city2">Seleccionar si es un envio de un paquete</label>
@@ -88,6 +88,7 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
+                formControlName="peso"
                 pKeyFilter="num"
                 pInputText
               />
@@ -103,7 +104,7 @@
                 [autoDisplayFirst]="false"
                 [options]="countrys"
                 class="form-control-ckb"
-                [(ngModel)]="paisDestino"
+                formControlName="paisDestino"
                 optionLabel="name"
               ></p-dropdown>
               <label for="dropdown" class="form-control-label"
@@ -120,7 +121,7 @@
                 [autoDisplayFirst]="false"
                 [options]="destiny"
                 class="form-control-ckb"
-                [(ngModel)]="zonaDestino"
+                formControlName="zonaDestino"
                 optionLabel="name"
               ></p-dropdown>
               <label for="dropdown" class="form-control-label"
@@ -141,27 +142,27 @@
           </p>
           <div class="p-field-radiobutton">
             <p-radioButton
-              name="city5"
+              name="tipoServicio"
               value="Fist Class"
-              [(ngModel)]="tipoServicio"
+              formControlName="tipoServicio"
               inputId="Fist Class"
             ></p-radioButton>
             <label for="Fist Class">Fist Class</label>
           </div>
           <div class="p-field-radiobutton">
             <p-radioButton
-              name="city6"
+              name="tipoServicio"
               value="Priority mail"
-              [(ngModel)]="tipoServicio"
+              formControlName="tipoServicio"
               inputId="Priority mail"
             ></p-radioButton>
             <label for="Priority mail">Priority mail</label>
           </div>
           <div class="p-field-radiobutton">
             <p-radioButton
-              name="city6"
+              name="tipoServicio"
               value="Express mail"
-              [(ngModel)]="tipoServicio"
+              formControlName="tipoServicio"
               inputId="Express mail"
             ></p-radioButton>
             <label for="Express mail">Express mail</label>
@@ -175,7 +176,7 @@
             <p-checkbox
               name="Certified mail"
               value="Chicago"
-              [(ngModel)]="extraServices"
+              formControlName="extraServices"
               inputId="Certified mail"
             ></p-checkbox>
             <label for="Certified mail">Certified mail</label>
@@ -184,7 +185,7 @@
             <p-checkbox
               name="Delivery confirmation"
               value="Delivery confirmation"
-              [(ngModel)]="extraServices"
+              formControlName="extraServices"
               inputId="Delivery confirmation"
             ></p-checkbox>
             <label for="Delivery confirmation">Delivery confirmation</label>
@@ -193,7 +194,7 @@
             <p-checkbox
               name="city2"
               value="Return receipt"
-              [(ngModel)]="extraServices"
+              formControlName="extraServices"
               inputId="Return receipt"
             ></p-checkbox>
             <label for="Return receipt">Return receipt</label>
@@ -202,7 +203,7 @@
             <p-checkbox
               name="Signatureconfirmation"
               value="Signatureconfirmation"
-              [(ngModel)]="extraServices"
+              formControlName="extraServices"
               inputId="Signatureconfirmation"
             ></p-checkbox>
             <label for="Signatureconfirmation">Signature confirmation</label>
@@ -214,26 +215,27 @@
           </p>
           <div class="p-field-radiobutton">
             <p-radioButton
+            name="tipoServicioSize"
               value="Small"
-              [(ngModel)]="tipoServicioSize"
+              formControlName="tipoServicioSize"
               inputId="Small"
             ></p-radioButton>
             <label for="Small">Small</label>
           </div>
           <div class="p-field-radiobutton">
             <p-radioButton
-              name="city6"
+              name="tipoServicioSize"
               value="Large"
-              [(ngModel)]="tipoServicioSize"
+              formControlName="tipoServicioSize"
               inputId="Large"
             ></p-radioButton>
             <label for="Largel">Large</label>
           </div>
           <div class="p-field-radiobutton">
             <p-radioButton
-              name="city6"
+              name="tipoServicioSize"
               value="Parce"
-              [(ngModel)]="tipoServicioSize"
+              formControlName="tipoServicioSize"
               inputId="parce"
             ></p-radioButton>
             <label for="parce">Parce</label>
@@ -247,6 +249,7 @@
                 class="form-control-input"
                 type="text"
                 pKeyFilter="num"
+                formControlName="estampilla"
                 pInputText
               />
               <label for="float-input" class="form-control-label"
@@ -262,6 +265,7 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
+                formControlName="manejo"
                 pInputText
               />
               <label for="float-input" class="form-control-label"
@@ -277,6 +281,7 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
+                formControlName="total"
                 pKeyFilter="num"
                 pInputText
               />
@@ -295,6 +300,7 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
+                formControlName="guiaReferencia"
                 pKeyFilter="num"
                 pInputText
               />
@@ -315,6 +321,7 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
+                formControlName="descripcion"
                 pKeyFilter="num"
                 pInputText
               />
@@ -335,6 +342,7 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
+                formControlName="nombreCustomer"
                 pKeyFilter="num"
                 pInputText
               />
@@ -351,6 +359,7 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
+                formControlName="codeCustomer"
                 pInputText
               />
               <label for="float-input" class="form-control-label"
@@ -371,6 +380,7 @@
                 class="form-control-input"
                 type="text"
                 pKeyFilter="num"
+                formControlName="anddressDestiny"
                 pInputText
               />
               <label for="float-input" class="form-control-label"
@@ -399,7 +409,7 @@
                 font-size: 14px;
                 padding: 16px 5px 16px 5px;
               "
-              type="button"
+              type="submit"
               label="Registrar Correo"
             ></button>
           </div>
