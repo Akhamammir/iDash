@@ -128,7 +128,6 @@
                 </p-columnFilter>
               </th>
             </tr>
-<<<<<<< HEAD
           </ng-template>
 
           <ng-template pTemplate="body" let-ibox let-rowIndex="rowIndex">
@@ -136,25 +135,6 @@
               <td
 
               >
-=======
-            <tr [pEditableRow]="product">
-              <td>
-                <p-cellEditor>
-                  <ng-template pTemplate="input">
-                    <input
-                      pInputText
-                      class="form-control-input-ibox"
-                      type="text"
-                      [(ngModel)]="product.representative!.name"
-                    />
-                  </ng-template>
-                  <ng-template pTemplate="output">
-                    {{ product.representative!.name }} </ng-template
-                  >y</p-cellEditor
-                >
-              </td>
-              <td>
->>>>>>> 6cc53f7a44020ba5f0b7f2be7a34283ca5e9b59e
                 <p-cellEditor>
                   <ng-template pTemplate="input">
                     <input
@@ -176,18 +156,10 @@
                       pInputText
                       class="form-control-input-ibox"
                       type="text"
-<<<<<<< HEAD
                       [(ngModel)]="ibox.name"
                     />
                   </ng-template>
                   <ng-template pTemplate="output"> {{ ibox.name }} </ng-template
-=======
-                      [(ngModel)]="product.country!.name"
-                    />
-                  </ng-template>
-                  <ng-template pTemplate="output">
-                    {{ product.country!.name }} </ng-template
->>>>>>> 6cc53f7a44020ba5f0b7f2be7a34283ca5e9b59e
                   >y</p-cellEditor
                 >
               </td>
