@@ -2,10 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../product';
 import { ActivatedRoute } from '@angular/router';
 import { SelectItem } from 'primeng/api';
+<<<<<<< HEAD
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { IboxService } from '../SERVICES/ibox.service';
 import { Ibox } from '../ibox';
+=======
+import {MessageService} from 'primeng/api';
+>>>>>>> 6cc53f7a44020ba5f0b7f2be7a34283ca5e9b59e
 @Component({
   selector: 'app-ibox',
   templateUrl: './ibox.component.html',
@@ -19,8 +23,18 @@ export class IboxComponent implements OnInit {
   product: Product = {};
   statuses: SelectItem[] = [];
   clonedProducts: { [s: string]: Product; } = {};
+<<<<<<< HEAD
   iboxs?: Ibox[];
   constructor(private AR: ActivatedRoute, private messageService: MessageService, private http: HttpClient, private iboxService: IboxService) {
+=======
+  selectedProducts: Product[] = [];
+
+  submitted: boolean = false;
+
+  constructor(private AR: ActivatedRoute,
+   private productService: ProductService, private messageService: MessageService
+   ) {
+>>>>>>> 6cc53f7a44020ba5f0b7f2be7a34283ca5e9b59e
     this.product = {
       "id": "1875",
       "name": "Erick Torres",

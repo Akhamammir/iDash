@@ -27,10 +27,18 @@ import { CardModule } from 'primeng/card';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { CalendarModule } from 'primeng/calendar';
 import { RatingModule } from 'primeng/rating';
 
 
+=======
+import {CalendarModule} from 'primeng/calendar';
+import {RatingModule} from 'primeng/rating';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {MessageService} from 'primeng/api';
+>>>>>>> 6cc53f7a44020ba5f0b7f2be7a34283ca5e9b59e
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FeaturesComponent } from './features/features.component';
 import { StepperDetailComponent } from './stepper-detail/stepper-detail.component';
@@ -91,9 +99,15 @@ import { CotizarComponent } from './cotizar/cotizar.component';
 
     NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,
-    NbIconModule, NbButtonModule, StepsModule
+    NbIconModule, NbButtonModule, StepsModule,
+
+    MessagesModule
   ],
+<<<<<<< HEAD
   providers: [ProductService, MessagesModule, MessagesModule,MessageService],
+=======
+  providers: [ProductService, MessageModule, MessagesModule, MessageService],
+>>>>>>> 6cc53f7a44020ba5f0b7f2be7a34283ca5e9b59e
   bootstrap: [AppComponent]
 })
 export class AppModule { }
