@@ -43,6 +43,8 @@ export class PackageComponent implements OnInit {
   contenido: ContenidoPackage[] = [];
   pais: CountrysPackage[] = [];
   packages: Package[] = [];
+
+
   ngOnInit(): void {
     this.destinys = [
       { name: 'Barcelona' },
@@ -86,20 +88,21 @@ export class PackageComponent implements OnInit {
   }
   retrievePackages(): void {
 
-    this.packageService.getAll()
+    this.packageService.getAll('asdasd')
       .subscribe(
         data => {
-          let arr = [];
-          for (let i in data) {
-            data[i]['impuesto'] = 0;
-            data[i]['tramiteAduanal'] = 0.00;
-            data[i]['manejoEnvio'] = 0.00;
-            data[i]['seguro'] = 0.00;
-            data[i]['total'] = 0.00;
-            arr.push(data[i])
-          }
-          console.log(arr)
-          this.packages = arr;
+          console.log(data)
+          // let arr = [];
+          // for (let i in data) {
+          //   data[i]['impuesto'] = 0;
+          //   data[i]['tramiteAduanal'] = 0.00;
+          //   data[i]['manejoEnvio'] = 0.00;
+          //   data[i]['seguro'] = 0.00;
+          //   data[i]['total'] = 0.00;
+          //   arr.push(data[i])
+          // }
+          // console.log(arr)
+          // this.packages = arr;
         },
         error => {
           console.log(error);
