@@ -53,6 +53,7 @@ import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebo
 import { CustormerDashComponent } from './custormer-dash/custormer-dash.component';
 import { MainCustomerComponent } from './main-customer/main-customer.component';
 import { CotizarComponent } from './cotizar/cotizar.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { CotizarComponent } from './cotizar/cotizar.component';
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,
     NbIconModule, NbButtonModule, StepsModule,
 
-    MessagesModule
+    MessagesModule,
+      GraphQLModule
   ],
   providers: [ProductService, MessagesModule, MessagesModule,MessageService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Apollo, gql } from 'apollo-angular';
 import { ContenidoPackage } from '../contenidoPackage';
 import { CountrysPackage } from '../countrysPackage';
 import { Destiny } from '../destiny';
@@ -37,13 +38,15 @@ export class PackageComponent implements OnInit {
   totalWeight: string = '';
   LoginForm: FormGroup | undefined;
   products: Product[] = [];
-  constructor(private AR: ActivatedRoute, private packageService: PackageService) { }
+  constructor(private AR: ActivatedRoute, private packageService: PackageService, private apollo: Apollo) { }
   destinys: Destiny[] = [];
   valijas: Valija[] = [];
   contenido: ContenidoPackage[] = [];
   pais: CountrysPackage[] = [];
   packages: Package[] = [];
-
+  rates: any[] = [];
+  loading = true;
+  error: any;
 
   ngOnInit(): void {
     this.destinys = [
@@ -87,26 +90,22 @@ export class PackageComponent implements OnInit {
     this.retrievePackages()
   }
   retrievePackages(): void {
+    this.apollo
+      .watchQuery({
+        query: gql`
+         query getPackages {
+          getPackages {
+              id
+              country_org
+            }
+         }
+      `,
+      })
+      .valueChanges.subscribe(({ data, loading }) => {
 
-    this.packageService.getAll('asdasd')
-      .subscribe(
-        data => {
-          console.log(data)
-          // let arr = [];
-          // for (let i in data) {
-          //   data[i]['impuesto'] = 0;
-          //   data[i]['tramiteAduanal'] = 0.00;
-          //   data[i]['manejoEnvio'] = 0.00;
-          //   data[i]['seguro'] = 0.00;
-          //   data[i]['total'] = 0.00;
-          //   arr.push(data[i])
-          // }
-          // console.log(arr)
-          // this.packages = arr;
-        },
-        error => {
-          console.log(error);
-        });
+        console.log('data', data)
+        console.log('loading', loading)
+      });
   }
   onSubmit() {
     const data = this.LoginForm!.value

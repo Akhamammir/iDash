@@ -12,9 +12,7 @@ export class PackageService {
 
   constructor(private http: HttpClient) { }
   getAll(data: any): Observable<any> {
-    return this.http.post(baseUrl,
-      { "query": "query ExampleQuery {\n  getEboxs {\n    id\n  }\n  getClienteEboxs {\n    id\n  }\n  getPackages {\n    id\n  }\n}\n", "variables": {}, "operationName": "ExampleQuery" }
-    );
+    return this.http.post(baseUrl, data);
   }
 
   create(data: any): Observable<any> {
