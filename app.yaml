@@ -3,9 +3,71 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /
-  static_files: dist/iDash/index.html
-  upload: dist/iDash/index.html
+ - url: /(.+\.js)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.js)
+    secure: always
+    redirect_http_response_code: 301
 
-- url: /
-  static_dir: dist/iDash
+  - url: /(.+\.css)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.css)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.png)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.png)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.jpg)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.jpg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.gif)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.gif)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.svg)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.svg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /favicon.ico
+    static_files: dist/iDash/favicon.ico
+    upload: dist/iDash/favicon.ico
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.json)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.json)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+)
+    static_files: dist/iDash/index.html
+    upload: dist/iDash/index.html
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /
+    static_files: dist/iDash/index.html
+    upload: dist/iDash/index.html
+    secure: always
+    redirect_http_response_code: 301
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - src/
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE
