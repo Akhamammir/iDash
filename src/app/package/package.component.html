@@ -55,15 +55,18 @@
         <div class="p-col-4">
           <div class="p-fluid">
             <span class="p-float-label">
-              <input
-                id="float-input"
-                class="form-control-input"
-                type="text"
+              <p-autoComplete
+                [(ngModel)]="nameCustomer"
                 formControlName="nameCustomer"
-                pInputText
-              />
-              <label for="float-input" class="form-control-label"
-                >Nombre del cliente</label
+                (onSelect)="selectedAutocompleteUser()"
+                [suggestions]="filteredUsers"
+                (completeMethod)="filterUser($event)"
+                field="first_name"
+                [minLength]="1"
+                inputId="autoCompleteUsers"
+              ></p-autoComplete>
+              <label for="dropdown" class="form-control-label"
+                >Nombre del Cliente</label
               >
             </span>
           </div>
@@ -76,6 +79,7 @@
                 class="form-control-input"
                 type="text"
                 formControlName="codeCustomer"
+                [(ngModel)]="codeCustomer"
                 pInputText
               />
               <label for="float-input" class="form-control-label"
@@ -169,7 +173,8 @@
                 id="float-input"
                 pKeyFilter="num"
                 class="form-control-input"
-                type="tel"
+                type="number"
+                min="1"
                 formControlName="amount"
                 pInputText
               />
@@ -413,8 +418,8 @@
         </ng-template>
         <ng-template pTemplate="body" let-package>
           <tr>
-            <td>{{ package.guiaReferencia }}</td>
-            <td>{{ package.impuesto }}</td>
+            <td>{{ package.country_dest }}</td>
+            <td>{{ package.country_org }}</td>
             <td>{{ package.tramiteAduanal }}</td>
             <td>{{ package.manejoEnvio }}</td>
             <td>{{ package.seguro }}</td>
@@ -438,7 +443,6 @@
             padding: 16px 24px 16px 24px;
           "
           type="button"
-          (click)="registerPackage()"
           label="REGISTAR PAQUETES"
         ></button>
       </div>

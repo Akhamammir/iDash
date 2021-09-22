@@ -23,21 +23,7 @@ export class ValijaComponent implements OnInit {
     ];
     this.id = this.AR.snapshot.paramMap.get('id')!
 
-    this.retrievePackages()
-  }
-  retrievePackages(): void {
-
-    this.packageService.getAllList()
-      .subscribe(
-        data => {
-          data.map((p: any) => {
-              console.log(p.data)
-            this.packages = p.data})
-
-        },
-        error => {
-          console.log(error);
-        });
 
   }
+
 }

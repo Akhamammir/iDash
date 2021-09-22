@@ -2,14 +2,46 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
+import { FilterService } from 'primeng/api';
+import { Observable, Subscription } from 'rxjs';
 import { ContenidoPackage } from '../contenidoPackage';
 import { CountrysPackage } from '../countrysPackage';
 import { Destiny } from '../destiny';
 import { Product } from '../product';
+import { CustomerService } from '../SERVICES/customer.service';
 import { PackageService } from '../SERVICES/package.service';
-import { Package } from '../SERVICES/packages';
+import { getPackages, Package } from '../SERVICES/packages';
 import { Valija } from '../Valija';
+const GET_PACKAGES = gql`
+ query getPackages {
+          Packages {
+              id
+              country_org
+              country_dest
+              wt
+              size {
+                ig
+                wd
+                ht
+              }
+              recieved
+              type
+              tracking
+              recieve
+              desc
+              sender
+            }
+         }`;
 
+const Get_Users = gql`
+ query getClienteEboxs {
+          getClienteEboxs {
+            id
+            phone
+            first_name
+            last_name
+            }
+         }`;
 @Component({
   selector: 'app-package',
   templateUrl: './package.component.html',
@@ -17,8 +49,9 @@ import { Valija } from '../Valija';
 })
 export class PackageComponent implements OnInit {
   id: string = '';
-  nameCustomer: string = '';
+  nameCustomer: any;
   codeCustomer: string = '';
+  selectedUser: any
   Destino: string = '';
   guiaReferencia: string = '';
   proveedor: string = '';
@@ -47,7 +80,10 @@ export class PackageComponent implements OnInit {
   rates: any[] = [];
   loading = true;
   error: any;
-
+  usersList: any;
+  filteredUsers: any;
+  private querySubscription: Subscription | undefined;
+  getPackages: Observable<getPackages[]> | undefined;
   ngOnInit(): void {
     this.destinys = [
       { name: 'Barcelona' },
@@ -87,50 +123,73 @@ export class PackageComponent implements OnInit {
       height: new FormControl(this.length, [Validators.required]),
       totalWeight: new FormControl(this.length, [Validators.required]),
     })
-    this.retrievePackages()
-  }
-  retrievePackages(): void {
-    this.apollo
-      .watchQuery({
-        query: gql`
-         query getPackages {
-          getPackages {
-              id
-              country_org
-            }
-         }
-      `,
-      })
-      .valueChanges.subscribe(({ data, loading }) => {
-
-        console.log('data', data)
-        console.log('loading', loading)
+    this.querySubscription = this.apollo.watchQuery<any>({
+      query: GET_PACKAGES
+    }).valueChanges
+      .subscribe(({ data, loading }) => {
+        console.log(data.Packages)
+        this.packages = data.Packages;
       });
+    this.gettingUsers()
+  }
+  gettingUsers() {
+    this.querySubscription = this.apollo.watchQuery<any>({
+      query: Get_Users
+    }).valueChanges
+      .subscribe(({ data, loading }) => this.usersList = data.getClienteEboxs);
+
+  }
+  selectedAutocompleteUser() {
+    console.log(this.nameCustomer)
+    this.codeCustomer = this.nameCustomer.last_name;
+    console.log(this.codeCustomer)
+  }
+  filterUser(event: any) {
+    //in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
+    let filtered: any[] = [];
+    let query = event.query;
+
+    for (let i = 0; i < this.usersList.length; i++) {
+      let user = this.usersList[i];
+
+      if (user.first_name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filtered.push(user);
+      } else if (user.last_name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filtered.push(user);
+      }
+    }
+    console.log(filtered)
+    this.filteredUsers = filtered;
   }
   onSubmit() {
     const data = this.LoginForm!.value
     console.log(data)
-    this.packageService.create(data)
-      .subscribe(
-        response => {
-          console.log(response);
+    let body = {
+      insertPackageInput: {
+        country_org: data.countryOrigen.name,
+        country_dest: data.Destino.name,
+        wt: data.weight,
+        size: {
+          ig: parseInt(data.height),
+          wd: parseInt(data.width),
+          ht: parseInt(data.length)
         },
-        error => {
-          console.log(error);
-        });
-  }
-  registerPackage(): void {
-
-    let data = this.packages
-
-    console.log(data)
-    this.packageService.createlist(data)
-      .subscribe(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        });
+        recieved: data.marca,
+        type: data.tipoValija.name,
+        tracking: data.nameCustomer.id,
+        recieve: data.model,
+        desc: data.description,
+        sender: data.proveedor
+      }
+    }
+    console.log('body', body)
+    this.packageService.create(body)
+    .subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      });
   }
 }

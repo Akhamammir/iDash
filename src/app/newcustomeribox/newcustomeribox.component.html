@@ -53,19 +53,44 @@
         <!--    Inicio Fila Nombre // Pais/Territorio -->
         <div class="p-col-1"></div>
         <div class="p-col-5">
-          <div class="p-fluid">
-            <span class="p-float-label">
-              <input
-                id="float-input"
-                class="form-control-input"
-                type="text"
-                formControlName="name"
-                pInputText
-              />
-              <label for="float-input" class="form-control-label"
-                >Nombre del cliente</label
-              >
-            </span>
+          <div class="p-grid">
+            <div class="p-col-6">
+              <div class="p-fluid">
+                <span class="p-float-label">
+                  <input
+                    id="float-input"
+                    class="form-control-input"
+                    type="text"
+                    formControlName="first_name"
+                    pInputText
+                    required
+                  />
+                  <label for="float-input" class="form-control-label"
+                    >Nombre del cliente</label
+                  >
+                  <div *ngIf="LoginForm!.value.first_name.errors?.required">
+                    Name is required.
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div class="p-col-6">
+              <div class="p-fluid">
+                <span class="p-float-label">
+                  <input
+                    id="float-input"
+                    class="form-control-input"
+                    type="text"
+                    formControlName="last_name"
+                    pInputText
+                    required
+                  />
+                  <label for="float-input" class="form-control-label"
+                    >Apellido del cliente</label
+                  >
+                </span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="p-col-5">
@@ -77,6 +102,7 @@
                 type="text"
                 formControlName="country"
                 pInputText
+                required
               />
               <label for="float-input" class="form-control-label"
                 >Pais / Territorio</label
@@ -96,8 +122,9 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
-                formControlName="first"
+                formControlName="address"
                 pInputText
+                required
               />
               <label for="float-input" class="form-control-label"
                 >Dirección</label
@@ -112,8 +139,9 @@
                 id="float-input"
                 class="form-control-input"
                 type="text"
-                formControlName="second"
+                formControlName="second_address"
                 pInputText
+                required
               />
               <label for="float-input" class="form-control-label"
                 >Dirección 2</label
@@ -135,8 +163,9 @@
                     id="float-input"
                     class="form-control-input"
                     type="text"
-                    formControlName="postalCode"
+                    formControlName="post_cod"
                     pInputText
+                    required
                   />
                   <label for="float-input" class="form-control-label"
                     >Código Postal</label
@@ -153,6 +182,7 @@
                     type="text"
                     formControlName="city"
                     pInputText
+                    required
                   />
                   <label for="float-input" class="form-control-label"
                     >Cuidad</label
@@ -169,6 +199,7 @@
                     type="text"
                     formControlName="state"
                     pInputText
+                    required
                   />
                   <label for="float-input" class="form-control-label"
                     >Estado</label
@@ -187,6 +218,7 @@
                 type="email"
                 formControlName="email"
                 pInputText
+                required
               />
               <label for="float-input" class="form-control-label"
                 >Dirección de Correo</label
@@ -209,7 +241,7 @@
                     [autoDisplayFirst]="false"
                     [options]="phones"
                     class="form-control-ckb"
-                    formControlName="typePhone"
+                    formControlName="services"
                     optionLabel="name"
                   ></p-dropdown>
                   <label for="dropdown" class="form-control-label"
@@ -225,8 +257,9 @@
                     id="float-input"
                     class="form-control-input"
                     type="text"
-                    formControlName="code"
+                    formControlName="col"
                     pInputText
+                    required
                   />
                   <label for="float-input" class="form-control-label"
                     >Código</label
@@ -241,8 +274,9 @@
                     id="float-input"
                     class="form-control-input"
                     type="text"
-                    formControlName="number"
+                    formControlName="phone"
                     pInputText
+                    required
                   />
                   <label for="float-input" class="form-control-label"
                     >Telefono</label
@@ -255,31 +289,30 @@
         <div class="p-col-6 p-mt-4">
           <div class="p-formgroup-inline">
             <div class="p-field-checkbox">
-              <p-checkbox
-                name="city3"
-                value="Forma 1583"
-                formControlName="forma1583"
+              <p-toggleButton
                 inputId="city3"
-              ></p-checkbox>
+                formControlName="form_1583"
+                onIcon="pi pi-check"
+              ></p-toggleButton>
               <label for="city3">Forma 1583</label>
             </div>
-            <div class="p-field-checkbox">
-              <p-checkbox
-                name="city4"
-                value="Notificaciones Email"
-                formControlName="notiemail"
+            <div class="p-field-checkbox" formGroupName="notifications">
+              <p-toggleButton
                 inputId="city4"
-              ></p-checkbox>
+                formControlName="notiemail"
+                onIcon="pi pi-check"
+              ></p-toggleButton>
+
               <label for="city4">Notificaciones Email</label>
             </div>
-            <div class="p-field-checkbox">
-              <p-checkbox
-                name="city4"
-                value="Notificaciones SMS"
+            <div class="p-field-checkbox" formGroupName="notifications">
+              <p-toggleButton
+                inputId="city5"
                 formControlName="notisms"
-                inputId="city4"
-              ></p-checkbox>
-              <label for="city4">Notificaciones SMS</label>
+                onIcon="pi pi-check"
+              ></p-toggleButton>
+
+              <label for="city5">Notificaciones SMS</label>
             </div>
           </div>
         </div>
@@ -309,6 +342,7 @@
         <div class="p-col-3">
           <div class="p-fluid">
             <button
+            [disabled]="LoginForm!.invalid"
               pButton
               pRipple
               style="
