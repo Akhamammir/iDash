@@ -43,6 +43,22 @@ export class PackageService {
     })
     return this.http.post(baseUrl, body, { headers });
   }
+
+  getPdfPackage(data: any): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `mutation Mutation($createLabelCarrierInput: createLabelInput) {
+        createLabelCarrier(input: $createLabelCarrierInput) {
+          urlLabel
+          trackId
+        }
+      }
+      `,
+      variables:
+        JSON.stringify(data),
+    })
+    return this.http.post(baseUrl, body, { headers });
+  }
   createlist(data: any): Observable<any> {
     return this.http.post(baseUrl + '/list', data);
   }

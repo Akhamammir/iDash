@@ -103,10 +103,6 @@ export class FeaturesComponent implements OnInit {
           height: parseInt(data.length),
           units: 'CM'
         },
-        totalWeight: {
-          value: parseFloat(data.weight),
-          units: 'KG'
-        },
         weight: {
           value: parseInt(data.height),
           units: 'KG'
