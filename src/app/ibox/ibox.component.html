@@ -15,7 +15,7 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-5"></div>
+      <div class="p-md-5 p-col-12"></div>
       <div class="p-d-flex">
         <button
           pButton
@@ -23,7 +23,7 @@
           type="button"
           style="background: #eb5757; color: #ffffff"
           label="Cancel"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-button-danger"
         ></button>
 
@@ -33,18 +33,18 @@
           type="button"
           style="background: #ffffff; border: 1px solid #c1c9d2"
           label="Previous"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-mx-2"
         ></button>
       </div>
-      <div class="p-col-5"></div>
+      <div class="p-md-5 p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-10"></div>
-      <div class="p-col-2">
+      <div class="p-md-10 p-col-12"></div>
+      <div class="p-md-2 p-col-12" >
         <button
           pButton
           pRipple
-          [routerLink]="['../../newcustomerebox', id]"
+          [routerLink]="['../newcustomerebox']"
           style="
             background: #5e72e4;
             color: #ffffff;
@@ -64,6 +64,7 @@
           [rowsPerPageOptions]="[10, 25, 50]"
           [globalFilterFields]="['name, status, country']"
           [value]="iboxs!"
+          [autoLayout]="true"
           editMode="row"
         >
           <ng-template pTemplate="caption">

@@ -9,7 +9,7 @@
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
-        <div class="p-text-center p-text-bold" style="font-size: 36px">
+        <div class="p-text-center p-text-bold title-dash">
           Registra el correo saliente
         </div>
       </div>
@@ -23,7 +23,7 @@
           type="button"
           style="background: #eb5757; color: #ffffff"
           label="Cancel"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-button-danger"
         ></button>
 
@@ -33,7 +33,7 @@
           type="button"
           style="background: #ffffff; border: 1px solid #c1c9d2"
           label="Previous"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-mx-2"
         ></button>
       </div>
@@ -43,8 +43,8 @@
 
       <!--    Inicio Primera Fila  -->
       <form [formGroup]="LoginForm!" (ngSubmit)="onSubmit()" class="p-grid">
-        <div class="p-col-1"></div>
-        <div class="p-col-2">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-2 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <p-dropdown
@@ -61,7 +61,7 @@
             </span>
           </div>
         </div>
-        <div class="p-col-4">
+        <div class="p-md-4 p-col-12">
           <div class="p-field-checkbox">
             <p-checkbox
               name="city1"
@@ -81,7 +81,7 @@
             <label for="city2">Seleccionar si es un envio de un paquete</label>
           </div>
         </div>
-        <div class="p-col-1">
+        <div class="p-md-1 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -96,7 +96,7 @@
             </span>
           </div>
         </div>
-        <div class="p-col-2">
+        <div class="p-md-2 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <p-dropdown
@@ -113,7 +113,7 @@
             </span>
           </div>
         </div>
-        <div class="p-col-2">
+        <div class="p-md-2 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <p-dropdown
@@ -135,8 +135,8 @@
         <!--    Fin Primera Fila  -->
         <!--    Inicio Segunda Fila  -->
 
-        <div class="p-col-1"></div>
-        <div class="p-col-2">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-2 p-col-12">
           <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
             Tipo de servicio
           </p>
@@ -168,7 +168,7 @@
             <label for="Express mail">Express mail</label>
           </div>
         </div>
-        <div class="p-col-2">
+        <div class="p-md-2 p-col-12">
           <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
             Servicios adicionales
           </p>
@@ -209,7 +209,7 @@
             <label for="Signatureconfirmation">Signature confirmation</label>
           </div>
         </div>
-        <div class="p-col-2">
+        <div class="p-md-2 p-col-12">
           <p class="p-text-bold" style="font-size: 14px; font-weight: 600">
             Tipo de servicio
           </p>
@@ -241,7 +241,7 @@
             <label for="parce">Parce</label>
           </div>
         </div>
-        <div class="p-col-2">
+        <div class="p-md-2 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -258,7 +258,7 @@
             </span>
           </div>
         </div>
-        <div class="p-col-2">
+        <div class="p-md-2 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -274,7 +274,7 @@
             </span>
           </div>
         </div>
-        <div class="p-col-1">
+        <div class="p-md-1 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -292,8 +292,8 @@
         <!--    Fin Segunda Fila  -->
 
         <!--    Inicio Tercera Fila  -->
-        <div class="p-col-1"></div>
-        <div class="p-col-4">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-4 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -310,11 +310,11 @@
             </span>
           </div>
         </div>
-        <div class="p-col-7"></div>
+        <div class="p-md-7 p-col-12"></div>
         <!--    Fin Tercera Fila  -->
         <!--    Inicio Cuarta Fila  -->
-        <div class="p-col-1"></div>
-        <div class="p-col-6">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-6 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -331,11 +331,11 @@
             </span>
           </div>
         </div>
-        <div class="p-col-5"></div>
+        <div class="p-md-5 p-col-12"></div>
         <!--    Fin Cuarta Fila  -->
         <!--    Inicio Quinta Fila  -->
-        <div class="p-col-1"></div>
-        <div class="p-col-6">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-6 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -352,7 +352,7 @@
             </span>
           </div>
         </div>
-        <div class="p-col-2">
+        <div class="p-md-2 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -368,11 +368,11 @@
             </span>
           </div>
         </div>
-        <div class="p-col-3"></div>
+        <div class="p-md-3 p-col-12"></div>
         <!--    Fin Quinta Fila  -->
         <!--    Inicio Quinta Fila  -->
-        <div class="p-col-1"></div>
-        <div class="p-col-8">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-8 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -390,13 +390,13 @@
           </div>
         </div>
 
-        <div class="p-col-3"></div>
+        <div class="p-md-3 p-col-12"></div>
         <!--    Fin Quinta Fila  -->
 
         <!--  Butones -->
-        <div class="p-col-9"></div>
+        <div class="p-md-9 p-col-12"></div>
 
-        <div class="p-col-3">
+        <div class="p-md-3 p-col-12">
           <div class="p-fluid">
             <button
               pButton

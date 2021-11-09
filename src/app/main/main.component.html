@@ -1,19 +1,19 @@
 <nb-layout>
   <nb-layout-header subheader>
-    <div class="p-grid p-ai-center p-nogutter" style="width: 100%">
-      <div class="p-col-1">
+    <div class="p-grid p-ai-center p-nogutter ocultable" style="width: 100%">
+      <div class="p-md-1 p-col-12">
         <div class="p-text-left" style="font-size: 28px">POS</div>
       </div>
-      <div class="p-col-2 p-offset-4">
+      <div class="p-md-2 p-md-offset-3 p-col-12">
         <span class="p-input-icon-right">
           <i class="pi pi-search darktxt"></i>
           <input type="text" pInputText class="topsearch" />
         </span>
       </div>
-      <div class="p-col-3">
+      <div class="p-md-3 p-col-12">
         <div class="p-grid p-ai-center p-nogutter" style="width: 100%">
-          <div class="p-col-3"></div>
-          <div class="p-col-2">
+          <div class="p-md-3 p-col-12"></div>
+          <div class="p-md-2 p-col-12">
             <button
               pButton
               pRipple
@@ -22,7 +22,7 @@
               class="p-button-rounded p-button-help p-button-text centerbtn"
             ></button>
           </div>
-          <div class="p-col-2">
+          <div class="p-md-2 p-col-12">
             <button
               pButton
               pRipple
@@ -31,7 +31,7 @@
               class="p-button-rounded p-button-help p-button-text centerbtn"
             ></button>
           </div>
-          <div class="p-col-2">
+          <div class="p-md-2 p-col-12">
             <button
               pButton
               pRipple
@@ -40,10 +40,10 @@
               class="p-button-rounded p-button-help p-button-text centerbtn"
             ></button>
           </div>
-          <div class="p-col-3"></div>
+          <div class="p-md-3 p-col-12"></div>
         </div>
       </div>
-      <div class="p-col-2">
+      <div class="p-md-2 p-col-12">
         <div class="p-inputgroup">
           <span class="p-inputgroup-addon topdropaddon"
             ><i class="pi pi-calendar"></i
@@ -57,11 +57,25 @@
         </div>
       </div>
     </div>
+    <button
+      nbButton
+      class="btn-toggle"
+      size="tiny"
+      (click)="toggle()"
+    >
+      Menu
+    </button>
   </nb-layout-header>
-  <nb-sidebar
-    responsive
-  >
+  <nb-sidebar responsive>
     <div class="p-grid p-ai-center">
+      <button
+        nbButton
+        class="btn-toggle"
+        size="tiny"
+        (click)="toggle()"
+      >
+        Menu
+      </button>
       <div class="p-col-12"></div>
 
       <div class="p-col-12">

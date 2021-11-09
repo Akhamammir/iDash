@@ -9,32 +9,39 @@ mainsidecustomer = #828894
 // .nb-theme-corporate nb-layout .layout .highlightCol
 //   background sidebar !important
 
-img
-  object-fit: contain;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.mainImg
+  z-index 999 !important
+  background-color #2130B8
+  margin-left:auto !important
+  margin-right:auto !important
 .nb-theme-corporate nb-sidebar .sidebarCustomer
   background-color #4F4F4F !important
 .sidebarCustomer
   background-color #4F4F4F !important
 .fullPrimeButton
   width 100%
-
+.btn-toggle
+  background sidebar !important
+  color: #fff !important
+  border: 0px !important
+  display:none !important
 .columns
   margin-top 20px
-.subheadaer
-  position fixed !important
-  width 85vw
-  z-index 99
-  box-shadow rgba(0, 0, 0, 0.16) 0px 3px 6px,
-   rgba(0, 0, 0, 0.23) 0px 3px 6px !important
 .subheader
   position fixed !important
-  width 85vw
+  width 100%
   z-index 99
   box-shadow rgba(0, 0, 0, 0.16) 0px 3px 6px,
    rgba(0, 0, 0, 0.23) 0px 3px 6px !important
+
+
+@media screen and (max-width: 1000px)
+  .ocultable
+   display: none !important;
+  .nb-theme-corporate nb-sidebar.collapsed .scrollable
+   display: none !important;
+  .btn-toggle
+   display block !important
 
 .nb-theme-corporate nb-layout-header nav
   height 3rem !important
@@ -51,6 +58,7 @@ img
    rgba(0, 0, 0, 0.23) 0px 3px 6px !important
 
 .nb-theme-corporate nb-sidebar .scrollable
+  background sidebar !important
   padding 1rem !important
   overflow-y hidden !important
 
@@ -177,6 +185,9 @@ img
   color:#3C4257 !important
   font-weight: 500 !important
   font-size: 18px !important
+@media screen and (max-width: 762px)
+  .p-steps
+   display: none !important;
 .form-control-input-feature
   background #DADDE3 !important;
   border 0px !important
@@ -236,7 +247,13 @@ img
   color:#000000 !important
   font-weight: 500 !important
 .dash-container
-  height 100vh
+  height 100%
+.title-dash
+  font-size: 36px !important
+  line-height: 1
+@media screen and (max-width: 600px)
+  .dash-column
+   display: block !important;
 .confirmation-container
   height 100vh
 .process-container
@@ -255,6 +272,8 @@ img
 .texto-valija-exito
   font-weight: 600 !important
   font-size: 36px !important
+  line-height: 1 !important;
+  text-align: center !important;
 .texto-valija-exito-numero
   font-weight: 600 !important
   font-size: 36px !important
@@ -438,3 +457,5 @@ img
   color: #262626 !important
 .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item
   color: #262626 !important
+.img-responsive
+  width: 75%

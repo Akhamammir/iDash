@@ -10,7 +10,7 @@
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
-        <div class="p-text-center p-text-bold" style="font-size: 36px">
+        <div class="p-text-center p-text-bold title-dash">
           Llene los datos para poder calcular el importe de la guia
         </div>
       </div>
@@ -24,7 +24,7 @@
           type="button"
           style="background: #eb5757; color: #ffffff"
           label="Cancel"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-button-danger"
         ></button>
 
@@ -34,7 +34,7 @@
           type="button"
           style="background: #ffffff; border: 1px solid #c1c9d2"
           label="Previous"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-mx-2"
         ></button>
 
@@ -44,7 +44,7 @@
           type="button"
           style="background: #27ae60; color: #ffffff"
           label="Next"
-          [routerLink]="['../../prices', id]"
+          [routerLink]="['../prices']"
           class="p-button-success"
         ></button>
       </div>
@@ -53,10 +53,10 @@
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <form class="p-grid" [formGroup]="LoginForm!" (ngSubmit)="onSubmit()">
-        <div class="p-col-4"></div>
-        <div class="p-col-5">
+        <div class="p-md-4 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
           <div class="p-grid">
-            <div class="p-col-6">
+            <div class="p-md-6 p-col-12">
               <div class="p-field-radiobutton">
                 <p-radioButton
                   name="typeSend"
@@ -78,7 +78,7 @@
               </div>
             </div>
 
-            <div class="p-col-4">
+            <div class="p-md-4 p-col-12">
               <label for="dropdown" class="form-control-label"
                 >País destino</label
               >
@@ -93,9 +93,9 @@
             </div>
           </div>
         </div>
-        <div class="p-col-3"></div>
-        <div class="p-col-4"></div>
-        <div class="p-col-5">
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-4 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
           <div class="p-fluid">
             <label for="float-input" class="form-control-label"
               >Código postal Origen</label
@@ -124,8 +124,8 @@
           </div>
         </div>
         <div class="p-col-12"></div>
-        <div class="p-col-4"></div>
-        <div class="p-col-5">
+        <div class="p-md-4 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
           <h3>Medidas del envió</h3>
 
           <div class="p-grid p-fluid">

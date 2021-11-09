@@ -23,7 +23,7 @@
           type="button"
           style="background: #eb5757; color: #ffffff"
           label="Cancel"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-button-danger"
         ></button>
 
@@ -33,7 +33,7 @@
           type="button"
           style="background: #ffffff; border: 1px solid #c1c9d2"
           label="Previous"
-          [routerLink]="['../../ebox', id]"
+          [routerLink]="['../ebox']"
           class="p-mx-2"
         ></button>
         <button
@@ -42,7 +42,7 @@
           type="button"
           style="background: #27ae60; color: #ffffff"
           label="Next"
-          [routerLink]="['../../documentolegal', id]"
+          [routerLink]="['../documentolegal']"
           class="p-button-success"
         ></button>
       </div>
@@ -51,8 +51,8 @@
       <div class="p-col-12"></div>
       <form [formGroup]="LoginForm!" (ngSubmit)="onSubmit()" class="p-grid">
         <!--    Inicio Fila Nombre // Pais/Territorio -->
-        <div class="p-col-1"></div>
-        <div class="p-col-5">
+        <div class="p-md-1 p-col-12 "></div>
+        <div class="p-md-5 p-col-12 ">
           <div class="p-grid">
             <div class="p-col-6">
               <div class="p-fluid">
@@ -93,7 +93,7 @@
             </div>
           </div>
         </div>
-        <div class="p-col-5">
+        <div class="p-md-5 p-col-12 ">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -110,12 +110,12 @@
             </span>
           </div>
         </div>
-        <div class="p-col-1"></div>
+        <div class="p-md-1 p-col-12 "></div>
         <!--    Fin Fila Nombre // Pais/Territorio -->
 
         <!--    Inicio Direccion // Direccion 2-->
-        <div class="p-col-1"></div>
-        <div class="p-col-5">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -132,7 +132,7 @@
             </span>
           </div>
         </div>
-        <div class="p-col-5">
+        <div class="p-md-5 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -149,12 +149,12 @@
             </span>
           </div>
         </div>
-        <div class="p-col-1"></div>
+        <div class="p-md-1 p-col-12"></div>
         <!--    Fin Direccion // Direccion 2-->
 
         <!--    Inicio Codigo cuidad estado // email -->
-        <div class="p-col-1"></div>
-        <div class="p-col-5">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
           <div class="p-grid">
             <div class="p-col-4">
               <div class="p-fluid">
@@ -209,7 +209,7 @@
             </div>
           </div>
         </div>
-        <div class="p-col-5">
+        <div class="p-md-5 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -226,12 +226,12 @@
             </span>
           </div>
         </div>
-        <div class="p-col-1"></div>
+        <div class="p-md-1 p-col-12"></div>
         <!--    Fin Codigo cuidad estado // email -->
 
         <!--    Inicio tipoTelefono codigo telefono -->
-        <div class="p-col-1"></div>
-        <div class="p-col-5">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
           <div class="p-grid">
             <div class="p-col-4">
               <div class="p-fluid">
@@ -286,7 +286,7 @@
             </div>
           </div>
         </div>
-        <div class="p-col-6 p-mt-4">
+        <div class="p-md-6 p-col-12 p-mt-4">
           <div class="p-formgroup-inline">
             <div class="p-field-checkbox">
               <p-toggleButton
@@ -320,8 +320,8 @@
         <!--    Fin tipoTelefono codigo telefono -->
 
         <!--  Butones -->
-        <div class="p-col-3"></div>
-        <div class="p-col-3">
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12">
           <div class="p-fluid">
             <button
               pButton
@@ -339,7 +339,7 @@
             ></button>
           </div>
         </div>
-        <div class="p-col-3">
+        <div class="p-md-3 p-col-12">
           <div class="p-fluid">
             <button
             [disabled]="LoginForm!.invalid"
@@ -358,7 +358,7 @@
             ></button>
           </div>
         </div>
-        <div class="p-col-3">
+        <div class="p-md-3 p-col-12">
           <div class="p-fluid">
             <button
               pButton

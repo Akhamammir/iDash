@@ -24,61 +24,62 @@ const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
   }, {
-    path: 'in', component: MainComponent, children: [
+    path: 'in/:id', component: MainComponent, children: [
+      { path: '', redirectTo: 'dash', pathMatch: 'full' },
       {
-        path: 'dash/:id', component: DashComponent,
+        path: 'dash', component: DashComponent,
       },
       {
-        path: 'features/:id', component: FeaturesComponent,
+        path: 'features', component: FeaturesComponent,
       },
       {
-        path: 'prices/:id', component: PricesComponent,
+        path: 'prices', component: PricesComponent,
       },
       {
-        path: 'customer/:id', component: CustomerComponent,
+        path: 'customer', component: CustomerComponent,
       },
       {
-        path: 'process/:id', component: ProcessComponent,
+        path: 'process', component: ProcessComponent,
       },
       {
-        path: 'confirmation/:id', component: ConfirmacionComponent,
+        path: 'confirmation', component: ConfirmacionComponent,
       },
       {
-        path: 'package/:id', component: PackageComponent,
+        path: 'package', component: PackageComponent,
       },
       {
-        path: 'ebox/:id', component: IboxComponent,
+        path: 'ebox', component: IboxComponent,
       },
       {
-        path: 'newcustomerebox/:id', component: NewcustomeriboxComponent,
+        path: 'newcustomerebox', component: NewcustomeriboxComponent,
       },
       {
-        path: 'email/:id', component: OutgoingmailComponent,
+        path: 'email', component: OutgoingmailComponent,
       },
       {
-        path: 'valija/:id', component: ValijaComponent,
+        path: 'valija', component: ValijaComponent,
       },
       {
-        path: 'exitovalija/:id', component: ValijacreadaComponent,
+        path: 'exitovalija', component: ValijacreadaComponent,
       },
       {
-        path: 'sellingpackage/:id', component: SellpackageComponent,
+        path: 'sellingpackage', component: SellpackageComponent,
       },
       {
-        path: 'exitopackage/:id', component: ExitopackageComponent,
+        path: 'exitopackage', component: ExitopackageComponent,
       },
       {
-        path: 'documentolegal/:id', component: DocumentlegaleboxComponent,
+        path: 'documentolegal', component: DocumentlegaleboxComponent,
       },
     ]
   },
   {
-    path: 'sideClient', component: MainCustomerComponent, children: [
+    path: 'sideClient/:id', component: MainCustomerComponent, children: [
       {
-        path: 'dash/:id', component: CustormerDashComponent,
+        path: 'dash', component: CustormerDashComponent,
       },
       {
-        path: 'cotizar/:id', component: CotizarComponent
+        path: 'cotizar', component: CotizarComponent
       },
 
 

@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       i++;
       ( x.charCodeAt(0) ^ usr.charCodeAt(y) ) === 0 ? '' : access++;
       if(i === this.usrNo.split('').length) {
-         (!access) ?  this.R.navigate(['in/dash', this.usrNo]) : console.log('Not in!')
+         (!access) ?  this.R.navigate(['in', this.usrNo]) : console.log('Not in!')
       }
     } )
   }

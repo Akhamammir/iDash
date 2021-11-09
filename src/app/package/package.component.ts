@@ -2,13 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
-import { FilterService } from 'primeng/api';
 import { Observable, Subscription } from 'rxjs';
 import { ContenidoPackage } from '../contenidoPackage';
 import { CountrysPackage } from '../countrysPackage';
 import { Destiny } from '../destiny';
 import { Product } from '../product';
-import { CustomerService } from '../SERVICES/customer.service';
 import { PackageService } from '../SERVICES/package.service';
 import { getPackages, Package } from '../SERVICES/packages';
 import { Valija } from '../Valija';
@@ -137,7 +135,6 @@ export class PackageComponent implements OnInit {
       query: Get_Users
     }).valueChanges
       .subscribe(({ data, loading }) => this.usersList = data.getClienteEboxs);
-
   }
   selectedAutocompleteUser() {
     console.log(this.nameCustomer)

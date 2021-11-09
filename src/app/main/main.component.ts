@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NbSidebarService } from '@nebular/theme';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -7,13 +9,16 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./main.component.styl']
 })
 export class MainComponent implements OnInit {
-  items: MenuItem[]; items2: MenuItem[];cities: any[];
-  selectedCity:any;
-  constructor() {
+  id: string = '';
+  items: MenuItem[]; items2: MenuItem[]; cities: any[];
+  selectedCity: any;
+  private sub: any;
+  constructor(private AR: ActivatedRoute,  private sidebarService: NbSidebarService) {
     this.items = [
       {
         label: 'Dashboard',
-        icon: 'pi pi-pi pi-home'
+        icon: 'pi pi-pi pi-home',
+        routerLink: './dash'
       }, {
         label: 'Administración',
         icon: 'pi pi-fw pi-calendar',
@@ -40,20 +45,19 @@ export class MainComponent implements OnInit {
         icon: 'pi pi-fw pi-ticket',
         items: [
           {
-            label: 'Left',
-            icon: 'pi pi-fw pi-align-left'
+            label: 'Administración',
           },
           {
-            label: 'Right',
-            icon: 'pi pi-fw pi-align-right'
+            label: 'Reportes',
           },
           {
-            label: 'Center',
-            icon: 'pi pi-fw pi-align-center'
+            label: 'Paquetes',
           },
           {
-            label: 'Justify',
-            icon: 'pi pi-fw pi-align-justify'
+            label: 'Correo Saliente',
+          },
+          {
+            label: 'Ventas Corporativas',
           }
         ]
       }, {
@@ -80,27 +84,11 @@ export class MainComponent implements OnInit {
       }, {
         label: 'Correo Saliente',
         icon: 'pi pi-fw pi-envelope',
-        items: [
-          {
-            label: 'Left',
-            icon: 'pi pi-fw pi-align-left'
-          },
-          {
-            label: 'Right',
-            icon: 'pi pi-fw pi-align-right'
-          },
-          {
-            label: 'Center',
-            icon: 'pi pi-fw pi-align-center'
-          },
-          {
-            label: 'Justify',
-            icon: 'pi pi-fw pi-align-justify'
-          }
-        ]
+        routerLink: './email'
       }, {
         label: 'Paquetes',
-        icon: 'pi pi-pi pi-inbox'
+        icon: 'pi pi-pi pi-inbox',
+        routerLink: './package'
       }
     ]
     this.items2 = [
@@ -123,9 +111,11 @@ export class MainComponent implements OnInit {
       { name: 'Paris', code: 'PRS' }
     ];
   }
-
+  toggle() {
+    this.sidebarService.toggle();
+  }
   ngOnInit(): void {
-
+    this.id = this.AR.snapshot.paramMap.get('id')!
   }
 
 }
