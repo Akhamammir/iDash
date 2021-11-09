@@ -3,9 +3,27 @@ api_version: 1
 threadsafe: true
 
 handlers:
- - url: /(.+\.js)
+  - url: /(.+\.js)
     static_files: dist/iDash/\1
     upload: dist/iDash/(.+\.js)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ttf)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.ttf)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.eot)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.eot)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.woff)
+    static_files: dist/iDash/\1
+    upload: dist/iDash/(.+\.woff)
     secure: always
     redirect_http_response_code: 301
 
