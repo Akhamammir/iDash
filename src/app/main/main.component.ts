@@ -13,33 +13,12 @@ export class MainComponent implements OnInit {
   items: MenuItem[]; items2: MenuItem[]; cities: any[];
   selectedCity: any;
   private sub: any;
-  constructor(private AR: ActivatedRoute,  private sidebarService: NbSidebarService) {
+  constructor(private AR: ActivatedRoute, private sidebarService: NbSidebarService) {
     this.items = [
       {
         label: 'Dashboard',
         icon: 'pi pi-pi pi-home',
         routerLink: './dash'
-      }, {
-        label: 'Administración',
-        icon: 'pi pi-fw pi-calendar',
-        items: [
-          {
-            label: 'Left',
-            icon: 'pi pi-fw pi-align-left'
-          },
-          {
-            label: 'Right',
-            icon: 'pi pi-fw pi-align-right'
-          },
-          {
-            label: 'Center',
-            icon: 'pi pi-fw pi-align-center'
-          },
-          {
-            label: 'Justify',
-            icon: 'pi pi-fw pi-align-justify'
-          }
-        ]
       }, {
         label: 'POS',
         icon: 'pi pi-fw pi-ticket',
@@ -58,27 +37,6 @@ export class MainComponent implements OnInit {
           },
           {
             label: 'Ventas Corporativas',
-          }
-        ]
-      }, {
-        label: 'Correo Entrante',
-        icon: 'pi pi-fw pi-envelope',
-        items: [
-          {
-            label: 'Left',
-            icon: 'pi pi-fw pi-align-left'
-          },
-          {
-            label: 'Right',
-            icon: 'pi pi-fw pi-align-right'
-          },
-          {
-            label: 'Center',
-            icon: 'pi pi-fw pi-align-center'
-          },
-          {
-            label: 'Justify',
-            icon: 'pi pi-fw pi-align-justify'
           }
         ]
       }, {
