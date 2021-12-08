@@ -20,6 +20,11 @@ export class MainComponent implements OnInit {
         icon: 'pi pi-pi pi-home',
         routerLink: './dash'
       }, {
+        label: 'Clientes',
+        icon: 'pi pi-pi pi-users',
+        routerLink: './clientes'
+
+      }, {
         label: 'POS',
         icon: 'pi pi-fw pi-ticket',
         items: [
@@ -48,6 +53,13 @@ export class MainComponent implements OnInit {
         icon: 'pi pi-pi pi-inbox',
         routerLink: './package'
       }
+      , {
+        label: 'Valijas',
+        icon: 'pi pi-pi pi-inbox',
+        routerLink: './valija/list'
+      }
+      ,
+
     ]
     this.items2 = [
       {
@@ -73,7 +85,7 @@ export class MainComponent implements OnInit {
     this.sidebarService.toggle();
   }
   ngOnInit(): void {
-    this.id = this.AR.snapshot.paramMap.get('id')!
+    localStorage.setItem('id', this.AR.snapshot.paramMap.get('id')!)
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { EmailService } from '../SERVICES/email.service';
+import { EmailService } from '../Services/email.service';
 
 @Component({
   selector: 'app-outgoingmail',

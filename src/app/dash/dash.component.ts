@@ -12,6 +12,7 @@ export class DashComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.AR.snapshot.paramMap.get('id')!
+    console.log(this.AR.snapshot.paramMap.get('id')!)
   }
 
 }

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { City } from '../city';
 import { Phone } from '../phone';
-import { PackageService } from '../SERVICES/package.service';
+import { PackageService } from '../Services/package.service';
 @Component({
   selector: 'app-features',
   templateUrl: './features.component.html',

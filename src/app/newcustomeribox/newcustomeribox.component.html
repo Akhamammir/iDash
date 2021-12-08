@@ -3,14 +3,12 @@
     <div class="p-grid package-container vertical-container">
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col">
-        <app-stepper-detail></app-stepper-detail>
-      </div>
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
         <div class="p-text-center p-text-bold" style="font-size: 36px">
-          i-box
+          Crear Nuevo Cliente
         </div>
       </div>
       <div class="p-col-12"></div>
@@ -26,33 +24,14 @@
           [routerLink]="['../dash']"
           class="p-button-danger"
         ></button>
-
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #ffffff; border: 1px solid #c1c9d2"
-          label="Previous"
-          [routerLink]="['../ebox']"
-          class="p-mx-2"
-        ></button>
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #27ae60; color: #ffffff"
-          label="Next"
-          [routerLink]="['../documentolegal']"
-          class="p-button-success"
-        ></button>
       </div>
       <div class="p-col-5"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <form [formGroup]="LoginForm!" (ngSubmit)="onSubmit()" class="p-grid">
         <!--    Inicio Fila Nombre // Pais/Territorio -->
-        <div class="p-md-1 p-col-12 "></div>
-        <div class="p-md-5 p-col-12 ">
+        <div class="p-md-1 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
           <div class="p-grid">
             <div class="p-col-6">
               <div class="p-fluid">
@@ -93,7 +72,7 @@
             </div>
           </div>
         </div>
-        <div class="p-md-5 p-col-12 ">
+        <div class="p-md-5 p-col-12">
           <div class="p-fluid">
             <span class="p-float-label">
               <input
@@ -110,7 +89,7 @@
             </span>
           </div>
         </div>
-        <div class="p-md-1 p-col-12 "></div>
+        <div class="p-md-1 p-col-12"></div>
         <!--    Fin Fila Nombre // Pais/Territorio -->
 
         <!--    Inicio Direccion // Direccion 2-->
@@ -296,7 +275,7 @@
               ></p-toggleButton>
               <label for="city3">Forma 1583</label>
             </div>
-            <div class="p-field-checkbox" formGroupName="notifications">
+            <!-- <div class="p-field-checkbox" formGroupName="notifications">
               <p-toggleButton
                 inputId="city4"
                 formControlName="notiemail"
@@ -313,13 +292,14 @@
               ></p-toggleButton>
 
               <label for="city5">Notificaciones SMS</label>
-            </div>
+            </div> -->
           </div>
         </div>
 
         <!--    Fin tipoTelefono codigo telefono -->
 
         <!--  Butones -->
+        <div class="p-md-3 p-col-12"></div>
         <div class="p-md-3 p-col-12"></div>
         <div class="p-md-3 p-col-12">
           <div class="p-fluid">
@@ -342,8 +322,9 @@
         <div class="p-md-3 p-col-12">
           <div class="p-fluid">
             <button
-            [disabled]="LoginForm!.invalid"
+              [disabled]="LoginForm!.invalid"
               pButton
+              *ngIf="!editMode"
               pRipple
               style="
                 background: #fb9b14;
@@ -356,12 +337,9 @@
               type="submit"
               label="Guadar Nuevo Contacto"
             ></button>
-          </div>
-        </div>
-        <div class="p-md-3 p-col-12">
-          <div class="p-fluid">
             <button
               pButton
+              *ngIf="editMode"
               pRipple
               style="
                 background: #fb9b14;
@@ -371,7 +349,7 @@
                 font-size: 14px;
                 padding: 16px 5px 16px 5px;
               "
-              type="button"
+              type="submit"
               label="Actualizar Contacto"
             ></button>
           </div>

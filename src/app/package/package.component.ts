@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable, Subscription } from 'rxjs';
 import { ContenidoPackage } from '../contenidoPackage';
 import { CountrysPackage } from '../countrysPackage';
 import { Destiny } from '../destiny';
 import { Product } from '../product';
-import { PackageService } from '../SERVICES/package.service';
-import { getPackages, Package } from '../SERVICES/packages';
+import { PackageService } from '../Services/package.service';
+import { getPackages, Package } from '../Services/packages';
 import { Valija } from '../Valija';
 const GET_PACKAGES = gql`
  query getPackages {
@@ -69,7 +69,7 @@ export class PackageComponent implements OnInit {
   totalWeight: string = '';
   LoginForm: FormGroup | undefined;
   products: Product[] = [];
-  constructor(private AR: ActivatedRoute, private packageService: PackageService, private apollo: Apollo) { }
+  constructor(private packageService: PackageService, private apollo: Apollo, private router: Router) { }
   destinys: Destiny[] = [];
   valijas: Valija[] = [];
   contenido: ContenidoPackage[] = [];
@@ -80,6 +80,9 @@ export class PackageComponent implements OnInit {
   error: any;
   usersList: any;
   filteredUsers: any;
+  first = 0;
+  rows = 10;
+  selectedProducts3: any[] = [];
   private querySubscription: Subscription | undefined;
   getPackages: Observable<getPackages[]> | undefined;
   ngOnInit(): void {
@@ -99,7 +102,7 @@ export class PackageComponent implements OnInit {
       { name: 'Estados Unidos' },
       { name: 'Mexico' }
     ];
-    this.id = this.AR.snapshot.paramMap.get('id')!
+    this.id = localStorage.getItem('id')!;
     this.LoginForm = new FormGroup({
       nameCustomer: new FormControl(this.nameCustomer, [Validators.required]),
       codeCustomer: new FormControl(this.codeCustomer, [Validators.required]),
@@ -158,6 +161,11 @@ export class PackageComponent implements OnInit {
     console.log(filtered)
     this.filteredUsers = filtered;
   }
+  handleValor() {
+
+    const navigationExtras: NavigationExtras = { state: { list: this.selectedProducts3 } }
+    this.router.navigate([`in/${this.id}/valija`], navigationExtras);
+  }
   onSubmit() {
     const data = this.LoginForm!.value
     console.log(data)
@@ -181,12 +189,9 @@ export class PackageComponent implements OnInit {
     }
     console.log('body', body)
     this.packageService.create(body)
-    .subscribe(
-      response => {
-        console.log(response);
-      },
-      error => {
-        console.log(error);
-      });
+      .subscribe(
+        response => {
+          console.log(response);
+        });
   }
 }

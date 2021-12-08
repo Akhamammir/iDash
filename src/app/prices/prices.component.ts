@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PackageService } from '../SERVICES/package.service';
+import { PackageService } from '../Services/package.service';
 
 const listadePagquetes = [
   { name: 'FEDEX', shipRates: [] },

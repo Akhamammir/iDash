@@ -11,7 +11,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { MessageService } from 'primeng/api';
 import { ChartModule } from 'primeng/chart';
-import { NbButton, NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbSidebarModule, NbThemeModule, NbStepperModule, NbCheckboxModule, NbSelectModule , NbRadioModule} from '@nebular/theme';
+import { NbButton, NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbSidebarModule, NbThemeModule, NbStepperModule, NbCheckboxModule, NbSelectModule , NbRadioModule, NbToastrModule} from '@nebular/theme';
 
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
@@ -55,6 +55,8 @@ import { CustormerDashComponent } from './custormer-dash/custormer-dash.componen
 import { MainCustomerComponent } from './main-customer/main-customer.component';
 import { CotizarComponent } from './cotizar/cotizar.component';
 import { GraphQLModule } from './graphql.module';
+import { ValijaListComponent } from './valija-list/valija-list.component';
+import { ClientesComponent } from './clientes/clientes.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { GraphQLModule } from './graphql.module';
     CustormerDashComponent,
     MainCustomerComponent,
     CotizarComponent,
+    ValijaListComponent,
+    ClientesComponent,
 
   ],
   imports: [
@@ -91,7 +95,7 @@ import { GraphQLModule } from './graphql.module';
     InputMaskModule, ToastModule, CardModule, KeyFilterModule, TableModule, CalendarModule,
     RatingModule, MessagesModule, MessageModule, ChartModule,ToggleButtonModule,
 
-    NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
+    NbToastrModule.forRoot(),NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,
     NbIconModule, NbButtonModule, StepsModule, NbCheckboxModule,NbSelectModule,
     NbRadioModule,

@@ -62,4 +62,32 @@ export class PackageService {
   createlist(data: any): Observable<any> {
     return this.http.post(baseUrl + '/list', data);
   }
+  getPackage(data: any): Observable<any> {
+    console.log(data, 'fuc')
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `query GetPackage($getPackageId: String) {
+        getPackage(id: $getPackageId) {
+          id
+          country_org
+          country_dest
+          wt
+          size {
+            ig
+            wd
+            ht
+          }
+          recieved
+          type
+          tracking
+          recieve
+          sender
+          desc
+        }
+      }`,
+      variables:
+        JSON.stringify(data),
+    })
+    return this.http.post(baseUrl, body, { headers });
+  }
 }

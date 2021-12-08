@@ -3,9 +3,7 @@
     <div class="p-grid package-container vertical-container">
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col">
-        <app-stepper-detail></app-stepper-detail>
-      </div>
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
@@ -31,7 +29,7 @@
           pButton
           pRipple
           type="button"
-          style="background: #ffffff; border: 1px solid #c1c9d2"
+
           label="Previous"
           [routerLink]="['../dash']"
           class="p-mx-2"
@@ -39,30 +37,12 @@
       </div>
       <div class="p-md-5 p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-md-10 p-col-12"></div>
-      <div class="p-md-2 p-col-12" >
-        <button
-          pButton
-          pRipple
-          [routerLink]="['../newcustomerebox']"
-          style="
-            background: #5e72e4;
-            color: #ffffff;
-            font-weight: 700;
 
-            font-size: 14px;
-            padding: 7px 12px 7px 12px;
-          "
-          type="button"
-          label="Nuevo Cliente"
-        ></button>
-      </div>
       <div class="p-col-12">
         <p-toast></p-toast>
         <p-table
           [showCurrentPageReport]="true"
           [rowsPerPageOptions]="[10, 25, 50]"
-          [globalFilterFields]="['name, status, country']"
           [value]="iboxs!"
           [autoLayout]="true"
           editMode="row"
@@ -132,7 +112,7 @@
           </ng-template>
 
           <ng-template pTemplate="body" let-ibox let-rowIndex="rowIndex">
-            <tr [pEditableRow]="ibox">
+            <!-- <tr [pEditableRow]="ibox">
               <td
 
               >
@@ -160,7 +140,7 @@
                       [(ngModel)]="ibox.name"
                     />
                   </ng-template>
-                  <ng-template pTemplate="output"> {{ ibox.name }} </ng-template
+                  <ng-template pTemplate="output"> {{ ibox.code }} </ng-template
                   >y</p-cellEditor
                 >
               </td>
@@ -228,6 +208,10 @@
                   class=""
                 ></button>
               </td>
+            </tr> -->
+
+            <tr>
+              <td>{{ ibox.code }}</td>
             </tr>
           </ng-template>
         </p-table>

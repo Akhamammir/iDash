@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-valijacreada',
@@ -8,8 +8,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ValijacreadaComponent implements OnInit {
   id: string = '';
-  constructor(private AR: ActivatedRoute) { }
+  idValija: string = '';
+  constructor(private AR: ActivatedRoute, private router: Router) {
+    this.verficarRuta()
+  }
+  verficarRuta() {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      const state = navigation!.extras.state as { data: any };
 
+      this.idValija = state.data
+      console.log(state.data)
+    }
+  }
   ngOnInit(): void {
     this.id = this.AR.snapshot.paramMap.get('id')!
   }

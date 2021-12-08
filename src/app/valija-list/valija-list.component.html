@@ -1,0 +1,75 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid package-container vertical-container">
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          Lista de Valijas
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+
+      <!-- Inicio Tabla Paquetes -->
+
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <p-table
+          responsiveLayout="scroll"
+          [value]="valijas!"
+          [autoLayout]="true"
+          [rowsPerPageOptions]="[10, 25, 50]"
+          currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} registros"
+          [paginator]="true"
+          [rows]="rows"
+          [(first)]="first"
+          [showCurrentPageReport]="true"
+        >
+          <ng-template pTemplate="header" styleClass="p-datatable-striped">
+            <tr>
+              <th>Id</th>
+              <th>Numero Guia</th>
+              <th>Tienda Destino</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-valija>
+            <tr>
+              <td>
+                <a class="text-link" (click)="showValija(valija)">{{
+                  valija.id
+                }}</a>
+              </td>
+              <td>{{ valija.numeroGuia }}</td>
+              <td>{{ valija.tiendaDestino }}</td>
+              <td>
+                <nb-icon icon="edit-outline"     (click)="editar(valija.id)" nbButton> </nb-icon>
+                <nb-icon
+                  icon="trash-outline"
+                  nbButton
+                  (click)="eliminarValija(valija.id)"
+                  class="eliminarButton"
+                >
+                </nb-icon>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+      <!-- Fin Tabla Paquetes -->
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-md-9 p-col-12"></div>
+      <div class="p-md-3 p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

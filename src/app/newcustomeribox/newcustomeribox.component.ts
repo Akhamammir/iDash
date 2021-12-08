@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Phone } from '../phone';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CustomerService } from '../SERVICES/customer.service';
-import { NotificationB } from '../customer';
+import { ClientesService } from '../Services/clientes.service';
+import { NbToastrService } from '@nebular/theme';
+
 
 
 @Component({
@@ -13,24 +14,10 @@ import { NotificationB } from '../customer';
 })
 export class NewcustomeriboxComponent implements OnInit {
   id: string = '';
-  first_name: string = '';
-  last_name: string = '';
-  country: string = 'México';
-  address: string = '';
-  second_address: string = '';
-  post_cod: string = '';
-  city: string = '';
-  state: string = '';
-  email: string = '';
-  services: string = '';
-  col: string = '';
-  phone: string = '';
-  form_1583: boolean = false;
-  notifications: NotificationB | undefined
-  notiemail: Boolean = false;
-  notisms: Boolean = false;
   LoginForm: FormGroup | undefined;
-  constructor(private fb: FormBuilder, private AR: ActivatedRoute, private customerService: CustomerService) { }
+  cliente: any
+  editMode: boolean = false
+  constructor(private clienteService: ClientesService, private fb: FormBuilder, private AR: ActivatedRoute, private toastrService: NbToastrService, private router: Router) { }
   phones: Phone[] = [];
   selectedValuesCustomerIbox: string[] = [];
   ngOnInit(): void {
@@ -38,61 +25,154 @@ export class NewcustomeriboxComponent implements OnInit {
       { name: 'Celular' },
       { name: 'Fijo' }
     ];
-    this.id = this.AR.snapshot.paramMap.get('id')!
-
-    this.LoginForm = new FormGroup({
-      first_name: new FormControl(this.first_name, Validators.required),
-      last_name: new FormControl(this.last_name, Validators.required),
-      country: new FormControl(this.country, Validators.required),
-      address: new FormControl(this.address, Validators.required),
-      second_address: new FormControl(this.second_address, Validators.required),
-      post_cod: new FormControl(this.post_cod, Validators.required),
-      city: new FormControl(this.city, Validators.required),
-      state: new FormControl(this.state, Validators.required),
-      email: new FormControl(this.email, Validators.required),
-      services: new FormControl(this.services, Validators.required),
-      col: new FormControl(this.col, Validators.required),
-      phone: new FormControl(this.phone, Validators.required),
-      form_1583: new FormControl(this.form_1583, Validators.required),
-      notifications: this.fb.group({
-        notiemail: new FormControl(this.notiemail, Validators.required),
-        notisms: new FormControl(this.notisms, Validators.required),
-      })
+    this.AR.queryParams.subscribe(params => {
+      if (params['id'] !== undefined) {
+        console.log(({ id: params['id'] }))
+        this.id = params['id']
+        this.getCliente(params['id'])
+      }
     })
+
+    this.createForm()
   }
   onSubmit() {
     const data = this.LoginForm!.value
     console.log(data)
-    let body = {
-      insertClienteEboxInput: {
-        phone: data.phone,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        address: data.address,
-        second_address: data.second_address,
-        email: data.email,
-        col: data.col,
-        services: data.services.name,
-        post_cod: data.post_cod,
-        state: data.state,
-        city: data.city,
-        country: data.country,
-        form_1583: data.form_1583,
-        notifications: {
-          email: data.notifications.notiemail,
-          sms: data.notifications.notisms
+
+    if (this.editMode) {
+      let body = {
+        input: {
+          phone: data.phone,
+          first_name: data.first_name,
+          last_name: data.last_name,
+          address: data.address,
+          second_address: data.second_address,
+          email: data.email,
+          col: data.col,
+          services: data.services.name,
+          post_cod: data.post_cod,
+          state: data.state,
+          city: data.city,
+          country: data.country,
+          form_1583: data.form_1583,
+          notifications: {
+            email: data.notifications.notiemail,
+            sms: data.notifications.notisms
+          }
+        },
+        updateClienteId: this.id
+      }
+      this.clienteService.updateCliente(body)
+        .subscribe(
+          response => {
+            console.log(response);
+            if (!response.errors) {
+              this.showToast('Actualizado Correctamente')
+              this.router.navigate([`in/${localStorage.getItem('id')!}/clientes`])
+            } else {
+              this.showToast(response.errors[0].message, 'danger')
+            }
+          });
+    } else {
+      let body = {
+        input: {
+          phone: data.phone,
+          first_name: data.first_name,
+          last_name: data.last_name,
+          address: data.address,
+          second_address: data.second_address,
+          email: data.email,
+          col: data.col,
+          services: data.services.name,
+          post_cod: data.post_cod,
+          state: data.state,
+          city: data.city,
+          country: data.country,
+          form_1583: data.form_1583,
+          notifications: {
+            email: data.notifications.notiemail,
+            sms: data.notifications.notisms
+          }
         }
       }
+      this.clienteService.createCliente(body)
+        .subscribe(
+          response => {
+            if (!response.errors) {
+              this.showToast('Creado Correctamente')
+              this.router.navigate([`in/${localStorage.getItem('id')!}/clientes`])
+            } else {
+              this.showToast(response.errors[0].message, 'danger')
+            }
+            console.log(response);
+          });
     }
 
-    console.log(body)
-    this.customerService.create(body)
+  }
+  createForm() {
+    this.LoginForm = new FormGroup({
+      first_name: new FormControl('', Validators.required),
+      last_name: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      second_address: new FormControl('', Validators.required),
+      post_cod: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      services: new FormControl('', Validators.required),
+      col: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
+      form_1583: new FormControl(false,),
+      notifications: this.fb.group({
+        notiemail: new FormControl(false,),
+        notisms: new FormControl(false,),
+      })
+    })
+  }
+  getCliente(id: string) {
+    let body = {
+      getClienteId: id
+    }
+    this.clienteService.getCliente(body)
       .subscribe(
         response => {
-          console.log(response);
-        },
-        error => {
-          console.log(error);
+          console.log(response)
+          if (!response.errors) {
+            this.cliente = response.data.getCliente;
+            this.editMode = true
+            this.edit()
+          } else {
+            this.showToast(response.errors[0].message, 'danger')
+          }
         });
+  }
+  edit() {
+    this.LoginForm?.patchValue({
+      first_name: this.cliente.first_name,
+      last_name: this.cliente.last_name,
+      country: this.cliente.country,
+      address: this.cliente.address,
+      second_address: this.cliente.second_address,
+      post_cod: this.cliente.post_cod,
+      city: this.cliente.city,
+      state: this.cliente.state,
+      email: this.cliente.email,
+      services: { name: this.cliente.services },
+      col: this.cliente.col,
+      phone: this.cliente.phone,
+      form_1583: this.cliente.form_1583 ? true : false,
+      notifications: this.fb.group({
+        notiemail: this.cliente.notifications.notiemail ? true : false,
+        notisms: this.cliente.notifications.notisms ? true : false,
+      })
+    })
+  }
+  showToast(message: string, status = 'success') {
+    this.toastrService.show(
+      status || 'success',
+      message,
+      { status }
+    );
   }
 }

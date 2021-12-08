@@ -20,6 +20,8 @@ import { ExitopackageComponent } from './exitopackage/exitopackage.component';
 import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebox.component';
 import { MainCustomerComponent } from './main-customer/main-customer.component';
 import { CotizarComponent } from './cotizar/cotizar.component';
+import { ValijaListComponent } from './valija-list/valija-list.component';
+import { ClientesComponent } from './clientes/clientes.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
@@ -60,6 +62,9 @@ const routes: Routes = [
         path: 'valija', component: ValijaComponent,
       },
       {
+        path: 'valija/list', component: ValijaListComponent,
+      },
+      {
         path: 'exitovalija', component: ValijacreadaComponent,
       },
       {
@@ -70,6 +75,9 @@ const routes: Routes = [
       },
       {
         path: 'documentolegal', component: DocumentlegaleboxComponent,
+      },
+      {
+        path: 'clientes', component: ClientesComponent,
       },
     ]
   },

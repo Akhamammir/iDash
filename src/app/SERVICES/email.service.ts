@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-const baseUrl = 'http://localhost:8080/api/email';
+const baseUrl = 'https://affable-seat-326818.uc.r.appspot.com//api/email';
 @Injectable({
   providedIn: 'root'
 })

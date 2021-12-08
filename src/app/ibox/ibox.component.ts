@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
-import { IboxService } from '../SERVICES/ibox.service';
+import { IboxService } from '../Services/ibox.service';
 import { Ibox } from '../ibox';
 @Component({
   selector: 'app-ibox',
@@ -21,23 +21,7 @@ export class IboxComponent implements OnInit {
   clonedProducts: { [s: string]: Product; } = {};
   iboxs?: Ibox[];
   constructor(private AR: ActivatedRoute, private messageService: MessageService, private http: HttpClient, private iboxService: IboxService) {
-    this.product = {
-      "id": "1875",
-      "name": "Erick Torres",
-      "country": {
-        "name": "Contenido 1        Contenido 2",
-        "code": "dz"
-      },
-      "company": "Benton, John B Jr",
-      "date": "2015-09-13",
-      "status": "active",
-      "activity": 17,
-      "representative": {
-        "name": "1850",
-        "image": "ionibowcher.png"
-      }
 
-    }
   }
 
   ngOnInit() {
@@ -46,14 +30,11 @@ export class IboxComponent implements OnInit {
     this.retrieveIboxs()
   }
   retrieveIboxs(): void {
-    this.iboxService.getAll()
+    this.iboxService.getEbox()
       .subscribe(
         data => {
-          this.iboxs = data;
+          this.iboxs = data.getEboxs;
           console.log(data);
-        },
-        error => {
-          console.log(error);
         });
   }
   onSort() {

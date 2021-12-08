@@ -3,14 +3,23 @@
     <div class="p-grid package-container vertical-container">
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col">
-        <app-stepper-detail></app-stepper-detail>
-      </div>
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
-        <div class="p-text-center p-text-bold" style="font-size: 36px">
-          Asignar Valija
+        <div
+          class="p-text-center p-text-bold"
+          *ngIf="!editing"
+          style="font-size: 36px"
+        >
+          Asignación Valija
+        </div>
+        <div
+          class="p-text-center p-text-bold"
+          *ngIf="editing"
+          style="font-size: 36px"
+        >
+          Editar Valija
         </div>
       </div>
       <div class="p-col-12"></div>
@@ -27,24 +36,7 @@
           class="p-button-danger"
         ></button>
 
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #ffffff; border: 1px solid #c1c9d2"
-          label="Previous"
-          [routerLink]="['../package']"
-          class="p-mx-2"
-        ></button>
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #27ae60; color: #ffffff"
-          label="Next"
-          [routerLink]="['../exitovalija']"
-          class="p-button-success"
-        ></button>
+
       </div>
       <div class="p-col-5"></div>
       <div class="p-col-12"></div>
@@ -81,7 +73,7 @@
                 <th>Paquete</th>
                 <th>CODE</th>
                 <th>Tienda Destino</th>
-                <th colspan="2">Contenido</th>
+
                 <th>Descripción</th>
                 <th>Peso</th>
                 <th>Tipo de Valija</th>
@@ -89,15 +81,15 @@
             </ng-template>
             <ng-template pTemplate="body" let-package>
               <tr>
-                <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
                 <td>{{ package.Amount }}</td>
-                <td>502</td>
-                <td colspan="2">{{ package.TipoContenido }}</td>
-                <td colspan="1">
-                  {{ package.Description }}
+                <td>{{ package.tracking }}</td>
+                <td>{{ package.country_dest }}</td>
+
+                <td>
+                  {{ package.desc }}
                 </td>
-                <td>{{ package.Weight }}</td>
-                <td>{{ package.TipoValija }}</td>
+                <td>{{ package.wt }}</td>
+                <td>{{ package.type }}</td>
               </tr>
             </ng-template>
           </p-table>
@@ -114,6 +106,7 @@
             <input
               type="text"
               id="inputtext"
+              [(ngModel)]="guiaReferencia"
               class="form-control-input-feature"
               pInputText
             />
@@ -124,7 +117,7 @@
         </div>
       </div>
       <div class="p-md-2 p-col-12">
-        <div class="p-fluid">
+        <div *ngIf="!editing" class="p-fluid">
           <button
             pButton
             pRipple
@@ -137,8 +130,27 @@
               margin-top: 10px;
             "
             type="button"
-            [routerLink]="['../../exitovalija', id]"
+            *ngIf="guiaReferencia && Destino"
+            (click)="onSubmit()"
             label="CREAR VALIJA"
+          ></button>
+        </div>
+        <div *ngIf="editing" class="p-fluid">
+          <button
+            pButton
+            pRipple
+            style="
+              background: #5e72e4;
+              color: #ffffff;
+              font-weight: 700;
+              font-size: 14px;
+              padding: 10px 24px 10px 24px;
+              margin-top: 10px;
+            "
+            type="button"
+            *ngIf="guiaReferencia && Destino"
+            (click)="onSubmit()"
+            label="EDITAR VALIJA"
           ></button>
         </div>
       </div>

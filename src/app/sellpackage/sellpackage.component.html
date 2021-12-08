@@ -3,9 +3,7 @@
     <div class="p-grid package-container vertical-container">
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col">
-        <app-stepper-detail></app-stepper-detail>
-      </div>
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
@@ -31,7 +29,6 @@
           pButton
           pRipple
           type="button"
-          style="background: #ffffff; border: 1px solid #c1c9d2"
           label="Previous"
           [routerLink]="['../exitovalija']"
           class="p-mx-2"
@@ -40,7 +37,7 @@
       <div class="p-col-5"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-md-1 p-col-12" ></div>
+      <div class="p-md-1 p-col-12"></div>
       <div class="p-md-10 p-col-12">
         <div class="p-grid">
           <div class="p-md-2 p-col-12">
@@ -66,66 +63,45 @@
         </div>
         <div class="p-fluid">
           <!-- Inicio Tabla Paquetes -->
-          <p-table [autoLayout]="true">
+          <p-table
+            responsiveLayout="scroll"
+            [value]="valijas!"
+            [autoLayout]="true"
+            [rowsPerPageOptions]="[10, 25, 50]"
+            currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} registros"
+            [paginator]="true"
+            [rows]="rows"
+            [(first)]="first"
+            [showCurrentPageReport]="true"
+          >
             <ng-template pTemplate="header" styleClass="p-datatable-striped">
               <tr>
+                <th style="width: 3rem">
+                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th>Id</th>
                 <th>Paquete</th>
-                <th>CODE</th>
-                <th>Tienda Destino</th>
-                <th>Contenido</th>
-                <th colspan="3">Descripción</th>
-                <th>Peso</th>
-                <th>Tipo de Valija</th>
-              </tr>
-              <tr>
-                <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
-                <td>50615020018</td>
-                <td>502</td>
-                <td>Mercancia General</td>
-                <td colspan="3">
-                  Santina Franco Vera/24 Torres de vidrio (2 Tarros llegaron
-                  quebrados)
-                </td>
-                <td>1000</td>
-                <td>A</td>
-              </tr>
-              <tr>
-                <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
-                <td>50615020018</td>
-                <td>502</td>
-                <td>Mercancia General</td>
-                <td colspan="3">
-                  Santina Franco Vera/24 Torres de vidrio (2 Tarros llegaron
-                  quebrados)
-                </td>
-                <td>1000</td>
-                <td>A</td>
-              </tr>
-              <tr>
-                <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
-                <td>50615020018</td>
-                <td>502</td>
-                <td>Mercancia General</td>
-                <td colspan="3">
-                  Santina Franco Vera/24 Torres de vidrio (2 Tarros llegaron
-                  quebrados)
-                </td>
-                <td>1000</td>
-                <td>A</td>
-              </tr>
-              <tr>
-                <td><p-checkbox name="groupname" value="val1"></p-checkbox></td>
-                <td>50615020018</td>
-                <td>502</td>
-                <td>Mercancia General</td>
-                <td colspan="3">
-                  Santina Franco Vera/24 Torres de vidrio (2 Tarros llegaron
-                  quebrados)
-                </td>
-                <td>1000</td>
-                <td>A</td>
+                <th>Impuesto / Arancel</th>
+                <th>Tramite Aduanal</th>
+                <th>Manejo y Envió</th>
+                <th>Seguro</th>
+                <th>Total</th>
               </tr>
             </ng-template>
+            <ng-template pTemplate="body" let-package>
+              <tr>
+                <td>
+                  <p-tableCheckbox [value]="package"></p-tableCheckbox>
+                </td>
+                <td>{{ package.id }}</td>
+                <td>{{ package.country_dest }}</td>
+                <td>{{ package.country_org }}</td>
+                <td>{{ package.tramiteAduanal }}</td>
+                <td>{{ package.manejoEnvio }}</td>
+                <td>{{ package.seguro }}</td>
+                <td>{{ package.total }}</td>
+              </tr></ng-template
+            >
           </p-table>
           <!-- Fin Tabla Paquetes -->
         </div>
