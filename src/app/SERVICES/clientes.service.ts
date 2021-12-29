@@ -26,6 +26,7 @@ export class ClientesService {
           state
           city
           country
+          codigoCliente
           form_1583
           notifications {
             email
@@ -65,7 +66,7 @@ export class ClientesService {
     const headers = { 'content-type': 'application/json' };
     console.log('headers', headers);
     const body = JSON.stringify({
-      query: `mutation Mutation($input: ClienteUpdateInput, $updateClienteId: String) {
+      query: `mutation UpdateCliente($input: ClienteInput, $updateClienteId: String) {
         updateCliente(input: $input, id: $updateClienteId)
       }
       `,
@@ -93,6 +94,7 @@ export class ClientesService {
           city
           country
           form_1583
+          codigoCliente
           notifications {
             email
             sms

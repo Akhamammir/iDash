@@ -12,7 +12,7 @@ import { MessageModule } from 'primeng/message';
 import { MessageService } from 'primeng/api';
 import { ChartModule } from 'primeng/chart';
 import { NbButton, NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbLayoutModule, NbSidebarModule, NbThemeModule, NbStepperModule, NbCheckboxModule, NbSelectModule , NbRadioModule, NbToastrModule} from '@nebular/theme';
-
+import {InputTextareaModule} from 'primeng/inputtextarea';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
@@ -57,6 +57,7 @@ import { CotizarComponent } from './cotizar/cotizar.component';
 import { GraphQLModule } from './graphql.module';
 import { ValijaListComponent } from './valija-list/valija-list.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { IboxCreateComponent } from './ibox-create/ibox-create.component';
 
 @NgModule({
   declarations: [
@@ -84,12 +85,13 @@ import { ClientesComponent } from './clientes/clientes.component';
     CotizarComponent,
     ValijaListComponent,
     ClientesComponent,
+    IboxCreateComponent,
 
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
     AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule,
-    AutoCompleteModule,
+    AutoCompleteModule,InputTextareaModule,
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
     DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
     InputMaskModule, ToastModule, CardModule, KeyFilterModule, TableModule, CalendarModule,

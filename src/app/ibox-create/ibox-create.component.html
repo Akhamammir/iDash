@@ -1,0 +1,193 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid package-container vertical-container">
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          Editar i-Box
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <form class="p-grid" style="width: 100%" [formGroup]="newEboxForm!" (ngSubmit)="onSubmit()">
+        <div class="p-md-1"></div>
+        <div class="p-md-3">
+          <div class="p-fluid">
+            <label for="float-input" class="form-control-label"
+              >Nombre de cliente</label
+            >
+            <p-autoComplete
+              [(ngModel)]="nameCustomer"
+              formControlName="nombreCliente"
+              (onSelect)="selectedAutocompleteUser()"
+              [suggestions]="filteredUsers"
+              (completeMethod)="filterUser($event)"
+              field="first_name"
+              [minLength]="1"
+              inputId="autoCompleteUsers"
+            ></p-autoComplete>
+          </div>
+        </div>
+        <div class="p-md-2">
+          <div class="p-fluid">
+            <label for="float-input" class="form-control-label"
+              >Codigo de cliente</label
+            >
+            <input
+              id="float-input"
+              class="form-control-input"
+              type="text"
+              formControlName="codigoCliente"
+              pInputText
+            />
+          </div>
+        </div>
+        <div class="p-md-3">
+          <div class="p-fluid">
+            <label for="float-input" class="form-control-label"
+              >Tienda destino</label
+            >
+            <p-dropdown
+              [options]="storeList"
+              class="form-control-cakb"
+              formControlName="plan"
+              placeholder="Seleccionar tienda destino"
+              (onChange)="optionSelected()"
+              [(ngModel)]="selectedStore" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
+              optionLabel="Nombre"
+              optionValue="Codigo"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div class="p-md-2">
+          <label for="float-input" class="form-control-label">No. ibox</label>
+          <input
+            id="float-input"
+            style="width: 100%"
+            class="form-control-input"
+            formControlName="noIbox"
+            type="text"
+            pInputText
+          />
+        </div>
+        <div class="p-md-1"></div>
+        <div class="p-md-1"></div>
+        <div class="p-md-1">
+          <div class="p-field-radiobutton">
+            <p-radioButton
+              formControlName="idioma"
+              value="ingles"
+              inputId="Ingles"
+            ></p-radioButton>
+
+            <label for="Ingles">Ingles</label>
+          </div>
+          <div class="p-field-radiobutton">
+            <p-radioButton
+              formControlName="idioma"
+              value="espanol"
+              inputId="espanol"
+            ></p-radioButton>
+            <label for="espanol">Español</label>
+          </div>
+        </div>
+        <div class="p-md-4">
+          <div class="p-fluid">
+            <label for="dropdown" class="form-control-label">Meses</label>
+            <p-dropdown
+              [options]="meses"
+              class="form-control-cakb"
+              (onChange)="gettingPriceIbox()"
+              (onBlur)="selectingMonth()"
+              optionValue="value"
+              placeholder="Seleccionar un mes"
+              [(ngModel)]="selectedMonth" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
+              formControlName="meses"
+              optionLabel="name"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div class="p-md-1">
+          <div class="p-fluid">
+            <label for="dropdown" class="form-control-label">Plan</label>
+            <p-dropdown
+              [options]="pesos"
+              class="form-control-cakb"
+              formControlName="plan"
+              optionValue="value"
+              placeholder="Select "
+              (onChange)="gettingPriceIbox()"
+              [(ngModel)]="selectedPlan" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
+              optionLabel="name"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div class="p-md-3">
+          <div class="p-fluid">
+            <label for="dropdown" class="form-control-label">Status</label>
+            <p-dropdown
+              [options]="status"
+              placeholder="Seleccionar status"
+              class="form-control-cakb"
+              formControlName="status"
+              optionLabel="name"
+              optionValue="name"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div class="p-md-2"></div>
+        <div class="p-md-1"></div>
+        <div class="p-md-10">
+          <div class="p-fluid">
+            <label for="dropdown" class="form-control-label"
+              >Contenido a agregar</label
+            >
+            <textarea
+              [rows]="5"
+              class="form-control-cakb"
+              formControlName="comentarios"
+              [cols]="30"
+              pInputTextarea
+            ></textarea>
+          </div>
+        </div>
+        <div class="p-md-1"></div>
+        <div class="p-md-1"></div>
+        <div class="p-md-2">
+          <label for="float-input" class="form-control-label"
+            >Fecha Vencimiento</label
+          >
+          <p-calendar [(ngModel)]="dateValue"   class="form-control-input" formControlName="vencimento" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+        <div class="p-md-1">
+          <label for="float-input" class="form-control-label">Precio</label>
+          <input
+            id="float-input"
+            style="width: 100%"
+            class="form-control-input"
+            formControlName="precio"
+            type="text"
+            pInputText
+          />
+        </div>
+        <div class="p-md-2">
+
+        </div>
+        <div class="p-md-2"></div>
+        <div class="p-md-3">
+          <button
+            pButton
+            pRipple
+            type="submit"
+            label="AGREGAR  Y PAGAR iBOX"
+          ></button>
+        </div>
+      </form>
+      <div class="p-col-12"></div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

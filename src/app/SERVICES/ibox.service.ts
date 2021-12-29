@@ -16,8 +16,10 @@ export class IboxService {
         getEboxs {
           id
           postal_addr
+          users
           sucursal
           code
+          recieved
         }
       }
       `,
@@ -25,6 +27,13 @@ export class IboxService {
     return this.http.post(baseUrl, body, { headers });
   }
   create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `mutation Mutation($input: IboxInput) {
+        insertIbox(input: $input)
+      }`  , variables:
+        JSON.stringify(data),
+    })
+    return this.http.post(baseUrl, body, { headers });
   }
 }

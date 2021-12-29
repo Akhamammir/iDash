@@ -90,4 +90,29 @@ export class PackageService {
     })
     return this.http.post(baseUrl, body, { headers });
   }
+  getPackages(): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `query Packages {
+        Packages {
+          id
+          country_org
+          country_dest
+          wt
+          size {
+            ig
+            wd
+            ht
+          }
+          recieved
+          type
+          tracking
+          recieve
+          desc
+          sender
+        }
+      }`,
+    })
+    return this.http.post(baseUrl, body, { headers });
+  }
 }

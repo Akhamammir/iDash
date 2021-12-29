@@ -1,45 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Apollo, gql } from 'apollo-angular';
 import { Observable, Subscription } from 'rxjs';
 import { ContenidoPackage } from '../contenidoPackage';
 import { CountrysPackage } from '../countrysPackage';
 import { Destiny } from '../destiny';
 import { Product } from '../product';
+import { ClientesService } from '../Services/clientes.service';
 import { PackageService } from '../Services/package.service';
 import { getPackages, Package } from '../Services/packages';
 import { Valija } from '../Valija';
-const GET_PACKAGES = gql`
- query getPackages {
-          Packages {
-              id
-              country_org
-              country_dest
-              wt
-              size {
-                ig
-                wd
-                ht
-              }
-              recieved
-              type
-              tracking
-              recieve
-              desc
-              sender
-            }
-         }`;
-
-const Get_Users = gql`
- query getClienteEboxs {
-          getClienteEboxs {
-            id
-            phone
-            first_name
-            last_name
-            }
-         }`;
 @Component({
   selector: 'app-package',
   templateUrl: './package.component.html',
@@ -69,7 +39,7 @@ export class PackageComponent implements OnInit {
   totalWeight: string = '';
   LoginForm: FormGroup | undefined;
   products: Product[] = [];
-  constructor(private packageService: PackageService, private apollo: Apollo, private router: Router) { }
+  constructor(private packageService: PackageService, private router: Router, private clienteService: ClientesService) { }
   destinys: Destiny[] = [];
   valijas: Valija[] = [];
   contenido: ContenidoPackage[] = [];
@@ -124,20 +94,34 @@ export class PackageComponent implements OnInit {
       height: new FormControl(this.length, [Validators.required]),
       totalWeight: new FormControl(this.length, [Validators.required]),
     })
-    this.querySubscription = this.apollo.watchQuery<any>({
-      query: GET_PACKAGES
-    }).valueChanges
-      .subscribe(({ data, loading }) => {
-        console.log(data.Packages)
-        this.packages = data.Packages;
-      });
+    this.gettingPackages()
+
     this.gettingUsers()
   }
+  gettingPackages() {
+
+    this.packageService.getPackages()
+      .subscribe(
+        response => {
+          console.log(response)
+          if (!response.errors) {
+            this.packages = response.data.getClientes
+          } else {
+            console.log(response.errors[0].message, 'danger')
+          }
+        });
+  }
   gettingUsers() {
-    this.querySubscription = this.apollo.watchQuery<any>({
-      query: Get_Users
-    }).valueChanges
-      .subscribe(({ data, loading }) => this.usersList = data.getClienteEboxs);
+    this.clienteService.getClientes()
+      .subscribe(
+        response => {
+          console.log(response)
+          if (!response.errors) {
+            this.usersList = response.data.getClientes
+          } else {
+            console.log(response.errors[0].message, 'danger')
+          }
+        });
   }
   selectedAutocompleteUser() {
     console.log(this.nameCustomer)

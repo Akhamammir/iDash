@@ -4,6 +4,7 @@ import { Phone } from '../phone';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClientesService } from '../Services/clientes.service';
 import { NbToastrService } from '@nebular/theme';
+import { HelpersService } from '../Services/helpers.service';
 
 
 
@@ -17,8 +18,9 @@ export class NewcustomeriboxComponent implements OnInit {
   LoginForm: FormGroup | undefined;
   cliente: any
   editMode: boolean = false
-  constructor(private clienteService: ClientesService, private fb: FormBuilder, private AR: ActivatedRoute, private toastrService: NbToastrService, private router: Router) { }
+  constructor(private clienteService: ClientesService, private fb: FormBuilder, private AR: ActivatedRoute, private toastrService: NbToastrService, private router: Router, private helperService: HelpersService) { }
   phones: Phone[] = [];
+  paises:any
   selectedValuesCustomerIbox: string[] = [];
   ngOnInit(): void {
     this.phones = [
@@ -34,6 +36,18 @@ export class NewcustomeriboxComponent implements OnInit {
     })
 
     this.createForm()
+    this.getPais()
+  }
+  getPais(){
+    this.helperService.getPais()
+      .subscribe(
+        response => {
+          console.log(response);
+          if (!response.errors) {
+              this.paises = response.data.getCatPais
+          }
+        }
+      )
   }
   onSubmit() {
     const data = this.LoginForm!.value
@@ -55,6 +69,7 @@ export class NewcustomeriboxComponent implements OnInit {
           city: data.city,
           country: data.country,
           form_1583: data.form_1583,
+          codigoCliente:data.codigoCliente,
           notifications: {
             email: data.notifications.notiemail,
             sms: data.notifications.notisms
@@ -89,6 +104,7 @@ export class NewcustomeriboxComponent implements OnInit {
           city: data.city,
           country: data.country,
           form_1583: data.form_1583,
+          codigoCliente:data.codigoCliente,
           notifications: {
             email: data.notifications.notiemail,
             sms: data.notifications.notisms
@@ -123,6 +139,7 @@ export class NewcustomeriboxComponent implements OnInit {
       services: new FormControl('', Validators.required),
       col: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
+      codigoCliente: new FormControl('', Validators.required),
       form_1583: new FormControl(false,),
       notifications: this.fb.group({
         notiemail: new FormControl(false,),
@@ -161,6 +178,7 @@ export class NewcustomeriboxComponent implements OnInit {
       services: { name: this.cliente.services },
       col: this.cliente.col,
       phone: this.cliente.phone,
+      codigoCliente: this.cliente.codigoCliente,
       form_1583: this.cliente.form_1583 ? true : false,
       notifications: this.fb.group({
         notiemail: this.cliente.notifications.notiemail ? true : false,

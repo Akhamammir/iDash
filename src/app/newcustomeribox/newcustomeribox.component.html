@@ -13,19 +13,7 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-5"></div>
-      <div class="p-d-flex">
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #eb5757; color: #ffffff"
-          label="Cancel"
-          [routerLink]="['../dash']"
-          class="p-button-danger"
-        ></button>
-      </div>
-      <div class="p-col-5"></div>
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <form [formGroup]="LoginForm!" (ngSubmit)="onSubmit()" class="p-grid">
@@ -73,20 +61,45 @@
           </div>
         </div>
         <div class="p-md-5 p-col-12">
-          <div class="p-fluid">
-            <span class="p-float-label">
-              <input
-                id="float-input"
-                class="form-control-input"
-                type="text"
-                formControlName="country"
-                pInputText
-                required
-              />
-              <label for="float-input" class="form-control-label"
-                >Pais / Territorio</label
-              >
-            </span>
+          <div class="p-grid">
+            <div class="p-col-6">
+              <div class="p-fluid">
+                <span class="p-float-label">
+                  <input
+                    id="float-input"
+                    class="form-control-input"
+                    type="text"
+                    formControlName="codigoCliente"
+                    pInputText
+                    required
+                  />
+                  <label for="float-input" class="form-control-label"
+                    >Asignar código cliente</label
+                  >
+                  <div *ngIf="LoginForm!.value.first_name.errors?.required">
+                    Name is required.
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div class="p-col-6">
+              <div class="p-fluid">
+                <span class="p-float-label">
+                  <p-dropdown
+                    inputId="dropdown"
+                    [autoDisplayFirst]="false"
+                    [options]="paises"
+                    class="form-control-ckb"
+                    formControlName="country"
+                    optionLabel="Nombre"
+                    optionValue="Codigo"
+                  ></p-dropdown>
+                  <label for="dropdown" class="form-control-label"
+                    >Pais / Territorio</label
+                  >
+                </span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="p-md-1 p-col-12"></div>

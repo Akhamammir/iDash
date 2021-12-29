@@ -29,7 +29,8 @@ export class MainComponent implements OnInit {
         icon: 'pi pi-fw pi-ticket',
         items: [
           {
-            label: 'Administración',
+            label: 'Ibox',
+            routerLink: './ebox'
           },
           {
             label: 'Reportes',

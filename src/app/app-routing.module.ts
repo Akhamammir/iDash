@@ -22,6 +22,7 @@ import { MainCustomerComponent } from './main-customer/main-customer.component';
 import { CotizarComponent } from './cotizar/cotizar.component';
 import { ValijaListComponent } from './valija-list/valija-list.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { IboxCreateComponent } from './ibox-create/ibox-create.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
@@ -51,6 +52,9 @@ const routes: Routes = [
       },
       {
         path: 'ebox', component: IboxComponent,
+      },
+      {
+        path: 'ebox/new', component: IboxCreateComponent,
       },
       {
         path: 'newcustomerebox', component: NewcustomeriboxComponent,
