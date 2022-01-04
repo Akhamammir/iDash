@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-import { HttpClient } from '@angular/common/http';
 import { IboxService } from '../Services/ibox.service';
 import { Ibox } from '../ibox';
+import { NbToastrService } from '@nebular/theme';
 @Component({
   selector: 'app-ibox',
   templateUrl: './ibox.component.html',
@@ -20,7 +20,7 @@ export class IboxComponent implements OnInit {
   statuses: SelectItem[] = [];
   clonedProducts: { [s: string]: Product; } = {};
   iboxs?: Ibox[];
-  constructor(private AR: ActivatedRoute, private messageService: MessageService, private http: HttpClient, private iboxService: IboxService) {
+  constructor(private AR: ActivatedRoute, private messageService: MessageService, private iboxService: IboxService, private router: Router, private toastrService: NbToastrService) {
 
   }
 
@@ -32,9 +32,36 @@ export class IboxComponent implements OnInit {
   retrieveIboxs(): void {
     this.iboxService.getEbox()
       .subscribe(
-        data => {
-          this.iboxs = data.getEboxs;
-          console.log(data);
+        response => {
+          this.iboxs = response.data.getIboxs;
+          console.log(response);
+        });
+  }
+  editar(body: any){
+    this.router.navigate([`in/${localStorage.getItem('id')!}/ebox/new`], { queryParams: { id: body } })
+  }
+  eliminar(parms: any){
+    console.log('elimi', parms)
+    let body = {
+      deleteIboxId: parms
+    }
+    this.iboxService.delete(body)
+      .subscribe(
+        response => {
+          if (!response.errors) {
+            console.log(response)
+            this.retrieveIboxs()
+            if (response.data.deleteIbox.includes('Ibox eliminada!')) {
+              this.showToast('Eliminado Correctamente')
+              this.router.navigate([`in/${localStorage.getItem('id')!}/ebox`], { skipLocationChange: true })
+            } else {
+              this.showToast('Problemas con la base de datos', 'danger')
+            }
+            this.retrieveIboxs()
+            this.router.navigate([`in/${localStorage.getItem('id')!}/ebox`])
+          } else {
+            this.showToast(response.errors[0].message, 'danger')
+          }
         });
   }
   onSort() {
@@ -86,5 +113,11 @@ export class IboxComponent implements OnInit {
     delete this.clonedProducts[product.id!];
     this.editing = !this.editing;
   }
-
+  showToast(message: string, status = 'success') {
+    this.toastrService.show(
+      status || 'success',
+      message,
+      { status }
+    );
+  }
 }

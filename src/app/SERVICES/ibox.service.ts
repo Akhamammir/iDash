@@ -12,17 +12,46 @@ export class IboxService {
   getEbox(): Observable<any> {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify({
-      query: `query GetEboxs {
-        getEboxs {
+      query: `query GetIboxs {
+        getIboxs {
           id
-          postal_addr
-          users
-          sucursal
-          code
-          recieved
+          noIbox
+          codigoCliente
+          nombreCliente
+          idioma
+          meses
+          plan
+          status
+          comentarios
+          vencimento
+          precio
+          tiendaDestino
         }
       }
       `,
+    })
+    return this.http.post(baseUrl, body, { headers });
+  }
+  getIbox(data: any): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `query GetIbox($getIboxId: String) {
+        getIbox(id: $getIboxId) {
+          id
+          noIbox
+          nombreCliente
+          codigoCliente
+          idioma
+          meses
+          plan
+          status
+          comentarios
+          vencimento
+          precio
+          tiendaDestino
+        }
+      }`  , variables:
+        JSON.stringify(data),
     })
     return this.http.post(baseUrl, body, { headers });
   }
@@ -31,6 +60,16 @@ export class IboxService {
     const body = JSON.stringify({
       query: `mutation Mutation($input: IboxInput) {
         insertIbox(input: $input)
+      }`  , variables:
+        JSON.stringify(data),
+    })
+    return this.http.post(baseUrl, body, { headers });
+  }
+  delete(data: any): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `mutation DeleteIbox($deleteIboxId: String) {
+        deleteIbox(id: $deleteIboxId)
       }`  , variables:
         JSON.stringify(data),
     })

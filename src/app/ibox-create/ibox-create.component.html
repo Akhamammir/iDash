@@ -7,46 +7,32 @@
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
-        <div class="p-text-center p-text-bold" style="font-size: 36px">
+        <div
+          *ngIf="!editMode"
+          class="p-text-center p-text-bold"
+          style="font-size: 36px"
+        >
+          Nuevo i-Box
+        </div>
+        <div
+          *ngIf="editMode"
+          class="p-text-center p-text-bold"
+          style="font-size: 36px"
+        >
           Editar i-Box
         </div>
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <form class="p-grid" style="width: 100%" [formGroup]="newEboxForm!" (ngSubmit)="onSubmit()">
+      <form
+        class="p-grid"
+        style="width: 100%"
+        [formGroup]="newEboxForm!"
+        (ngSubmit)="onSubmit()"
+      >
         <div class="p-md-1"></div>
-        <div class="p-md-3">
-          <div class="p-fluid">
-            <label for="float-input" class="form-control-label"
-              >Nombre de cliente</label
-            >
-            <p-autoComplete
-              [(ngModel)]="nameCustomer"
-              formControlName="nombreCliente"
-              (onSelect)="selectedAutocompleteUser()"
-              [suggestions]="filteredUsers"
-              (completeMethod)="filterUser($event)"
-              field="first_name"
-              [minLength]="1"
-              inputId="autoCompleteUsers"
-            ></p-autoComplete>
-          </div>
-        </div>
-        <div class="p-md-2">
-          <div class="p-fluid">
-            <label for="float-input" class="form-control-label"
-              >Codigo de cliente</label
-            >
-            <input
-              id="float-input"
-              class="form-control-input"
-              type="text"
-              formControlName="codigoCliente"
-              pInputText
-            />
-          </div>
-        </div>
-        <div class="p-md-3">
+
+        <div class="p-md-5">
           <div class="p-fluid">
             <label for="float-input" class="form-control-label"
               >Tienda destino</label
@@ -54,16 +40,18 @@
             <p-dropdown
               [options]="storeList"
               class="form-control-cakb"
-              formControlName="plan"
+              formControlName="tiendaDestino"
               placeholder="Seleccionar tienda destino"
               (onChange)="optionSelected()"
-              [(ngModel)]="selectedStore" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
+              [(ngModel)]="selectedStore"
+              [showTransitionOptions]="'0ms'"
+              [hideTransitionOptions]="'0ms'"
               optionLabel="Nombre"
               optionValue="Codigo"
             ></p-dropdown>
           </div>
         </div>
-        <div class="p-md-2">
+        <div class="p-md-5">
           <label for="float-input" class="form-control-label">No. ibox</label>
           <input
             id="float-input"
@@ -105,7 +93,9 @@
               (onBlur)="selectingMonth()"
               optionValue="value"
               placeholder="Seleccionar un mes"
-              [(ngModel)]="selectedMonth" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
+              [(ngModel)]="selectedMonth"
+              [showTransitionOptions]="'0ms'"
+              [hideTransitionOptions]="'0ms'"
               formControlName="meses"
               optionLabel="name"
             ></p-dropdown>
@@ -121,7 +111,9 @@
               optionValue="value"
               placeholder="Select "
               (onChange)="gettingPriceIbox()"
-              [(ngModel)]="selectedPlan" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"
+              [(ngModel)]="selectedPlan"
+              [showTransitionOptions]="'0ms'"
+              [hideTransitionOptions]="'0ms'"
               optionLabel="name"
             ></p-dropdown>
           </div>
@@ -161,7 +153,12 @@
           <label for="float-input" class="form-control-label"
             >Fecha Vencimiento</label
           >
-          <p-calendar [(ngModel)]="dateValue"   class="form-control-input" formControlName="vencimento" dateFormat="dd/mm/yy"></p-calendar>
+          <p-calendar
+            [(ngModel)]="dateValue"
+            class="form-control-input"
+            formControlName="vencimento"
+            dateFormat="dd/mm/yy"
+          ></p-calendar>
         </div>
         <div class="p-md-1">
           <label for="float-input" class="form-control-label">Precio</label>
@@ -174,18 +171,66 @@
             pInputText
           />
         </div>
-        <div class="p-md-2">
+        <div class="p-md-7"></div>
 
+        <div class="p-col-12"></div>
+        <div class="p-col-12"></div>
+        <div class="p-col-12">
+          <div class="p-text-center p-text-bold" style="font-size: 24px">
+            Agregar Clientes al Ibox
+
+          </div>
         </div>
-        <div class="p-md-2"></div>
-        <div class="p-md-3">
+
+        <div class="p-md-1"></div>
+        <div class="p-md-10">
+          <div class="p-fluid">
+            <label for="float-input" class="form-control-label"
+              >Nombres de los cliente</label
+            >
+
+            <p-multiSelect
+              [options]="userList"
+              formControlName="users"
+              [(ngModel)]="nameCustomer"
+              defaultLabel="Select a User"
+              optionLabel="first_name"
+              class="multiselect-custom"
+            >
+              <ng-template let-value pTemplate="selectedItems">
+                <div
+                  class="country-item country-item-value"
+                  *ngFor="let option of nameCustomer"
+                >
+                  <div>{{ option.first_name }}</div>
+                </div>
+                <div
+                  *ngIf="!nameCustomer || nameCustomer.length === 0"
+                  class="country-placeholder"
+                >
+                  Select a Users
+                </div>
+              </ng-template>
+              <ng-template let-user pTemplate="item">
+                <div>
+                  <div>{{ user.first_name }}</div>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+        </div>
+        <div class="p-md-1"></div>
+
+        <div class="p-md-9"></div>
+        <div class="p-md-2">
           <button
             pButton
             pRipple
             type="submit"
-            label="AGREGAR  Y PAGAR iBOX"
+            label="AGREGAR  Y PAGAR i-BOX"
           ></button>
         </div>
+
       </form>
       <div class="p-col-12"></div>
     </div>

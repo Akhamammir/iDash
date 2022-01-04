@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { ClientesService } from '../Services/clientes.service';
 import { HelpersService } from '../Services/helpers.service';
@@ -11,10 +12,12 @@ import { IboxService } from '../Services/ibox.service';
   styleUrls: ['./ibox-create.component.styl']
 })
 export class IboxCreateComponent implements OnInit {
+  id: any
   meses: any
   pesos: any
   status: any
   text: string = '';
+  ibox: any
   newEboxForm: FormGroup | undefined;
   results: string[] = [];
   userList: any
@@ -26,8 +29,10 @@ export class IboxCreateComponent implements OnInit {
   dateValue: Date = new Date();
   selectedStore: any;
   selectedMonth: any = null;
+  editMode: boolean = false;
   selectedPlan: any = null;
-  constructor(private fb: FormBuilder, private clienteService: ClientesService, private helpService: HelpersService, private iboxService: IboxService,private toastrService: NbToastrService) {
+  cliente: any
+  constructor(private AR: ActivatedRoute, private clienteService: ClientesService, private helpService: HelpersService, private iboxService: IboxService, private toastrService: NbToastrService, private fb: FormBuilder, private router: Router) {
     this.meses = [
       { name: '1 mes', value: 1 },
       { name: '2 meses', value: 2 },
@@ -55,16 +60,26 @@ export class IboxCreateComponent implements OnInit {
       { name: 'Renovacion' },
     ];
   }
-
+  checkingEditMode(): void {
+    this.AR.queryParams.subscribe(params => {
+      if (params['id'] !== undefined) {
+        console.log(({ id: params['id'] }))
+        this.id = params['id']
+        this.editMode = true
+        this.getIbox(params['id'])
+      }
+    })
+  }
   ngOnInit(): void {
+
     this.gettingUsers()
     this.createForm()
     this.gettingStores()
+    this.checkingEditMode()
   }
   createForm() {
-    this.newEboxForm = new FormGroup({
-      nombreCliente: new FormControl(this.nameCustomer, Validators.required),
-      codigoCliente: new FormControl(this.codigoCliente, Validators.required),
+    this.newEboxForm = this.fb.group({
+      users: new FormControl('', Validators.required),
       noIbox: new FormControl('', Validators.required),
       idioma: new FormControl('', Validators.required),
       plan: new FormControl('', Validators.required),
@@ -77,6 +92,7 @@ export class IboxCreateComponent implements OnInit {
 
     })
   }
+
   gettingUsers() {
     this.clienteService.getClientes()
       .subscribe(
@@ -89,7 +105,60 @@ export class IboxCreateComponent implements OnInit {
           }
         });
   }
+  getIbox(id: any) {
+    let body = {
+      getIboxId: id
+    }
+    this.iboxService.getIbox(body)
+      .subscribe(
+        response => {
+          console.log(response)
+          if (!response.errors) {
+            this.ibox = response.data.getIbox;
 
+            this.getCliente(this.ibox.codigoCliente)
+          } else {
+            this.showToast(response.errors[0].message, 'danger')
+          }
+        });
+  }
+  getCliente(id: string) {
+    let body = {
+      getClienteId: id
+    }
+    this.clienteService.getCliente(body)
+      .subscribe(
+        response => {
+          console.log(response)
+          if (!response.errors) {
+            this.cliente = response.data.getCliente;
+
+            this.gettingStores()
+          } else {
+            this.showToast(response.errors[0].message, 'danger')
+          }
+        });
+  }
+  edit() {
+
+    if (this.storeList && this.cliente) {
+      this.nameCustomer = [this.cliente]
+      this.selectedStore = this.ibox.tiendaDestino
+      this.newEboxForm?.patchValue({
+        users: [this.cliente],
+        noIbox: this.ibox.noIbox,
+        idioma: this.ibox.idioma,
+        plan: parseInt(this.ibox.plan),
+        status: this.ibox.status,
+        meses: parseInt(this.ibox.meses),
+        comentarios: this.ibox.comentarios,
+        vencimento: this.ibox.vencimento,
+        precio: parseInt(this.ibox.precio),
+        tiendaDestino: this.ibox.tiendaDestino
+      })
+      console.log(this.newEboxForm?.value, 'value');
+    }
+  }
   gettingStores() {
     this.helpService.getStores()
       .subscribe(
@@ -97,6 +166,7 @@ export class IboxCreateComponent implements OnInit {
           console.log(response, 'stores')
           if (!response.errors) {
             this.storeList = response.data.getCatTiendas
+            this.editMode ? this.edit() : null
           } else {
             console.log(response.errors[0].message, 'danger')
           }
@@ -104,9 +174,7 @@ export class IboxCreateComponent implements OnInit {
   }
   selectedAutocompleteUser() {
     console.log(this.nameCustomer)
-    this.newEboxForm?.patchValue({
-      codigoCliente: this.nameCustomer.codigoCliente
-    })
+
   }
   optionSelected() {
     console.log(this.selectedStore)
@@ -207,36 +275,44 @@ export class IboxCreateComponent implements OnInit {
     this.dateValue.setMonth(this.dateValue.getMonth() + this.selectedMonth - 1)
 
   }
-  onSubmit(){
+  onSubmit() {
     const data = this.newEboxForm!.value
     console.log(data)
-    let body = {
-      input : {
-        noIbox: data.noIbox,
-        nombreCliente: data.nombreCliente.first_name,
-        codigoCliente: data.codigoCliente,
-        idioma: data.idioma,
-        meses: data.meses.toString(),
-        plan: data.plan.toString(),
-        status: data.status,
-        comentarios: data.comentarios,
+    if (!this.editMode) {
+      data.users.forEach((element: any) => {
+        let body = {
+          input: {
+            noIbox: data.noIbox,
+            nombreCliente: element.first_name,
+            codigoCliente: element.id,
+            idioma: data.idioma,
+            meses: data.meses.toString(),
+            plan: data.plan.toString(),
+            status: data.status,
+            comentarios: data.comentarios,
 
-        vencimento: `${data.vencimento.getMonth() + 1}/${data.vencimento.getDate()}/${data.vencimento.getFullYear()}`,
-        tiendaDestino: this.selectedStore,
-        precio: data.precio.toString(),
-      }
-    }
-    console.log(body)
-    this.iboxService.create(body)
-    .subscribe(
-      response => {
-        console.log(response, 'sdfsdfdf')
-        if (!response.errors) {
-          this.showToast('Creado Correctamente')
-        } else {
-          console.log(response.errors[0].message, 'danger')
+            vencimento: `${data.vencimento.getMonth() + 1}/${data.vencimento.getDate()}/${data.vencimento.getFullYear()}`,
+            tiendaDestino: this.selectedStore,
+            precio: data.precio.toString(),
+          }
         }
+        console.log(body)
+        this.iboxService.create(body)
+          .subscribe(
+            response => {
+              console.log(response, 'sdfsdfdf')
+              if (!response.errors) {
+                this.showToast('Creado Correctamente')
+              } else {
+                console.log(response.errors[0].message, 'danger')
+              }
+            });
       });
+      this.router.navigate([`in/${this.id}/ebox`]);
+
+    } else {
+      console.log(data)
+    }
 
   }
   filterUser(event: any) {

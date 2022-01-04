@@ -31,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'primeng/calendar';
 import { RatingModule } from 'primeng/rating';
 import {ToggleButtonModule} from 'primeng/togglebutton';
-
+import {MultiSelectModule} from 'primeng/multiselect'
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FeaturesComponent } from './features/features.component';
 import { StepperDetailComponent } from './stepper-detail/stepper-detail.component';
@@ -95,7 +95,7 @@ import { IboxCreateComponent } from './ibox-create/ibox-create.component';
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
     DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
     InputMaskModule, ToastModule, CardModule, KeyFilterModule, TableModule, CalendarModule,
-    RatingModule, MessagesModule, MessageModule, ChartModule,ToggleButtonModule,
+    RatingModule, MessagesModule, MessageModule, ChartModule,ToggleButtonModule,MultiSelectModule,
 
     NbToastrModule.forRoot(),NbThemeModule.forRoot({ name: 'corporate' }), NbSidebarModule.forRoot(),
     NbLayoutModule, NbCardModule, NbInputModule, NbSidebarModule, NbEvaIconsModule,

@@ -105,7 +105,7 @@ export class PackageComponent implements OnInit {
         response => {
           console.log(response)
           if (!response.errors) {
-            this.packages = response.data.getClientes
+            this.packages = response.data.Packages
           } else {
             console.log(response.errors[0].message, 'danger')
           }
