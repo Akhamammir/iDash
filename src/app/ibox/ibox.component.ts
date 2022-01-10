@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Product } from '../product';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { IboxService } from '../Services/ibox.service';
 import { Ibox } from '../ibox';
@@ -17,16 +16,21 @@ export class IboxComponent implements OnInit {
   products: Product[] = [];
   rowGroupMetadata: any;
   product: Product = {};
-  statuses: SelectItem[] = [];
+  statuses: any
   clonedProducts: { [s: string]: Product; } = {};
   iboxs?: Ibox[];
-  constructor(private AR: ActivatedRoute, private messageService: MessageService, private iboxService: IboxService, private router: Router, private toastrService: NbToastrService) {
+  constructor(private AR: ActivatedRoute, private iboxService: IboxService, private router: Router, private toastrService: NbToastrService) {
 
   }
 
   ngOnInit() {
     this.id = this.AR.snapshot.paramMap.get('id')!
+    this.statuses = [
+      { name: 'Activo' },
+      { name: 'Vencido' },
+      { name: 'Renovacion' },
 
+    ]
     this.retrieveIboxs()
   }
   retrieveIboxs(): void {
@@ -37,10 +41,10 @@ export class IboxComponent implements OnInit {
           console.log(response);
         });
   }
-  editar(body: any){
+  editar(body: any) {
     this.router.navigate([`in/${localStorage.getItem('id')!}/ebox/new`], { queryParams: { id: body } })
   }
-  eliminar(parms: any){
+  eliminar(parms: any) {
     console.log('elimi', parms)
     let body = {
       deleteIboxId: parms
@@ -64,60 +68,28 @@ export class IboxComponent implements OnInit {
           }
         });
   }
-  onSort() {
-    this.updateRowGroupMetaData();
-  }
-
-  updateRowGroupMetaData() {
-    this.rowGroupMetadata = {};
-
-    if (this.iboxs !== null) {
-      for (let i = 0; i < this.iboxs!.length; i++) {
-        let rowData = this.iboxs![i];
-        let representativeName = rowData.name;
-
-        if (i == 0) {
-          this.rowGroupMetadata[representativeName!] = { index: 0, size: 1 };
-        }
-        else {
-          let previousRowData = this.products[i - 1];
-          let previousRowGroup = previousRowData.representative!.name;
-          if (representativeName === previousRowGroup)
-            this.rowGroupMetadata[representativeName!].size++;
-          else
-            this.rowGroupMetadata[representativeName!] = { index: i, size: 1 };
-        }
-      }
-    }
-  }
-
-  onRowEditInit(product: Product) {
-    this.clonedProducts[product.id!] = { ...product };
-    this.editing = !this.editing;
-  }
-
-  onRowEditSave(product: Product) {
-
-
-    delete this.clonedProducts[product.id!];
-    this.messageService.add({ severity: 'success', summary: 'Bien Hecho', detail: 'I-box actualizado correctamente', });
-
-
-
-    this.editing = !this.editing;
-
-  }
-
-  onRowEditCancel(product: Product, index: number) {
-    this.products[index] = this.clonedProducts[product.id!];
-    delete this.clonedProducts[product.id!];
-    this.editing = !this.editing;
-  }
   showToast(message: string, status = 'success') {
     this.toastrService.show(
       status || 'success',
       message,
       { status }
     );
+  }
+
+  asd(event: any) {
+    if (event) {
+      console.log(event.name)
+      let a: any = []
+      this.iboxs!.map(e => {
+        if (e.status === event.name) {
+          a.push(e)
+        }
+
+      })
+      this.iboxs = a
+    }else{
+      this.retrieveIboxs()
+    }
+
   }
 }

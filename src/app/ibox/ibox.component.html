@@ -29,7 +29,6 @@
             pButton
             pRipple
             type="button"
-
             label="NUEVO IBOX"
             [routerLink]="['../ebox/new']"
             class="p-mx-2"
@@ -64,6 +63,7 @@
               <th>#i-box</th>
               <th>Clientes Asignados</th>
               <th style="width: 10px !important">Contenido</th>
+
               <th>Status</th>
               <th></th>
             </tr>
@@ -79,7 +79,7 @@
                 <p-columnFilter type="text" field="customer"></p-columnFilter>
               </th>
               <th style="width: 10px"></th>
-              <th ></th>
+
               <th>
                 <p-columnFilter
                   field="status"
@@ -92,22 +92,17 @@
                     let-filter="filterCallback"
                   >
                     <p-dropdown
-                      [ngModel]="value"
                       [options]="statuses"
-                      (onChange)="filter($event.value)"
-                      placeholder="Any"
+                      (onChange)="asd($event.value)"
+                      placeholder="Status"
+                      optionLabel="name"
                       [showClear]="true"
                     >
-                      <ng-template let-option pTemplate="item">
-                        <span
-                          [class]="'customer-badge status-' + option.value"
-                          >{{ option.label! }}</span
-                        >
-                      </ng-template>
                     </p-dropdown>
                   </ng-template>
                 </p-columnFilter>
               </th>
+              <th></th>
             </tr>
           </ng-template>
 
@@ -115,21 +110,24 @@
             <tr>
               <td>{{ ibox.noIbox }}</td>
               <td>{{ ibox.nombreCliente }}</td>
-              <td class="p-text-wrap  p-text-truncate" style="width: 10px !important">{{ ibox.comentarios }}</td>
+              <td
+                class="p-text-wrap p-text-truncate"
+                style="width: 10px !important"
+              >
+                {{ ibox.comentarios }}
+              </td>
               <td>{{ ibox.status }}</td>
-              <td>    <nb-icon
-                icon="edit-outline"
-                (click)="editar(ibox.id)"
-                nbButton
-              >
-              </nb-icon>
-              <nb-icon
-                icon="trash-outline"
-                nbButton
-                (click)="eliminar(ibox.id)"
-                class="eliminarButton"
-              >
-              </nb-icon></td>
+              <td>
+                <nb-icon icon="edit-outline" (click)="editar(ibox.id)" nbButton>
+                </nb-icon>
+                <nb-icon
+                  icon="trash-outline"
+                  nbButton
+                  (click)="eliminar(ibox.id)"
+                  class="eliminarButton"
+                >
+                </nb-icon>
+              </td>
             </tr>
           </ng-template>
         </p-table>

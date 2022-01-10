@@ -13,4 +13,5 @@ export interface Ibox {
   forma1583: string;
   notiemail: string;
   notisms: string;
+  status: string;
 }
