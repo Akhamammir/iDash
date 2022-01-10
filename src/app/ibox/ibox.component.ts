@@ -84,7 +84,6 @@ export class IboxComponent implements OnInit {
         if (e.status === event.name) {
           a.push(e)
         }
-
       })
       this.iboxs = a
     }else{
