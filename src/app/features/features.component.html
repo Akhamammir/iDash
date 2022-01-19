@@ -1,15 +1,14 @@
 <nb-layout>
   <nb-layout-column>
-    <div class="p-grid features-container vertical-container">
+    <div class="p-grid vertical-container">
       <div class="p-col-12"></div>
 
       <div class="p-col-12"></div>
-      <div class="p-col">
-        <app-stepper-detail></app-stepper-detail>
-      </div>
-
+      
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
       <div class="p-col-12">
-        <div class="p-text-center p-text-bold" style="font-size: 36px">
+        <div class="p-text-center p-text-bold title-dash">
           Llene los datos para poder calcular el importe de la guia
         </div>
       </div>
@@ -23,7 +22,7 @@
           type="button"
           style="background: #eb5757; color: #ffffff"
           label="Cancel"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-button-danger"
         ></button>
 
@@ -31,9 +30,9 @@
           pButton
           pRipple
           type="button"
-          style="background: #ffffff; border: 1px solid #c1c9d2"
+         
           label="Previous"
-          [routerLink]="['../../dash', id]"
+          [routerLink]="['../dash']"
           class="p-mx-2"
         ></button>
 
@@ -43,7 +42,7 @@
           type="button"
           style="background: #27ae60; color: #ffffff"
           label="Next"
-          [routerLink]="['../../prices', id]"
+          [routerLink]="['../prices']"
           class="p-button-success"
         ></button>
       </div>
@@ -51,151 +50,167 @@
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-2"></div>
-      <div class="p-col-4">
-        <h3>Destino</h3>
-        <div class="p-grid">
-          <div class="p-col-6">
-            <div class="p-field-radiobutton">
-              <p-radioButton
-                name="destiny"
-                value="Internacional"
-                [(ngModel)]="destiny"
-                inputId="destiny1"
-              ></p-radioButton>
-              <label for="destiny1">Internacional</label>
+      <form class="p-grid" [formGroup]="LoginForm!" (ngSubmit)="onSubmit()">
+        <div class="p-md-4 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
+          <div class="p-grid">
+            <div class="p-md-6 p-col-12">
+              <div class="p-field-radiobutton">
+                <p-radioButton
+                  name="typeSend"
+                  formControlName="typeSend"
+                  value="internacional"
+                  inputId="internacional"
+                ></p-radioButton>
+
+                <label for="internacional">Envio Internacional</label>
+              </div>
+              <div class="p-field-radiobutton">
+                <p-radioButton
+                  name="typeSend"
+                  value="nacional"
+                  formControlName="typeSend"
+                  inputId="nacional"
+                ></p-radioButton>
+                <label for="nacional">Envio Nacional</label>
+              </div>
             </div>
-            <div class="p-field-radiobutton">
-              <p-radioButton
-                name="destiny"
-                value="Nacional"
-                [(ngModel)]="destiny"
-                inputId="destiny2"
-              ></p-radioButton>
-              <label for="destiny2">Nacional</label>
+
+            <div class="p-md-4 p-col-12">
+              <label for="dropdown" class="form-control-label"
+                >País destino</label
+              >
+              <p-dropdown
+                [options]="paises"
+                class="form-control-cakb"
+                formControlName="country"
+                optionLabel="name"
+                optionValue="code"
+                placeholder="Seleccionar"
+              ></p-dropdown>
             </div>
-          </div>
-          <div class="p-col-6">
-            <div class="p-field-checkbox">
-              <p-checkbox
-                name="group1"
-                value="Area Extendida"
-                [(ngModel)]="selectedValues"
-                inputId="Area Extendida"
-              ></p-checkbox>
-              <label for="Area Extendida">Area Extendida</label>
-            </div>
-            <div class="p-field-checkbox">
-              <p-checkbox
-                name="group2"
-                value="Cargo Entrega Residencial"
-                [(ngModel)]="selectedValues"
-                inputId="Cargo Entrega Residencial"
-              ></p-checkbox>
-              <label for="Cargo Entrega Residencial">Cargo Entrega Residencial</label>
-            </div>
-          </div>
-          <div class="p-col-12">
-            <p-dropdown
-              [options]="cities"
-              [(ngModel)]="selectedCity"
-              placeholder="Selecciona una cuidad"
-              optionLabel="name"
-            ></p-dropdown>
           </div>
         </div>
-      </div>
-      <div class="p-col-4">
-        <h3>Caracteristicas</h3>
-
-        <div class="p-grid p-fluid">
-          <div class="p-col-12 p-md-6 p-lg-4">
-            <span>Peso real</span>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-4 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
+          <div class="p-fluid">
+            <label for="float-input" class="form-control-label"
+              >Código postal Origen</label
+            >
             <input
-              type="text"
+              id="float-input"
+              class="form-control-input"
               pKeyFilter="num"
-              placeholder="KG"
-              class="form-control-input-feature"
+              formControlName="postalCodeOrg"
+              type="text"
+              pInputText
             />
           </div>
-
-          <div class="p-col-12 p-md-6 p-lg-4">
-            <span>Peso</span>
+          <div class="p-fluid">
+            <label for="float-input" class="form-control-label"
+              >Código Postal Destino</label
+            >
             <input
-              type="text"
+              id="float-input"
+              class="form-control-input"
               pKeyFilter="num"
-              placeholder="KG"
-              class="form-control-input-feature"
-            />
-          </div>
-
-          <div class="p-col-12 p-md-6 p-lg-4">
-            <span>Ancho</span>
-            <input
+              formControlName="postalCodeDest"
               type="text"
-              pKeyFilter="num"
-              placeholder="CM"
-              class="form-control-input-feature"
-            />
-          </div>
-
-          <div class="p-col-12 p-md-6 p-lg-4">
-            <span>Largo</span>
-            <input
-              type="text"
-              pKeyFilter="num"
-              placeholder="CM"
-              class="form-control-input-feature"
-            />
-          </div>
-
-          <div class="p-col-12 p-md-6 p-lg-4">
-            <span>Alto</span>
-            <input
-              type="text"
-              pKeyFilter="num"
-              placeholder="CM"
-              class="form-control-input-feature"
-            />
-          </div>
-
-          <div class="p-col-12 p-md-6 p-lg-4">
-            <span>Precio</span>
-            <input
-              type="text"
-              pKeyFilter="num"
-              placeholder="$"
-              class="form-control-input-feature"
+              pInputText
             />
           </div>
         </div>
         <div class="p-col-12"></div>
-        <div class="p-col-12"></div>
+        <div class="p-md-4 p-col-12"></div>
+        <div class="p-md-5 p-col-12">
+          <h3>Medidas del envió</h3>
 
-        <div class="p-grid">
-          <div class="p-col-12">
-            <p-checkbox
-              name="group1"
-              value="Area Extendida"
-              [(ngModel)]="selectedValuesFeactures"
-              inputId="ny"
-            ></p-checkbox>
-            <label for="ny"> Seleccionar LTR para UPS y FEDEX</label>
-          </div>
-          <div class="p-col-12">
-            <div class="p-field-checkbox">
-              <p-checkbox
-                name="group1"
-                value="Cargo Entrega Residencial"
-                [(ngModel)]="selectedValuesFeactures"
-                inputId="ny"
-              ></p-checkbox>
-              <label for="ny">Seleccionar Manejo ESP para UPS</label>
+          <div class="p-grid p-fluid">
+            <div class="p-col-12 p-md-6 p-lg-4">
+              <label for="dropdown" class="form-control-label"
+                >Seleccionar</label
+              >
+              <p-dropdown
+                [options]="tipos"
+                class="form-control-cakb"
+                optionLabel="name"
+                formControlName="typePackage"
+              ></p-dropdown>
+            </div>
+            <div class="p-col-12 p-md-6 p-lg-4">
+              <span>Cantidad</span>
+              <input
+                type="text"
+                pKeyFilter="num"
+                formControlName="amount"
+                nbInput
+                class="form-control-input-feature"
+              />
+            </div>
+            <div class="p-col-12 p-md-6 p-lg-4">
+              <span>Peso</span>
+              <input
+                type="text"
+                pKeyFilter="num"
+                nbInput
+                placeholder="KG"
+                formControlName="weight"
+                class="form-control-input-feature"
+              />
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-4">
+              <span>Ancho</span>
+              <input
+                type="text"
+                pKeyFilter="num"
+                formControlName="width"
+                placeholder="CM"
+                nbInput
+                class="form-control-input-feature"
+              />
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-4">
+              <span>Largo</span>
+              <input
+                type="text"
+                pKeyFilter="num"
+                formControlName="length"
+                placeholder="CM"
+                nbInput
+                class="form-control-input-feature"
+              />
+            </div>
+
+            <div class="p-col-12 p-md-6 p-lg-4">
+              <span>Alto</span>
+              <input
+                type="text"
+                pKeyFilter="num"
+                formControlName="height"
+                placeholder="CM"
+                nbInput
+                class="form-control-input-feature"
+              />
+            </div>
+
+            <div class="p-col-8"></div>
+            <div class="p-col-12 p-md-6 p-lg-4">
+              <button
+                nbButton
+                fullWidth
+                style="background: #2130b8"
+                status="primary"
+                type="submit"
+              >
+                Agregar
+              </button>
             </div>
           </div>
         </div>
-      </div>
-      <div class="p-col-2"></div>
+      </form>
     </div>
   </nb-layout-column>
 </nb-layout>

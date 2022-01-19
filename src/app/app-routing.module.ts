@@ -13,60 +13,92 @@ import { IboxComponent } from './ibox/ibox.component';
 import { NewcustomeriboxComponent } from './newcustomeribox/newcustomeribox.component';
 import { OutgoingmailComponent } from './outgoingmail/outgoingmail.component';
 import { ValijaComponent } from './valija/valija.component';
+import { CustormerDashComponent } from './custormer-dash/custormer-dash.component';
 import { ValijacreadaComponent } from './valijacreada/valijacreada.component';
 import { SellpackageComponent } from './sellpackage/sellpackage.component';
 import { ExitopackageComponent } from './exitopackage/exitopackage.component';
 import { DocumentlegaleboxComponent } from './documentlegalebox/documentlegalebox.component';
+import { MainCustomerComponent } from './main-customer/main-customer.component';
+import { CotizarComponent } from './cotizar/cotizar.component';
+import { ValijaListComponent } from './valija-list/valija-list.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { IboxCreateComponent } from './ibox-create/ibox-create.component';
+import { PagoServicioComponent } from './pago-servicio/pago-servicio.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
   }, {
-    path: 'in', component: MainComponent, children: [
+    path: 'in/:id', component: MainComponent, children: [
+      { path: '', redirectTo: 'dash', pathMatch: 'full' },
       {
-        path: 'dash/:id', component: DashComponent,
+        path: 'dash', component: DashComponent,
       },
       {
-        path: 'features/:id', component: FeaturesComponent,
+        path: 'features', component: FeaturesComponent,
       },
       {
-        path: 'prices/:id', component: PricesComponent,
+        path: 'prices', component: PricesComponent,
       },
       {
-        path: 'customer/:id', component: CustomerComponent,
+        path: 'customer', component: CustomerComponent,
       },
       {
-        path: 'process/:id', component: ProcessComponent,
+        path: 'process', component: ProcessComponent,
       },
       {
-        path: 'confirmation/:id', component: ConfirmacionComponent,
+        path: 'confirmation', component: ConfirmacionComponent,
       },
       {
-        path: 'package/:id', component: PackageComponent,
+        path: 'package', component: PackageComponent,
       },
       {
-        path: 'ebox/:id', component: IboxComponent,
+        path: 'ebox', component: IboxComponent,
       },
       {
-        path: 'newcustomerebox/:id', component: NewcustomeriboxComponent,
+        path: 'ebox/new', component: IboxCreateComponent,
       },
       {
-        path: 'email/:id', component: OutgoingmailComponent,
+        path: 'newcustomerebox', component: NewcustomeriboxComponent,
       },
       {
-        path: 'valija/:id', component: ValijaComponent,
+        path: 'email', component: OutgoingmailComponent,
       },
       {
-        path: 'exitovalija/:id', component: ValijacreadaComponent,
+        path: 'valija', component: ValijaComponent,
       },
       {
-        path: 'sellingpackage/:id', component: SellpackageComponent,
+        path: 'valija/list', component: ValijaListComponent,
       },
       {
-        path: 'exitopackage/:id', component: ExitopackageComponent,
+        path: 'exitovalija', component: ValijacreadaComponent,
       },
       {
-        path: 'documentolegal/:id', component: DocumentlegaleboxComponent,
+        path: 'sellingpackage', component: SellpackageComponent,
       },
+      {
+        path: 'exito', component: ExitopackageComponent,
+      },
+      {
+        path: 'documentolegal', component: DocumentlegaleboxComponent,
+      },
+      {
+        path: 'clientes', component: ClientesComponent,
+      },
+      {
+        path: 'pay', component: PagoServicioComponent,
+      },
+    ]
+  },
+  {
+    path: 'sideClient/:id', component: MainCustomerComponent, children: [
+      {
+        path: 'dash', component: CustormerDashComponent,
+      },
+      {
+        path: 'cotizar', component: CotizarComponent
+      },
+
+
     ]
   }
 ];

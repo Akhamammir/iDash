@@ -1,27 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
 sidebar = #2130B8
 whitey = #FDFDFD
-.nb-theme-corporate nb-layout .layout .highlightCol
+mainsidecustomer = #828894
+.nb-theme-corporate nb-layout .layout .layout-container .content .columns .colored-column-basic
   background sidebar !important
+// .nb-theme-corporate nb-layout .layout
+//   background sidebar !important
+// .nb-theme-corporate nb-layout .layout .highlightCol
+//   background sidebar !important
 
-img
-  object-fit: contain;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
+.mainImg
+  z-index 999 !important
+  background-color #2130B8
+  margin-left:auto !important
+  margin-right:auto !important
+.nb-theme-corporate nb-sidebar .sidebarCustomer
+  background-color #4F4F4F !important
+.sidebarCustomer
+  background-color #4F4F4F !important
 .fullPrimeButton
   width 100%
-
+.btn-toggle
+  background sidebar !important
+  color: #fff !important
+  border: 0px !important
+  display:none !important
 .columns
   margin-top 20px
-
 .subheader
   position fixed !important
-  width 85vw
+  width 100%
   z-index 99
   box-shadow rgba(0, 0, 0, 0.16) 0px 3px 6px,
    rgba(0, 0, 0, 0.23) 0px 3px 6px !important
+
+
+@media screen and (max-width: 1000px)
+  .ocultable
+   display: none !important;
+  .nb-theme-corporate nb-sidebar.collapsed .scrollable
+   display: none !important;
+  .btn-toggle
+   display block !important
 
 .nb-theme-corporate nb-layout-header nav
   height 3rem !important
@@ -38,6 +58,7 @@ img
    rgba(0, 0, 0, 0.23) 0px 3px 6px !important
 
 .nb-theme-corporate nb-sidebar .scrollable
+  background sidebar !important
   padding 1rem !important
   overflow-y hidden !important
 
@@ -45,6 +66,7 @@ img
   background none !important
   border none !important
   border-radius 15px !important
+  color: white !important
 
 .p-panelmenu .p-panelmenu-header > a:hover
   background rgba(255, 255, 255, 0.1) !important
@@ -77,6 +99,11 @@ img
   color #252525 !important
   border-color #858585 !important
   border-radius 25px !important
+.topnotifaction.p-inputgroup-addon
+  color: whitey !important
+  background mainsidecustomer !important
+  border-radius: 50% !important
+  border none !important
 
 .topdropaddon
   background sidebar !important
@@ -98,6 +125,11 @@ img
   padding 0.8em !important
   &:focus
     border 0px !important
+.p-calendar .p-inputtext
+  background #DADDE3 !important;
+  border 0px !important
+  margin 10px 0px 10px 0px !important;
+  padding 0.8em !important
 .form-control-label
   color #828894 !important
   font-size: 12px !important
@@ -142,6 +174,12 @@ img
   color:#000000 !important
   font-weight: 500 !important
   font-size: 14px !important
+.p-fluid .p-inputnumber .p-inputnumber-input
+  background #DADDE3 !important;
+  border 0px !important
+  color: #262626 !important
+  &:focus
+    border 0px !important
 .p-inputgroup-addon
   color:#000000 !important
   font-weight: 500 !important
@@ -159,6 +197,9 @@ img
   color:#3C4257 !important
   font-weight: 500 !important
   font-size: 18px !important
+@media screen and (max-width: 762px)
+  .p-steps
+   display: none !important;
 .form-control-input-feature
   background #DADDE3 !important;
   border 0px !important
@@ -168,35 +209,14 @@ img
   padding 0.8em !important
   &:active
      border 0px !important
-
+.p-column-filter-row p-columnfilterformelement > input
+   background #DADDE3 !important;
 .label-process
   font-weight: 700 !important
   font-size: 24px !important
 .text-process
   font-weight: 400 !important
   font-size: 24px !important
-
-.img-card-credit
-  padding 0.8em !important
-  border-radius 10px !important
-  background #FC7C5F !important
-  img
-    width 80px !important
-.img-card-paypal
-  background #FB9B14 !important
-  padding 0.8em !important
-  border-radius 10px !important
-  img
-    width 150px !important
-.img-card-efectivo
-  background #5E72E4 !important
-  padding 0.8em !important
-  text-decoration: none !important
-  border-radius 10px !important
-  h3
-    color #FFFF !important
-    font-weight 800 !important
-    font-size 32px !important
 
 .dividerPrices.p-divider.p-divider-horizontal:before
   border-top-color #3C4257 !important
@@ -217,7 +237,13 @@ img
   color:#000000 !important
   font-weight: 500 !important
 .dash-container
-  height 100vh
+  height 100%
+.title-dash
+  font-size: 36px !important
+  line-height: 1
+@media screen and (max-width: 600px)
+  .dash-column
+   display: block !important;
 .confirmation-container
   height 100vh
 .process-container
@@ -226,19 +252,189 @@ img
   overflow-y: scroll
 .prices-container
   overflow-y: scroll
-.features-container
-  height 95vh
+
 .labelTable
   font-weight: 700 !important
   font-size: 24px !important
-.p-datatable .p-datatable-thead > tr > th
-  color: rgb(0 0 0) !important;
-  background: #0a050500 !important;
+
 .texto-valija-exito
   font-weight: 600 !important
   font-size: 36px !important
+  line-height: 1 !important;
+  text-align: center !important;
 .texto-valija-exito-numero
   font-weight: 600 !important
   font-size: 36px !important
   color: #13B497 !important
   line-height: 54px !important
+
+.p-paginator
+ background: #f8f9fa !important;
+
+.p-paginator .p-paginator-current
+  color: #495057 !important;
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight
+  color: #495057 !important;
+.form-control-input-ibox
+  background: #DADDE3 !important;
+  color: #495057 !important;
+
+.p-column-filter-row .p-column-filter-menu-button, .p-column-filter-row .p-column-filter-clear-button
+  color: #495057 !important;
+
+.p-dropdown .p-dropdown-trigger
+   color: #495057 !important;
+.p-column-filter-overlay
+  background: #6b7280 !important;
+  color: #ffff !important;
+.status-success
+  background: #6FCF97 !important;
+  border: 1px solid #27AE60;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #ffff !important;
+.franjaRoja
+  background: #EB5757
+  padding: 4px 8px
+  color: #fff
+.boxBrown
+  background: #E0E0E0
+  padding: 8px 8px
+  font-size: 28px
+  font-weight: 600
+.boxRed
+  background: #EB5757
+  padding: 10px 8px
+
+.boxRed p
+  color: #fff !important
+  font-size: 28px !important
+  text-align: center
+.boxPrimary
+  background:#2F80ED
+  padding: 4px 25px
+  border-radius: 10px
+.boxPrimary p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxDark
+  background:#4F4F4F
+  padding: 4px 25px
+  border-radius: 10px
+.boxDark p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxYellow
+  background:#F2C94C
+  padding: 4px 25px
+  margin: 8px 0px
+  border-radius: 10px
+.boxYellow p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxOrange
+  background:#F2994A
+  padding: 4px 25px
+  margin: 8px 0px
+  border-radius: 10px
+.boxOrange p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxGreen
+  background:#27AE60
+  padding: 4px 25px
+  margin: 8px 0px
+  border-radius: 10px
+.boxGreen p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxLittleblue
+  background:#56CCF2
+  padding: 4px 25px
+  border-radius: 10px
+.boxLittleblue p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxPurple
+  background:#9B51E0
+  padding: 4px 25px
+  border-radius: 10px
+.boxPurple p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.boxLittlepurple
+  background:#BB6BD9
+  padding: 4px 25px
+  border-radius: 10px
+.boxLittlepurple p
+  color: #fff !important
+  font-size: 14px !important
+  text-align: center
+  padding: 0px !important
+.tableCenter
+  text-align: center !important
+
+.tableCenterHeader
+  border-bottom: 1px solid #000 !important
+.tableBrown
+  background: #E0E0E0
+  padding: 8px 8px
+  border-radius: 15px !important
+.formBrown
+  background: #E0E0E0
+.titleFormBrown
+  background:#828282
+  color:#fff  !important
+  padding: 8px 8px
+.p-panelmenu .p-panelmenu-content
+  background-color: sidebar !important
+  border: 0px !important
+.form-control-cakb
+  padding: 15px 0px !important
+.p-togglebutton.p-button:not(.p-disabled):not(.p-highlight)
+  background-color: #bfbfbf !important
+  border: none !important
+  height: 20px !important
+  width: 20px !important
+  padding: 0px !important
+.p-togglebutton.p-button.p-highlight
+  background-color: #fb6340 !important
+  color: #fff !important
+  height: 20px !important
+  width: 20px !important
+  padding: 0px !important
+.p-togglebutton.p-button.p-highlight:hover
+  background-color: #fb6340 !important
+  border-color: #fb6340 !important
+.p-togglebutton.p-button.p-highlight .p-button-icon-left, .p-togglebutton.p-button.p-highlight .p-button-icon-right
+  color: #fff !important
+#autoCompleteUsers
+  background #DADDE3 !important;
+  border 0px !important
+  color: #262626 !important
+  margin 10px 0px 10px 0px !important;
+  padding 0.8em !important
+  &:focus
+    border 0px !important
+.p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link
+  background none !important
+  border none !important
+  border-radius 15px !important
+  color: white !important
+.p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text
+  color: white !important

@@ -1,0 +1,94 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid package-container vertical-container">
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          Lista de Clientes
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+
+      <!-- Inicio Tabla Paquetes -->
+
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-md-10 p-col-12"></div>
+      <div class="p-md-2 p-col-12">
+        <button
+          pButton
+          pRipple
+          [routerLink]="['../newcustomerebox']"
+          style="
+            background: #5e72e4;
+            color: #ffffff;
+            font-weight: 700;
+
+            font-size: 14px;
+            padding: 7px 12px 7px 12px;
+          "
+          type="button"
+          label="Nuevo Cliente"
+        ></button>
+      </div>
+      <div class="p-col-12">
+        <p-table
+          responsiveLayout="scroll"
+          [value]="clientes!"
+          [autoLayout]="true"
+          [rowsPerPageOptions]="[10, 25, 50]"
+          currentPageReportTemplate="Mostrando {first} hasta {last} de {totalRecords} registros"
+          [paginator]="true"
+          [rows]="rows"
+          [(first)]="first"
+          [showCurrentPageReport]="true"
+        >
+          <ng-template pTemplate="header" styleClass="p-datatable-striped">
+            <tr>
+              <th>Id</th>
+              <th>Nombres</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-cliente>
+            <tr>
+              <td>{{ cliente.id }}</td>
+              <td>{{ cliente.first_name }} - {{ cliente.last_name }}</td>
+              <td>{{ cliente.email }}</td>
+              <td>
+                <nb-icon
+                  icon="edit-outline"
+                  (click)="editar(cliente.id)"
+                  nbButton
+                >
+                </nb-icon>
+                <nb-icon
+                  icon="trash-outline"
+                  nbButton
+                  (click)="eliminar(cliente.id)"
+                  class="eliminarButton"
+                >
+                </nb-icon>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+      <!-- Fin Tabla Paquetes -->
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-md-9 p-col-12"></div>
+      <div class="p-md-3 p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

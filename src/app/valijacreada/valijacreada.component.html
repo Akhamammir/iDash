@@ -3,9 +3,7 @@
     <div class="p-grid package-container vertical-container">
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col">
-        <app-stepper-detail></app-stepper-detail>
-      </div>
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
@@ -15,58 +13,27 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-5"></div>
-      <div class="p-d-flex">
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #eb5757; color: #ffffff"
-          label="Cancel"
-          [routerLink]="['../../dash', id]"
-          class="p-button-danger"
-        ></button>
 
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #ffffff; border: 1px solid #c1c9d2"
-          label="Previous"
-          [routerLink]="['../../valija', id]"
-          class="p-mx-2"
-        ></button>
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #27ae60; color: #ffffff"
-          label="Next"
-          [routerLink]="['../../sellingpackage', id]"
-          class="p-button-success"
-        ></button>
-      </div>
-      <div class="p-col-5"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-2"></div>
-      <div class="p-col-8">
-        <div class="p-fluid">
-          <img src="assets/img/Frame.png" alt="" />
-        </div>
+      <div class="p-md-5 p-col-12"></div>
+      <div class="p-md-2 p-col-12">
+
+          <img src="assets/img/Frame.png" class="img-responsive" alt="" />
+
       </div>
-      <div class="p-col-2"></div>
-      <div class="p-col-2"></div>
-      <div class="p-col-8">
+      <div class="p-md-4 p-col-12"></div>
+      <div class="p-md-2 p-col-12"></div>
+      <div class="p-md-8 p-col-12">
         <p class="texto-valija-exito">
           La valija ha sido procesada correctamente con el número:
-          <span class="texto-valija-exito-numero">50221050401</span>
+          <span class="texto-valija-exito-numero">{{ idValija }}</span>
         </p>
       </div>
-      <div class="p-col-2"></div>
+      <div class="p-md-2 p-col-12"></div>
 
-      <div class="p-col-2"></div>
-      <div class="p-col-2">
+      <div class="p-md-2 p-col-12"></div>
+      <div class="p-md-2 p-col-12">
         <div class="p-fluid">
           <button
             pButton
@@ -85,7 +52,7 @@
           ></button>
         </div>
       </div>
-      <div class="p-col-2">
+      <div class="p-md-2 p-col-12">
         <div class="p-fluid">
           <button
             pButton
@@ -104,7 +71,7 @@
           ></button>
         </div>
       </div>
-      <div class="p-col-2">
+      <div class="p-md-2 p-col-12">
         <div class="p-fluid">
           <button
             pButton
@@ -123,7 +90,7 @@
           ></button>
         </div>
       </div>
-      <div class="p-col-2">
+      <div class="p-md-2 p-col-12">
         <div class="p-fluid">
           <button
             pButton
@@ -142,7 +109,7 @@
           ></button>
         </div>
       </div>
-      <div class="p-col-2"></div>
+      <div class="p-md-2 p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
     </div>

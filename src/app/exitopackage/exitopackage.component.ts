@@ -8,10 +8,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ExitopackageComponent implements OnInit {
   id: string = '';
+  textoTipo: string = '';
+  tipo: string = '';
+  data:any
   constructor(private AR: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = this.AR.snapshot.paramMap.get('id')!
+    this.checkingType()
+    this.tipo === 'ibox' ? this.textoTipo = 'I-box Vendido' : this.textoTipo = 'Paquete Vendido'
+    this.obtenerQuery()
   }
-
+  checkingType(): void {
+    this.AR.queryParams.subscribe(params => {
+      if (params['tipo'] !== undefined) {
+        this.tipo = params['tipo']
+      }
+    })
+  }
+  obtenerQuery(){
+    this.data  =  JSON.parse(localStorage.getItem('url')!)
+    console.log(this.data);
+  }
+  downloadTicket(){
+    console.log(this.data);
+    window.location.href = this.data.urlFile
+  }
 }

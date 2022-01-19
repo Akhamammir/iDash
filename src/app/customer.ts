@@ -9,3 +9,7 @@ export interface Customer {
   iva: string
   totalPagar: string
 }
+export interface NotificationB {
+  email: Boolean,
+  sms: Boolean,
+}
