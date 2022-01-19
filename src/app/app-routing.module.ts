@@ -23,6 +23,7 @@ import { CotizarComponent } from './cotizar/cotizar.component';
 import { ValijaListComponent } from './valija-list/valija-list.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { IboxCreateComponent } from './ibox-create/ibox-create.component';
+import { PagoServicioComponent } from './pago-servicio/pago-servicio.component';
 const routes: Routes = [
   {
     path: '', component: LoginComponent, pathMatch: 'full',
@@ -75,13 +76,16 @@ const routes: Routes = [
         path: 'sellingpackage', component: SellpackageComponent,
       },
       {
-        path: 'exitopackage', component: ExitopackageComponent,
+        path: 'exito', component: ExitopackageComponent,
       },
       {
         path: 'documentolegal', component: DocumentlegaleboxComponent,
       },
       {
         path: 'clientes', component: ClientesComponent,
+      },
+      {
+        path: 'pay', component: PagoServicioComponent,
       },
     ]
   },

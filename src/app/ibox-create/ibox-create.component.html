@@ -155,7 +155,7 @@
           >
           <p-calendar
             [(ngModel)]="dateValue"
-            class="form-control-input"
+
             formControlName="vencimento"
             dateFormat="dd/mm/yy"
           ></p-calendar>
@@ -187,35 +187,22 @@
             <label for="float-input" class="form-control-label"
               >Nombres de los cliente</label
             >
-
-            <p-multiSelect
+            <p-dropdown
               [options]="userList"
               formControlName="users"
               [(ngModel)]="nameCustomer"
-              defaultLabel="Select a User"
+              defaultLabel="Seleccione un usuario"
               optionLabel="first_name"
               class="multiselect-custom"
+              placeholder="Seleccione un usuario"
             >
-              <ng-template let-value pTemplate="selectedItems">
-                <div
-                  class="country-item country-item-value"
-                  *ngFor="let option of nameCustomer"
-                >
-                  <div>{{ option.first_name }}</div>
-                </div>
-                <div
-                  *ngIf="!nameCustomer || nameCustomer.length === 0"
-                  class="country-placeholder"
-                >
-                  Select a Users
-                </div>
+              <ng-template *ngIf="nameCustomer" pTemplate="selectedItems">
+                <div>{{ nameCustomer.first_name }}</div>
               </ng-template>
               <ng-template let-user pTemplate="item">
-                <div>
-                  <div>{{ user.first_name }}</div>
-                </div>
+                <div>{{ user.first_name }}</div>
               </ng-template>
-            </p-multiSelect>
+            </p-dropdown>
           </div>
         </div>
         <div class="p-md-1"></div>

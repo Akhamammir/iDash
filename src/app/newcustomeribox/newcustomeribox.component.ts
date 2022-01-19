@@ -18,9 +18,11 @@ export class NewcustomeriboxComponent implements OnInit {
   LoginForm: FormGroup | undefined;
   cliente: any
   editMode: boolean = false
-  constructor(private clienteService: ClientesService, private fb: FormBuilder, private AR: ActivatedRoute, private toastrService: NbToastrService, private router: Router, private helperService: HelpersService) { }
+  constructor(private clienteService: ClientesService, private fb: FormBuilder, private AR: ActivatedRoute, private toastrService: NbToastrService, private router: Router, private helperService: HelpersService, private helpService: HelpersService) { }
   phones: Phone[] = [];
-  paises:any
+  paises: any
+  storeList: any
+  selectedStore: any
   selectedValuesCustomerIbox: string[] = [];
   ngOnInit(): void {
     this.phones = [
@@ -36,18 +38,36 @@ export class NewcustomeriboxComponent implements OnInit {
     })
 
     this.createForm()
+    this.gettingStores()
     this.getPais()
   }
-  getPais(){
+  getPais() {
     this.helperService.getPais()
       .subscribe(
         response => {
           console.log(response);
           if (!response.errors) {
-              this.paises = response.data.getCatPais
+            this.paises = response.data.getCatPais
           }
         }
       )
+  }
+  gettingStores() {
+    this.helpService.getStores()
+      .subscribe(
+        response => {
+          console.log(response, 'stores')
+          if (!response.errors) {
+            this.storeList = response.data.getCatTiendas
+            this.editMode ? this.edit() : null
+          } else {
+            console.log(response.errors[0].message, 'danger')
+          }
+        });
+  }
+  optionSelected() {
+    console.log(this.selectedStore)
+
   }
   onSubmit() {
     const data = this.LoginForm!.value
@@ -69,7 +89,7 @@ export class NewcustomeriboxComponent implements OnInit {
           city: data.city,
           country: data.country,
           form_1583: data.form_1583,
-          codigoCliente:data.codigoCliente,
+          codigoCliente: data.codigoCliente,
           notifications: {
             email: data.notifications.notiemail,
             sms: data.notifications.notisms
@@ -104,7 +124,7 @@ export class NewcustomeriboxComponent implements OnInit {
           city: data.city,
           country: data.country,
           form_1583: data.form_1583,
-          codigoCliente:data.codigoCliente,
+          codigoCliente: data.codigoCliente,
           notifications: {
             email: data.notifications.notiemail,
             sms: data.notifications.notisms

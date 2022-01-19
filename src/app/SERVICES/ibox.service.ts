@@ -1,14 +1,39 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Ibox } from '../ibox';
 const baseUrl = 'https://affable-seat-326818.uc.r.appspot.com/';
 @Injectable({
   providedIn: 'root'
 })
 export class IboxService {
 
+  ibox :any
+  @Output()
+  iboxEmmittet = new EventEmitter<any>();
+
   constructor(private http: HttpClient) { }
 
+  setIbox(newIbox:any) {
+    this.ibox = newIbox;
+    this.obtenerIbox()
+  }
+  obtenerIbox() {
+    this.iboxEmmittet.emit(this.ibox);
+  }
+  registrarPagoIbox(data: any): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `mutation RegistraPago($input: PagoInput) {
+        registraPago(input: $input) {
+          urlFile
+          idPago
+        }
+      }`  , variables:
+        JSON.stringify(data),
+    })
+    return this.http.post(baseUrl, body, { headers });
+  }
   getEbox(): Observable<any> {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify({
@@ -75,4 +100,6 @@ export class IboxService {
     })
     return this.http.post(baseUrl, body, { headers });
   }
+
+
 }

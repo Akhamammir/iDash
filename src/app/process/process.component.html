@@ -4,7 +4,6 @@
       <div class="p-col-12"></div>
 
       <div class="p-col-12"></div>
-      
 
       <div class="p-col-12">
         <div class="p-text-center p-text-bold" style="font-size: 36px">
@@ -13,107 +12,59 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-5"></div>
-      <div class="p-d-flex">
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #eb5757; color: #ffffff"
-          label="Cancel"
-          [routerLink]="['../dash']"
-          class="p-button-danger"
-        ></button>
+      <div class="p-col-12" *ngIf="data">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          {{ accion }} - {{ data.noIbox }}
+        </div>
+      </div>
+      <div class="p-col-12" *ngIf="data">
+        <div class="p-text-center" style="font-size: 18px">
 
-        <button
-          pButton
-          pRipple
-          type="button"
-         
-          label="Anterior"
-          [routerLink]="['../../customer', id]"
-          class="p-mx-2"
-        ></button>
-      </div>
-      <div class="p-col-5"></div>
-      <div class="p-col-12"></div>
-      <div class="p-col-12"></div>
-      <div class="p-col-12"></div>
-      <div class="p-col-3">
-        <div class="p-d-flex p-flex-column p-ai-end">
-          <div>
-            <p class="label-process">Servicio:</p>
-          </div>
-          <div>
-            <p class="label-process">Destino:</p>
-          </div>
-          <div>
-            <p class="label-process">Tracking Number:</p>
-          </div>
-          <div>
-            <p class="label-process">ID:</p>
-          </div>
-          <div>
-            <p class="label-process">Código de cliente:</p>
-          </div>
-          <div>
-            <p class="label-process">Nombre:</p>
-          </div>
+            <br /><br />
+            <strong>Nombre:</strong>{{ data.users.first_name }} {{ data.users.last_name
+            }}<br /><br />
+            <strong>Codigo:</strong> {{ data.users.id }} <br /><br />
+            <strong>Direccion:</strong> {{ data.users.address }}<br /><br />
+            <strong>Telefono:</strong> {{ data.users.phone }} <br /><br />
+
+            <br />
+
+          <strong *ngIf="data.status === 'renovación'"
+            >Fecha de renovación:</strong
+          >
+          <span *ngIf="data.status === 'renovación'">{{
+            hoy.getMonth() + 1 / hoy.getDate() / hoy.getFullYear()
+          }}</span>
+          <br /><br />
+          <strong>Fecha de inicio:</strong>
+          {{ hoy.getMonth() + 1 + "/" + hoy.getDate() + "/" + hoy.getFullYear()
+          }}<br /><br />
+          <strong>Fecha de vencimiento:</strong>
+          {{
+            data.vencimento.getMonth() +
+              1 +
+              "/" +
+              data.vencimento.getDate() +
+              "/" +
+              data.vencimento.getFullYear()
+          }}
+          <br /><br />
+          <strong>Meses contratados:</strong> {{ data.meses }}<br /><br />
+          <strong>Plan:</strong> {{ data.plan }} <br /><br />
+          <strong>Costo:</strong> {{ data.precio }} <br /><br />
         </div>
       </div>
-      <div class="p-col-3">
-        <div class="p-d-flex p-flex-column p-ai-start">
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.servicio }}</p>
-          </div>
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.destino }}</p>
-          </div>
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.trakingNumber }}</p>
-          </div>
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.id }}</p>
-          </div>
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.codigoCliente }}</p>
-          </div>
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.nombre }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-col-3">
-        <div class="p-d-flex p-flex-column p-ai-end">
-          <div>
-            <p class="label-process">Subtotal:</p>
-          </div>
-          <div>
-            <p class="label-process">IVA 16%:</p>
-          </div>
-          <div>
-            <p class="label-process">Total a pagar:</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-col-3">
-        <div class="p-d-flex p-flex-column p-ai-start">
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.subtotal }}</p>
-          </div>
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.iva }}</p>
-          </div>
-          <div *ngFor="let cliente of customer">
-            <p class="text-process">{{ cliente.totalPagar }}</p>
-          </div>
-        </div>
-      </div>
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-3"></div>
-      <div class="p-d-flex">
-        <a href="" class="p-d-flex img-card-credit">
+      <div class="p-md-1 p-col-12"></div>
+      <div class="p-md-3 p-col-12">
+        <a
+          [routerLink]="['../pay']"
+          [queryParams]="{ tipo: tipo, service: 'tc' }"
+          class="p-d-flex img-card-credit"
+          *ngIf="data"
+        >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Visa_2014_logo_detail.svg/320px-Visa_2014_logo_detail.svg.png"
             alt=""
@@ -123,20 +74,29 @@
             alt=""
           />
         </a>
+      </div>
+      <div class="p-md-3 p-col-12">
+        <button
+          pButton
+          *ngIf="!data"
+          pRipple
+          type="button"
+          class="p-button-danger"
+          [routerLink]="['../ebox/new']"
+          label="Regresar"
+        ></button>
+      </div>
+      <div class="p-md-3 p-col-12">
         <a
-          href=""
-          class="img-card-paypal p-d-flex p-ai-center p-jc-center p-mx-5"
+          *ngIf="data"
+          [routerLink]="['../pay']"
+          [queryParams]="{ tipo: tipo, service: 'ef' }"
+          class="img-card-efectivo p-d-flex p-jc-center"
         >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/320px-PayPal.svg.png"
-            alt=""
-          />
-        </a>
-        <a href="" class="img-card-efectivo p-d-flex p-jc-center">
           <h3>EFECTIVO</h3>
         </a>
       </div>
-      <div class="p-col-3"></div>
+      <div class="p-md-1 p-col-12"></div>
     </div>
   </nb-layout-column>
 </nb-layout>

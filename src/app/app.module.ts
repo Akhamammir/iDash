@@ -15,6 +15,7 @@ import { NbButton, NbButtonModule, NbCardModule, NbIconModule, NbInputModule, Nb
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
+import {InputNumberModule} from 'primeng/inputnumber';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
@@ -58,6 +59,7 @@ import { GraphQLModule } from './graphql.module';
 import { ValijaListComponent } from './valija-list/valija-list.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { IboxCreateComponent } from './ibox-create/ibox-create.component';
+import { PagoServicioComponent } from './pago-servicio/pago-servicio.component';
 
 @NgModule({
   declarations: [
@@ -86,12 +88,13 @@ import { IboxCreateComponent } from './ibox-create/ibox-create.component';
     ValijaListComponent,
     ClientesComponent,
     IboxCreateComponent,
+    PagoServicioComponent,
 
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
     AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule,
-    AutoCompleteModule,InputTextareaModule,
+    AutoCompleteModule,InputTextareaModule,InputNumberModule,
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
     DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
     InputMaskModule, ToastModule, CardModule, KeyFilterModule, TableModule, CalendarModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from '../customer';
+import { IboxService } from '../Services/ibox.service';
 
 @Component({
   selector: 'app-process',
@@ -10,14 +11,38 @@ import { Customer } from '../customer';
 export class ProcessComponent implements OnInit {
 
   customer: Customer[] = [];
+  data: any
   id: string = '';
-  constructor(private AR: ActivatedRoute) { }
-
+  hoy: Date = new Date()
+  tipo:any
+  constructor(private iboxService: IboxService, private AR: ActivatedRoute) { }
+  accion: string = ''
   ngOnInit(): void {
-    this.customer = [
-      { servicio: 'Nacional', destino: 'Acapulco, GRO', trakingNumber: 879898655, id: 2856, codigoCliente: 502003, nombre: 'Erick Antonio Delgado Torres',subtotal: '$10,0000.00' , iva:'$1,600.00', totalPagar:'$11,600.00'}
-    ];
-    this.id = this.AR.snapshot.paramMap.get('id')!
+    this.llenardatos()
+    this.checkingType()
+    this.tipo === 'ibox' ? this.accion = 'i-Box' : this.accion = 'Paquetes'
+    this.aaa()
+  }
+
+  checkingType(): void {
+    this.AR.queryParams.subscribe(params => {
+      if (params['tipo'] !== undefined) {
+        this.tipo = params['tipo']
+      }
+    })
+  }
+  llenardatos(){
+    this.iboxService.iboxEmmittet.subscribe(
+      data => {
+        this.data = data;
+      }
+    );
+    this.data = JSON.parse(localStorage.getItem('data')!)
+    this.data.vencimento =  new Date(new Date(this.data.vencimento).valueOf())
+  }
+  aaa(){
+    console.log(this.data)
+
   }
 
 }

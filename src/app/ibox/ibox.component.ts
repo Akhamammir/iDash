@@ -24,7 +24,7 @@ export class IboxComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = this.AR.snapshot.paramMap.get('id')!
+
     this.statuses = [
       { name: 'Activo' },
       { name: 'Vencido' },

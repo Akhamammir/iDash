@@ -278,7 +278,7 @@
             </div>
           </div>
         </div>
-        <div class="p-md-6 p-col-12 p-mt-4">
+        <div class="p-md-3 p-col-12">
           <div class="p-formgroup-inline">
             <div class="p-field-checkbox">
               <p-toggleButton
@@ -288,30 +288,35 @@
               ></p-toggleButton>
               <label for="city3">Forma 1583</label>
             </div>
-            <!-- <div class="p-field-checkbox" formGroupName="notifications">
-              <p-toggleButton
-                inputId="city4"
-                formControlName="notiemail"
-                onIcon="pi pi-check"
-              ></p-toggleButton>
 
-              <label for="city4">Notificaciones Email</label>
-            </div>
-            <div class="p-field-checkbox" formGroupName="notifications">
-              <p-toggleButton
-                inputId="city5"
-                formControlName="notisms"
-                onIcon="pi pi-check"
-              ></p-toggleButton>
+          </div>
 
-              <label for="city5">Notificaciones SMS</label>
-            </div> -->
+        </div>
+        <div class="p-md-2 p-col-12">
+          <div class="p-fluid">
+            <label for="float-input" class="form-control-label"
+              >Tienda destino</label
+            >
+            <p-dropdown
+              [options]="storeList"
+              class="form-control-cakb"
+              formControlName="tiendaDestino"
+              placeholder="Seleccionar tienda destino"
+              (onChange)="optionSelected()"
+              [(ngModel)]="selectedStore"
+              [showTransitionOptions]="'0ms'"
+              [hideTransitionOptions]="'0ms'"
+              optionLabel="Nombre"
+              optionValue="Codigo"
+            ></p-dropdown>
           </div>
         </div>
 
         <!--    Fin tipoTelefono codigo telefono -->
 
         <!--  Butones -->
+
+
         <div class="p-md-3 p-col-12"></div>
         <div class="p-md-3 p-col-12"></div>
         <div class="p-md-3 p-col-12">

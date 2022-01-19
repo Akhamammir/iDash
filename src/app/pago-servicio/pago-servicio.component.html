@@ -1,0 +1,232 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="p-grid proccess-container vertical-container">
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12"></div>
+
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          {{ tipoPago }}
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <div class="p-text-center p-text-bold" style="font-size: 36px">
+          {{ accion }} - {{ data.noIbox }}
+        </div>
+      </div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <div class="p-col-12">
+        <div class="p-text-center" style="font-size: 18px">
+          <br /><br />
+          <strong>Nombre:</strong>{{ data.users.first_name }} {{ data.users.last_name
+          }}<br /><br />
+          <strong>Codigo:</strong> {{ data.users.id }} <br /><br />
+          <strong>Direccion:</strong> {{ data.users.address }}<br /><br />
+          <strong>Telefono:</strong> {{ data.users.phone }} <br /><br />
+
+          <br />
+
+
+          <strong *ngIf="data.status === 'Renovacion'"
+            >Fecha de renovación:</strong
+          >
+          <span *ngIf="data.status === 'Renovacion'">{{
+            hoy.getMonth() + 1 / hoy.getDate() / hoy.getFullYear()
+          }}</span>
+          <br /><br />
+          <strong>Fecha de inicio:</strong>
+          {{ hoy.getMonth() + 1 + "/" + hoy.getDate() + "/" + hoy.getFullYear()
+          }}<br /><br />
+          <strong>Fecha de vencimiento:</strong>
+          {{
+            data.vencimento.getMonth() +
+              1 +
+              "/" +
+              data.vencimento.getDate() +
+              "/" +
+              data.vencimento.getFullYear()
+          }}
+          <br /><br />
+          <strong>Meses contratados:</strong> {{ data.meses }}<br /><br />
+          <strong>Plan:</strong> {{ data.plan }} <br /><br />
+          <strong>Costo:</strong> MX$ {{ data.precio }} <br /><br />
+        </div>
+      </div>
+
+      <div class="p-col-12"></div>
+      <div class="p-col-12"></div>
+      <form [formGroup]="LoginForm!" (ngSubmit)="onSubmit()" class="p-grid">
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12">
+          <div class="p-fluid p-mt-2">
+            <span class="p-float-label">
+              <p-inputNumber
+              mode="decimal"
+              [minFractionDigits]="2" [maxFractionDigits]="5"
+              placeholder="Tipo de Cambio"
+              formControlName="tipoCambio"
+              allowEmpty="false"
+              (onInput)="calcularCambioDivision($event.value)"
+
+            ></p-inputNumber>
+            </span>
+          </div>
+        </div>
+        <div class="p-md-3 p-col-12">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="divisas"
+                class="form-control-ckb"
+                formControlName="tipoDivisa"
+                optionLabel="name"
+                [(ngModel)]="cambio"
+                (onClick)="cambiarDivisa($event.target.textContent)"
+                optionValue="value"
+              ></p-dropdown>
+              <label for="float-input" class="form-control-label"
+                >Tipo de divisa</label
+              >
+            </span>
+          </div>
+        </div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12">
+          <div class="p-fluid">
+            <span class="p-float-label">
+              <p-inputNumber
+                placeholder="Total a Pagar"
+                formControlName="total"
+                mode="currency"
+                [currency]="concurrency"
+                locale="en-MX"
+                allowEmpty="false"
+              ></p-inputNumber>
+            </span>
+          </div>
+        </div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12">
+          <div class="p-fluid">
+            <span class="p-float-label" *ngIf="service === 'ef'">
+              <p-inputNumber
+                placeholder="Cantidad Recibida"
+
+                formControlName="cantidadRecibida"
+                mode="currency"
+                 [currency]="concurrency"
+                locale="en-MX"
+                allowEmpty="false"
+                (onInput)="calcularCambio($event.value)"
+              ></p-inputNumber>
+            </span>
+            <span class="p-float-label" *ngIf="service === 'tc'">
+              <input
+
+                class="form-control-input"
+                type="text"
+                formControlName="digitos"
+                pInputText
+                required
+              />
+              <label for="float-input" class="form-control-label"
+                >4 ultimos digitos de tarjeta</label
+              >
+            </span>
+          </div>
+        </div>
+        <div class="p-md-3 p-col-12">
+          <div class="p-fluid">
+          <span class="p-float-label" *ngIf="service === 'tc'">
+            <p-dropdown
+              inputId="dropdown"
+              [autoDisplayFirst]="false"
+              [options]="tarjetas"
+              class="form-control-ckb"
+              formControlName="tipoTarjeta"
+              optionLabel="name"
+              optionValue="value"
+            ></p-dropdown>
+            <label for="float-input" class="form-control-label"
+              >Tipo de tarjeta</label
+            >
+          </span>
+        </div>
+        </div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12">
+          <div class="p-fluid">
+            <span class="p-float-label" *ngIf="service === 'ef'">
+              <p-inputNumber
+                placeholder="Cambio"
+                formControlName="cambio"
+                mode="currency"
+                [currency]="concurrency"
+                locale="en-MX"
+                allowEmpty="false"
+              ></p-inputNumber>
+            </span>
+            <span class="p-float-label" *ngIf="service === 'tc'">
+              <input
+
+                class="form-control-input"
+                type="text"
+                formControlName="ticket"
+                pInputText
+                required
+              />
+              <label for="float-input" class="form-control-label"
+                >No. de ticket</label
+              >
+            </span>
+          </div>
+        </div>
+        <div class="p-md-3 p-col-12 p-mt-2">
+          <div class="p-formgroup-inline">
+            <div class="p-field-checkbox">
+              <p-toggleButton
+                inputId="city3"
+                formControlName="enviaFactura"
+                onIcon="pi pi-check"
+              ></p-toggleButton>
+              <label for="city3">Enviar Factura</label>
+            </div>
+          </div>
+        </div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-col-12"></div>
+        <div class="p-col-12"></div>
+        <div class="p-md-3 p-col-12"></div>
+        <div class="p-md-3 p-col-12">
+          <button
+            pButton
+            pRipple
+            type="button"
+            class="p-button-danger"
+            [routerLink]="['../ebox/new']"
+            label="REGRESAR"
+          ></button>
+        </div>
+        <div class="p-md-6 p-col-12">
+          <button
+            [disabled]="LoginForm!.invalid"
+            pButton
+            pRipple
+            type="submit"
+            label="REGISTRAR PAGO"
+          ></button>
+        </div>
+      </form>
+    </div>
+  </nb-layout-column>
+</nb-layout>

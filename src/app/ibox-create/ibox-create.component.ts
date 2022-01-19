@@ -132,7 +132,7 @@ export class IboxCreateComponent implements OnInit {
           console.log(response)
           if (!response.errors) {
             this.cliente = response.data.getCliente;
-
+            this.nameCustomer = this.cliente
             this.gettingStores()
           } else {
             this.showToast(response.errors[0].message, 'danger')
@@ -140,23 +140,19 @@ export class IboxCreateComponent implements OnInit {
         });
   }
   edit() {
-
     if (this.storeList && this.cliente) {
-      this.nameCustomer = [this.cliente]
       this.selectedStore = this.ibox.tiendaDestino
       this.newEboxForm?.patchValue({
-        users: [this.cliente],
         noIbox: this.ibox.noIbox,
         idioma: this.ibox.idioma,
         plan: parseInt(this.ibox.plan),
         status: this.ibox.status,
         meses: parseInt(this.ibox.meses),
         comentarios: this.ibox.comentarios,
-        vencimento: this.ibox.vencimento,
+        vencimento: new Date(this.ibox.vencimento),
         precio: parseInt(this.ibox.precio),
         tiendaDestino: this.ibox.tiendaDestino
       })
-      console.log(this.newEboxForm?.value, 'value');
     }
   }
   gettingStores() {
@@ -191,8 +187,6 @@ export class IboxCreateComponent implements OnInit {
             console.log(response.errors[0].message, 'danger')
           }
         });
-
-
   }
   gettingPriceIbox() {
     if (this.selectedMonth && this.selectedPlan) {
@@ -278,37 +272,10 @@ export class IboxCreateComponent implements OnInit {
   onSubmit() {
     const data = this.newEboxForm!.value
     console.log(data)
+    this.iboxService.setIbox(data)
+    localStorage.setItem('data', JSON.stringify(data))
     if (!this.editMode) {
-      data.users.forEach((element: any) => {
-        let body = {
-          input: {
-            noIbox: data.noIbox,
-            nombreCliente: element.first_name,
-            codigoCliente: element.id,
-            idioma: data.idioma,
-            meses: data.meses.toString(),
-            plan: data.plan.toString(),
-            status: data.status,
-            comentarios: data.comentarios,
-
-            vencimento: `${data.vencimento.getMonth() + 1}/${data.vencimento.getDate()}/${data.vencimento.getFullYear()}`,
-            tiendaDestino: this.selectedStore,
-            precio: data.precio.toString(),
-          }
-        }
-        console.log(body)
-        this.iboxService.create(body)
-          .subscribe(
-            response => {
-              console.log(response, 'sdfsdfdf')
-              if (!response.errors) {
-                this.showToast('Creado Correctamente')
-              } else {
-                console.log(response.errors[0].message, 'danger')
-              }
-            });
-      });
-      this.router.navigate([`in/${this.id}/ebox`]);
+      this.router.navigate([`in/${localStorage.getItem('id')}/process`], { queryParams: { tipo: 'ibox' }} );
 
     } else {
       console.log(data)

@@ -3,59 +3,33 @@
     <div class="p-grid package-container vertical-container">
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
         <div class="p-text-center p-text-bold" style="font-size: 36px">
-          Paquete Vendido
+         {{ textoTipo}}
         </div>
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-5"></div>
-      <div class="p-d-flex">
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #eb5757; color: #ffffff"
-          label="Cancel"
-          [routerLink]="['../dash']"
-          class="p-button-danger"
-        ></button>
-
-        <button
-          pButton
-          pRipple
-          type="button"
-         
-          label="Previous"
-          [routerLink]="['../../sellingpackage', id]"
-          class="p-mx-2"
-        ></button>
-      </div>
-      <div class="p-col-5"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-2"></div>
-      <div class="p-col-8">
-        <div class="p-fluid">
-          <img src="assets/img/Frame.png" alt="" />
+      <div class="p-md-4 p-col-12"></div>
+      <div class="p-md-4 p-col-12">
+        <div class="p-fluid p-text-center">
+          <img src="assets/img/Frame.png"  alt="" />
         </div>
       </div>
-      <div class="p-col-2"></div>
-      <div class="p-col-2"></div>
-      <div class="p-col-8">
-        <p class="texto-valija-exito">
+      <div class="p-md-4 p-col-12"></div>
+      <div class="p-md-2 p-col-12"></div>
+      <div class="p-md-8 p-col-12">
+        <p class="texto-valija-exito" *ngIf="tipo !== 'ibox'">
           La valija ha sido procesada correctamente con el número:
           <span class="texto-valija-exito-numero">50221050401</span>
         </p>
-      </div>
-      <div class="p-col-2"></div>
-      <div class="p-col-4"></div>
-      <div class="p-col-4">
-        <div class="p-fluid">
+        <div class="texto-valija-exito" *ngIf="tipo === 'ibox'">
+          El Ibox ha sido procesada correctamente
           <button
             pButton
             pRipple
@@ -66,10 +40,24 @@
               font-size: 14px;
               padding: 10px 24px 10px 24px;
               margin-top: 10px;
+              border:0px
             "
             type="button"
-            [routerLink]="['../../exitovalija', id]"
-            label="IMPRIMIR ETIQUETA"
+            (click)="downloadTicket()"
+            label="Descargar Ticket"
+          ></button>
+        </div>
+      </div>
+      <div class="p-col-2"></div>
+      <div class="p-col-4"></div>
+      <div class="p-col-4">
+        <div class="p-fluid">
+          <button
+            pButton
+            pRipple
+            type="button"
+            [routerLink]="['../dash']"
+            label="Regresar al menu"
           ></button>
         </div>
       </div>
