@@ -26,15 +26,16 @@ export class PackageService {
   getQuotation(data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify({
-      query: `query Query($getQuotationInput: featuresPackageInput) {
-        getQuotation(input: $getQuotationInput){
+      query: `query Query($input: featuresPackageInput) {
+        getQuotation(input: $input) {
           name
           shipRates {
+            deliveryTime
             cost
             currency
-            deliveryTime
             id
           }
+          responseMessage
         }
       }
       `,
@@ -47,8 +48,8 @@ export class PackageService {
   getPdfPackage(data: any): Observable<any> {
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify({
-      query: `mutation Mutation($createLabelCarrierInput: createLabelInput) {
-        createLabelCarrier(input: $createLabelCarrierInput) {
+      query: `mutation Mutation($input: createLabelInput) {
+        createLabelCarrier(input: $input) {
           urlLabel
           trackId
         }

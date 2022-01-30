@@ -64,4 +64,28 @@ export class HelpersService {
     })
     return this.http.post(baseUrl, body, { headers });
   }
+  getCityInternational(): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `query GetCatCiudadesInt {
+        getCatCiudadesInt {
+          ciudad
+          ciudadId
+        }
+      }`
+    })
+    return this.http.post(baseUrl, body, { headers });
+  }
+  getCityNacional(): Observable<any> {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({
+      query: `query GetCatCiudadesNac {
+        getCatCiudadesNac {
+          ciudad
+          ciudadId
+        }
+      }`
+    })
+    return this.http.post(baseUrl, body, { headers });
+  }
 }

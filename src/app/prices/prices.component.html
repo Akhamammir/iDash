@@ -4,7 +4,7 @@
       <div class="p-col-12"></div>
 
       <div class="p-col-12"></div>
-      
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
@@ -14,39 +14,6 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <!-- <div class="p-col-5"></div>
-      <div class="p-d-flex">
-        <button
-          pButton
-          pRipple
-          type="button"
-          [routerLink]="['../dash']"
-          style="background: #eb5757; color: #ffffff"
-          label="Cancel"
-          class="p-button-danger"
-        ></button>
-
-        <button
-          pButton
-          pRipple
-          type="button"
-         
-          label="Previous"
-          [routerLink]="['../../features', id]"
-          class="p-mx-2"
-        ></button>
-
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #27ae60; color: #ffffff"
-          label="Next"
-          [routerLink]="['../../customer', id]"
-          class="p-button-success"
-        ></button>
-      </div>
-      <div class="p-col-5"></div> -->
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
@@ -112,12 +79,17 @@
                     <td style="width: 35%">
                       {{ item.deliveryTime }}
                     </td>
-                    <td style="width: 25%">{{ item.cost }}</td>
+                    <td style="width: 25%">
+                      {{ item.currency }} {{ item.cost }}
+                    </td>
                     <td style="width: 15%">{{ item.id }}</td>
                     <td style="width: 25%">
                       <button
                         pButton
                         pRipple
+                        *ngIf="
+                          list.name === 'ESTAFETA' && list.shipRates.length > 0
+                        "
                         fullWidth
                         type="button"
                         (click)="consultarPdfEstefeta()"
@@ -131,11 +103,30 @@
                         "
                         class="p-button-raised blockbtn centerbtn"
                       ></button>
+                      <button
+                        pButton
+                        pRipple
+                        fullWidth
+                        *ngIf="
+                          list.name === 'FEDEX' && list.shipRates.length > 0
+                        "
+                        type="button"
+                        (click)="consultarPdfFedex()"
+                        label="Generar guía  prueba Fedex"
+                        style="
+                          background: #27ae60;
+                          color: #ffffff;
+                          border: none;
+                          font-weight: 700;
+                          width: 100%;
+                        "
+                        class="p-button-raised blockbtn centerbtn"
+                      ></button>
                     </td>
                   </tr>
                 </td>
               </tr>
-              <tr >
+              <tr>
                 <td>
                   <img
                     style="width: 85px"
@@ -144,12 +135,10 @@
                   />
                 </td>
                 <td colspan="4">
-                  <tr  style="width: 100%">
-                    <td style="width: 35%">
-                     prueba Fedex
-                    </td>
-                    <td style="width: 25%"> prueba Fedex</td>
-                    <td style="width: 15%"> prueba Fedex</td>
+                  <tr style="width: 100%">
+                    <td style="width: 35%">prueba Fedex</td>
+                    <td style="width: 25%">prueba Fedex</td>
+                    <td style="width: 15%">prueba Fedex</td>
                     <td style="width: 25%">
                       <button
                         pButton

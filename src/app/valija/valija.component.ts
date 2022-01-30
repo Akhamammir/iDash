@@ -52,7 +52,7 @@ export class ValijaComponent implements OnInit {
         input: {
           contenido: 'null',
           tipoValija: 'null',
-          tiendaDestino: this.Destino.name,
+          tiendaDestino: this.packages.map((pack: any) => pack.country_dest),
           paquetes: this.packages.map((pack: any) => pack.id),
           numeroGuia: this.guiaReferencia
         },
@@ -74,7 +74,7 @@ export class ValijaComponent implements OnInit {
       input: {
         contenido: 'null',
         tipoValija: 'null',
-        tiendaDestino: this.Destino.name,
+        tiendaDestino: this.packages.map((pack: any) => pack.country_dest),
         paquetes: this.packages.map((pack: any) => pack.id),
         numeroGuia: this.guiaReferencia
       }

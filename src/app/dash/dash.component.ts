@@ -7,12 +7,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./dash.component.styl']
 })
 export class DashComponent implements OnInit {
-  id: string = '';
-  constructor(private AR: ActivatedRoute) { }
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.id = this.AR.snapshot.paramMap.get('id')!
-    console.log(this.AR.snapshot.paramMap.get('id')!)
+
   }
 
 }

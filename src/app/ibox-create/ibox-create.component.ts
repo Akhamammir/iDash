@@ -56,7 +56,6 @@ export class IboxCreateComponent implements OnInit {
     ];
     this.status = [
       { name: 'Activo', },
-      { name: 'Vencido' },
       { name: 'Renovacion' },
     ];
   }

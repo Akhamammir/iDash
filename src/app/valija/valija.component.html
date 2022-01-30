@@ -28,28 +28,7 @@
       <div class="p-col-12"></div>
       <div class="p-md-1 p-col-12"></div>
       <div class="p-md-10 p-col-12">
-        <div class="p-grid">
-          <div class="p-md-2 p-col-12">
-            <div class="p-fluid">
-              <div class="p-field">
-                <span class="p-float-label">
-                  <p-dropdown
-                    inputId="dropdown"
-                    [autoDisplayFirst]="false"
-                    [options]="destinys"
-                    class="form-control-ckb"
-                    [(ngModel)]="Destino"
-                    optionLabel="name"
-                  ></p-dropdown>
-                  <label for="dropdown" class="form-control-label"
-                    >Seleccionar</label
-                  >
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="p-md-10 p-col-12"></div>
-        </div>
+
         <div class="p-fluid">
           <!-- Inicio Tabla Paquetes -->
           <p-table [value]="packages" [autoLayout]="true">
@@ -84,7 +63,8 @@
       <div class="p-md-1 p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-md-8 p-col-12"></div>
+      <div class="p-md-1 p-col-12"></div>
+      <div class="p-md-6 p-col-12"></div>
       <div class="p-md-2 p-col-12">
         <div class="p-fluid">
           <span class="p-float-label">
@@ -115,7 +95,7 @@
               margin-top: 10px;
             "
             type="button"
-            *ngIf="guiaReferencia && Destino"
+            *ngIf="guiaReferencia"
             (click)="onSubmit()"
             label="CREAR VALIJA"
           ></button>
@@ -133,12 +113,13 @@
               margin-top: 10px;
             "
             type="button"
-            *ngIf="guiaReferencia && Destino"
+            *ngIf="guiaReferencia"
             (click)="onSubmit()"
             label="EDITAR VALIJA"
           ></button>
         </div>
       </div>
+      <div class="p-md-1 p-col-12"></div>
     </div>
   </nb-layout-column>
 </nb-layout>

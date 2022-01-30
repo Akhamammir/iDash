@@ -4,7 +4,7 @@
       <div class="p-col-12"></div>
 
       <div class="p-col-12"></div>
-      
+
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12">
@@ -14,7 +14,7 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-5"></div>
+      <!-- <div class="p-col-5"></div>
       <div class="p-d-flex">
         <button
           pButton
@@ -30,7 +30,7 @@
           pButton
           pRipple
           type="button"
-         
+
           label="Previous"
           [routerLink]="['../dash']"
           class="p-mx-2"
@@ -46,7 +46,7 @@
           class="p-button-success"
         ></button>
       </div>
-      <div class="p-col-5"></div>
+      <div class="p-col-5"></div> -->
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
@@ -59,6 +59,7 @@
                 <p-radioButton
                   name="typeSend"
                   formControlName="typeSend"
+                  (onClick)="consultarCiudad($event.target.value)"
                   value="internacional"
                   inputId="internacional"
                 ></p-radioButton>
@@ -69,6 +70,7 @@
                 <p-radioButton
                   name="typeSend"
                   value="nacional"
+                  (onClick)="consultarCiudad($event.target.value)"
                   formControlName="typeSend"
                   inputId="nacional"
                 ></p-radioButton>
@@ -84,8 +86,8 @@
                 [options]="paises"
                 class="form-control-cakb"
                 formControlName="country"
-                optionLabel="name"
-                optionValue="code"
+                optionLabel="ciudad"
+                optionValue="ciudadId"
                 placeholder="Seleccionar"
               ></p-dropdown>
             </div>
@@ -196,12 +198,22 @@
               />
             </div>
 
-            <div class="p-col-8"></div>
-            <div class="p-col-12 p-md-6 p-lg-4">
+            <div class="p-col-12 p-md-4 p-lg-2"></div>
+            <div class="p-col-12 p-md-4 p-lg-4">
+              <button
+              nbButton
+              fullWidth
+              status="primary"
+              type="button"
+              style="background: #eb5757; color: #ffffff; border: 0px"
+              [routerLink]="['../dash']"
+            > Cancelar</button>
+            </div>
+            <div class="p-col-12 p-md-4 p-lg-4">
               <button
                 nbButton
                 fullWidth
-                style="background: #2130b8"
+                style="background: #2130b8;border: 0px"
                 status="primary"
                 type="submit"
               >
