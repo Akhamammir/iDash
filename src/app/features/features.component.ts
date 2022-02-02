@@ -61,24 +61,10 @@ export class FeaturesComponent implements OnInit {
         shipper: {
           postalCode: data.postalCodeOrg,
           countryCode: "MX",
-          address1: "TEST ORIGIN ADDRES 1",
-          address2: "TEST ORIGIN ADDRES 2",
-          cellPhone: "7731175188",
-          city: "CDMX",
-          contactName: "JOSE BENITEZ ORIGIN",
-          corporateName: "TEST CROP ORIGIN",
-          state: "DF"
         },
         recipient: {
           postalCode: data.postalCodeDest,
           countryCode: "MX",
-          address1: "ADRES SHIP",
-          address2: "ADRES SHIP",
-          cellPhone: "7731158787",
-          city: "TULA",
-          contactName: "ALBERTO",
-          corporateName: "TEST CORP SHIP",
-          state: "HD"
         },
         dimensions: {
           length: data.height,

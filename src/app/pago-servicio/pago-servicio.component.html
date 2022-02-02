@@ -22,14 +22,13 @@
       <div class="p-col-12">
         <div class="p-text-center" style="font-size: 18px">
           <br /><br />
-          <strong>Nombre:</strong>{{ data.users.first_name }} {{ data.users.last_name
-          }}<br /><br />
+          <strong>Nombre:</strong>{{ data.users.first_name }}
+          {{ data.users.last_name }}<br /><br />
           <strong>Codigo:</strong> {{ data.users.id }} <br /><br />
           <strong>Direccion:</strong> {{ data.users.address }}<br /><br />
           <strong>Telefono:</strong> {{ data.users.phone }} <br /><br />
 
           <br />
-
 
           <strong *ngIf="data.status === 'Renovacion'"
             >Fecha de renovación:</strong
@@ -59,20 +58,30 @@
 
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <form [formGroup]="LoginForm!" (ngSubmit)="onSubmit()" class="p-grid">
+      <div *ngIf="loading" class="p-md-4 p-col-12"></div>
+      <div *ngIf="loading" class="p-md-4 p-col-12">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+      <div *ngIf="loading" class="p-md-4 p-col-12"></div>
+      <form
+        *ngIf="!loading"
+        [formGroup]="LoginForm!"
+        (ngSubmit)="onSubmit()"
+        class="p-grid"
+      >
         <div class="p-md-3 p-col-12"></div>
         <div class="p-md-3 p-col-12">
           <div class="p-fluid p-mt-2">
             <span class="p-float-label">
               <p-inputNumber
-              mode="decimal"
-              [minFractionDigits]="2" [maxFractionDigits]="5"
-              placeholder="Tipo de Cambio"
-              formControlName="tipoCambio"
-              allowEmpty="false"
-              (onInput)="calcularCambioDivision($event.value)"
-
-            ></p-inputNumber>
+                mode="decimal"
+                [minFractionDigits]="2"
+                [maxFractionDigits]="5"
+                placeholder="Tipo de Cambio"
+                formControlName="tipoCambio"
+                allowEmpty="false"
+                (onInput)="calcularCambioDivision($event.value)"
+              ></p-inputNumber>
             </span>
           </div>
         </div>
@@ -120,10 +129,9 @@
             <span class="p-float-label" *ngIf="service === 'ef'">
               <p-inputNumber
                 placeholder="Cantidad Recibida"
-
                 formControlName="cantidadRecibida"
                 mode="currency"
-                 [currency]="concurrency"
+                [currency]="concurrency"
                 locale="en-MX"
                 allowEmpty="false"
                 (onInput)="calcularCambio($event.value)"
@@ -131,7 +139,6 @@
             </span>
             <span class="p-float-label" *ngIf="service === 'tc'">
               <input
-
                 class="form-control-input"
                 type="text"
                 formControlName="digitos"
@@ -146,21 +153,21 @@
         </div>
         <div class="p-md-3 p-col-12">
           <div class="p-fluid">
-          <span class="p-float-label" *ngIf="service === 'tc'">
-            <p-dropdown
-              inputId="dropdown"
-              [autoDisplayFirst]="false"
-              [options]="tarjetas"
-              class="form-control-ckb"
-              formControlName="tipoTarjeta"
-              optionLabel="name"
-              optionValue="value"
-            ></p-dropdown>
-            <label for="float-input" class="form-control-label"
-              >Tipo de tarjeta</label
-            >
-          </span>
-        </div>
+            <span class="p-float-label" *ngIf="service === 'tc'">
+              <p-dropdown
+                inputId="dropdown"
+                [autoDisplayFirst]="false"
+                [options]="tarjetas"
+                class="form-control-ckb"
+                formControlName="tipoTarjeta"
+                optionLabel="name"
+                optionValue="value"
+              ></p-dropdown>
+              <label for="float-input" class="form-control-label"
+                >Tipo de tarjeta</label
+              >
+            </span>
+          </div>
         </div>
         <div class="p-md-3 p-col-12"></div>
         <div class="p-md-3 p-col-12"></div>
@@ -178,7 +185,6 @@
             </span>
             <span class="p-float-label" *ngIf="service === 'tc'">
               <input
-
                 class="form-control-input"
                 type="text"
                 formControlName="ticket"

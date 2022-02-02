@@ -22,6 +22,7 @@ export class PagoServicioComponent implements OnInit {
   cambio: any
   concurrency: string = 'MXN'
   aux: any = null
+  loading: boolean = false;
   hoy: Date = new Date()
   LoginForm: FormGroup | undefined;
   ngOnInit(): void {
@@ -171,7 +172,7 @@ export class PagoServicioComponent implements OnInit {
         idPaquete: null,
         idCliente: this.data.users.id,
         idIbox: this.data.noIbox,
-        tipoCambio: data.tipoCambio,
+        tipoCambio: data.tipoCambio.toString(),
         tipoDivisa: data.tipoDivisa,
         totalPago: data.total.toString(),
         enviaFactura: data.enviaFactura,
@@ -183,7 +184,7 @@ export class PagoServicioComponent implements OnInit {
           cantidadRecibida: data.cantidadRecibida.toString()
         },
         datosTicket: {
-          nombreCliente: this.data.users.first_name +' '+ this.data.users.last_name,
+          nombreCliente: this.data.users.first_name + ' ' + this.data.users.last_name,
           codigo: this.data.users.id,
           fechaInicio: `${this.hoy.getMonth() + 1}/${this.hoy.getDate()}/${this.hoy.getFullYear()}`,
           fechaRenovacion: this.data.status === 'Renovacion' ? `${this.hoy.getMonth() + 1}/${this.hoy.getDate()}/${this.hoy.getFullYear()}` : null,
@@ -195,6 +196,7 @@ export class PagoServicioComponent implements OnInit {
       }
     }
     console.log(body, 'crearTicket')
+    this.loading = true;
     this.iboxService.registrarPagoIbox(body)
       .subscribe(
         response => {
@@ -203,7 +205,9 @@ export class PagoServicioComponent implements OnInit {
             console.log(response, 'Ticket');
             localStorage.removeItem('data')
             localStorage.setItem('url', JSON.stringify(response.data.registraPago))
-            this.router.navigate([`in/${localStorage.getItem('id')}/exito`], { queryParams: { tipo:  this.tipo} });
+
+            this.router.navigate([`in/${localStorage.getItem('id')}/exito`], { queryParams: { tipo: this.tipo } });
+            this.loading = false;
           } else {
             console.log(response.errors[0].message, 'danger')
           }

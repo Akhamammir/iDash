@@ -17,6 +17,7 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
@@ -96,7 +97,7 @@ import { PagoServicioComponent } from './pago-servicio/pago-servicio.component';
     AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule,
     AutoCompleteModule,InputTextareaModule,InputNumberModule,
     ButtonModule, PanelMenuModule, DividerModule, InputTextModule,
-    DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,
+    DropdownModule, NbStepperModule, RadioButtonModule, CheckboxModule,ProgressSpinnerModule,
     InputMaskModule, ToastModule, CardModule, KeyFilterModule, TableModule, CalendarModule,
     RatingModule, MessagesModule, MessageModule, ChartModule,ToggleButtonModule,MultiSelectModule,
 

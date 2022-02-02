@@ -14,41 +14,7 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <!-- <div class="p-col-5"></div>
-      <div class="p-d-flex">
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #eb5757; color: #ffffff"
-          label="Cancel"
-          [routerLink]="['../dash']"
-          class="p-button-danger"
-        ></button>
 
-        <button
-          pButton
-          pRipple
-          type="button"
-
-          label="Previous"
-          [routerLink]="['../dash']"
-          class="p-mx-2"
-        ></button>
-
-        <button
-          pButton
-          pRipple
-          type="button"
-          style="background: #27ae60; color: #ffffff"
-          label="Next"
-          [routerLink]="['../prices']"
-          class="p-button-success"
-        ></button>
-      </div>
-      <div class="p-col-5"></div> -->
-      <div class="p-col-12"></div>
-      <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <form class="p-grid" [formGroup]="LoginForm!" (ngSubmit)="onSubmit()">
         <div class="p-md-4 p-col-12"></div>
@@ -85,9 +51,11 @@
               <p-dropdown
                 [options]="paises"
                 class="form-control-cakb"
-                formControlName="country"
                 optionLabel="ciudad"
                 optionValue="ciudadId"
+                formControlName="country"
+                [filter]="true"
+                filterBy="ciudad"
                 placeholder="Seleccionar"
               ></p-dropdown>
             </div>
@@ -201,19 +169,21 @@
             <div class="p-col-12 p-md-4 p-lg-2"></div>
             <div class="p-col-12 p-md-4 p-lg-4">
               <button
-              nbButton
-              fullWidth
-              status="primary"
-              type="button"
-              style="background: #eb5757; color: #ffffff; border: 0px"
-              [routerLink]="['../dash']"
-            > Cancelar</button>
+                nbButton
+                fullWidth
+                status="primary"
+                type="button"
+                style="background: #eb5757; color: #ffffff; border: 0px"
+                [routerLink]="['../dash']"
+              >
+                Cancelar
+              </button>
             </div>
             <div class="p-col-12 p-md-4 p-lg-4">
               <button
                 nbButton
                 fullWidth
-                style="background: #2130b8;border: 0px"
+                style="background: #2130b8; border: 0px"
                 status="primary"
                 type="submit"
               >
