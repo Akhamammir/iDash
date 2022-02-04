@@ -159,10 +159,18 @@ export class PagoServicioComponent implements OnInit {
   onSubmit() {
     const data = this.LoginForm!.value
     console.log(data)
-    this.crearIbox()
-    this.creaTicket(data)
-
-
+    // this.creaTicket(data)
+    // switch (this.tipo) {
+    //   case 'ibox':
+    //     this.crearIbox()
+    //     break;
+    //   case 'paquete':
+    //     this.accion = 'Paquetes'
+    //     break;
+    //   case 'guia':
+    //     this.crearGuia()
+    //     break;
+    // }
   }
   crearIbox() {
     let body = {
@@ -191,6 +199,9 @@ export class PagoServicioComponent implements OnInit {
             console.log(response.errors[0].message, 'danger')
           }
         });
+
+  }
+  crearGuia() {
 
   }
   creaTicket(data: any) {
