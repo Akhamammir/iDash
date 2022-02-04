@@ -46,9 +46,10 @@
 
             <div class="p-md-4 p-col-12">
               <label for="dropdown" class="form-control-label"
-                >País destino</label
+                >{{ pais }} destino</label
               >
               <p-dropdown
+                *ngIf="!loadingCity"
                 [options]="paises"
                 class="form-control-cakb"
                 optionLabel="ciudad"
@@ -58,6 +59,11 @@
                 filterBy="ciudad"
                 placeholder="Seleccionar"
               ></p-dropdown>
+              <p-progressSpinner
+                *ngIf="loadingCity"
+                [style]="{ width: '50px', height: '50px' }"
+                animationDuration=".5s"
+              ></p-progressSpinner>
             </div>
           </div>
         </div>

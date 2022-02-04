@@ -25,6 +25,8 @@ export class PagoServicioComponent implements OnInit {
   loading: boolean = false;
   hoy: Date = new Date()
   LoginForm: FormGroup | undefined;
+  servicio: string = ''
+  quotation: any
   ngOnInit(): void {
     this.divisas = [
       { name: 'dolares', value: 'USD' },
@@ -37,8 +39,6 @@ export class PagoServicioComponent implements OnInit {
 
     this.createForm()
     this.checkingType()
-    this.llenardatos()
-    this.tipo === 'ibox' ? this.accion = 'I-box' : this.accion = 'Paquetes'
     this.service === 'ef' ? this.tipoPago = 'Pago en Efectivo' : this.tipoPago = 'Pago con tarjeta'
 
     this.cambio = "MXN"
@@ -52,6 +52,28 @@ export class PagoServicioComponent implements OnInit {
         this.service = params['service']
       }
     })
+
+    switch (this.tipo) {
+      case 'ibox':
+        this.accion = 'i-Box'
+        this.llenardatos('data')
+        break;
+      case 'paquete':
+        this.accion = 'Paquetes'
+        break;
+      case 'guia':
+        this.accion = 'Guia'
+        this.llenardatos('shipmentData')
+        this.servicio = localStorage.getItem('shipment')!
+        this.quotation = JSON.parse(localStorage.getItem('quotation')!)
+        this.concurrency = this.quotation.currency
+        this.cambio = this.quotation.currency
+        this.rellenarForm()
+        break;
+
+      default:
+        break;
+    }
   }
   createForm(): void {
     this.LoginForm = new FormGroup({
@@ -66,15 +88,12 @@ export class PagoServicioComponent implements OnInit {
       enviaFactura: new FormControl(false)
     })
   }
-  llenardatos() {
-    this.iboxService.iboxEmmittet.subscribe(
-      data => {
-        this.data = data;
-      }
-    );
-    this.data = JSON.parse(localStorage.getItem('data')!)
-    this.data.vencimento = new Date(new Date(this.data.vencimento).valueOf())
-    this.rellenarForm()
+  llenardatos(value: string) {
+    this.data = JSON.parse(localStorage.getItem(value)!)
+    if (this.tipo === 'ibox') {
+      this.data.vencimento = new Date(new Date(this.data.vencimento).valueOf())
+    }
+    //this.rellenarForm()
   }
   cambiarDivisa(envt: any) {
     if (envt === 'pesos') {
@@ -91,10 +110,19 @@ export class PagoServicioComponent implements OnInit {
     console.log(envt)
   }
   rellenarForm() {
-    this.LoginForm?.patchValue({
-      total: this.data.precio,
-      tipoDivisa: 'MXN'
-    })
+    if (this.tipo === 'ibox') {
+      this.LoginForm?.patchValue({
+        total: this.data.precio,
+        tipoDivisa: 'MXN'
+      })
+    } else {
+      console.log(this.quotation);
+      this.LoginForm?.patchValue({
+        total: this.quotation.cost,
+        tipoDivisa: this.quotation.currency
+      })
+    }
+
   }
   calcularCambioDivision(event: any) {
     this.aux = this.data.precio * event

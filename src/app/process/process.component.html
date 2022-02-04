@@ -12,22 +12,21 @@
       </div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
-      <div class="p-col-12" *ngIf="data">
+      <div class="p-col-12" *ngIf="data && tipo === 'ibox'">
         <div class="p-text-center p-text-bold" style="font-size: 36px">
           {{ accion }} - {{ data.noIbox }}
         </div>
       </div>
-      <div class="p-col-12" *ngIf="data">
+      <div class="p-col-12" *ngIf="data && tipo === 'ibox'">
         <div class="p-text-center" style="font-size: 18px">
+          <br /><br />
+          <strong>Nombre:</strong>{{ data.users.first_name }}
+          {{ data.users.last_name }}<br /><br />
+          <strong>Codigo:</strong> {{ data.users.id }} <br /><br />
+          <strong>Direccion:</strong> {{ data.users.address }}<br /><br />
+          <strong>Telefono:</strong> {{ data.users.phone }} <br /><br />
 
-            <br /><br />
-            <strong>Nombre:</strong>{{ data.users.first_name }} {{ data.users.last_name
-            }}<br /><br />
-            <strong>Codigo:</strong> {{ data.users.id }} <br /><br />
-            <strong>Direccion:</strong> {{ data.users.address }}<br /><br />
-            <strong>Telefono:</strong> {{ data.users.phone }} <br /><br />
-
-            <br />
+          <br />
 
           <strong *ngIf="data.status === 'renovación'"
             >Fecha de renovación:</strong
@@ -54,7 +53,38 @@
           <strong>Costo:</strong> {{ data.precio }} <br /><br />
         </div>
       </div>
+      <div class="p-md-2 p-col-12"   *ngIf="data && tipo === 'guia'"></div>
+      <div
+        class="p-md-4 p-col-12"
+        *ngIf="data && tipo === 'guia'"
+        style="font-size: 18px"
+      >
+        <br /><br />
+        <strong>Servicio:</strong>{{ servicio }} <br /><br />
 
+        <strong>Destino:</strong>{{ data.cuidadA }} <br /><br />
+
+        <strong>Tracking Number:</strong> 879898655 <br /><br />
+
+        <strong>ID:</strong> 2856 <br /><br />
+
+        <strong>Código de cliente:</strong>502003 <br /><br />
+
+        <strong>Nombre:</strong>{{ data.nombreDe }} <br /><br />
+      </div>
+      <div
+        class="p-md-4 p-col-12"
+        *ngIf="data && tipo === 'guia'"
+        style="font-size: 18px"
+      >
+        <br /><br />
+        <strong>Subtotal:</strong>{{ quotation.currency }} {{ quotation.cost-quotation.cost*0.16 }} <br /><br />
+        <br /><br />
+        <strong>IVA 16%:</strong>{{ quotation.currency }} {{ quotation.cost*0.16 }} <br /><br />
+        <br /><br />
+        <strong>Total a pagar:</strong>{{ quotation.currency }} {{ quotation.cost }} <br /><br />
+      </div>
+      <div class="p-md-2 p-col-12"   *ngIf="data && tipo === 'guia'"></div>
       <div class="p-col-12"></div>
       <div class="p-col-12"></div>
       <div class="p-md-1 p-col-12"></div>

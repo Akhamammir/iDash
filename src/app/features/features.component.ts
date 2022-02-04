@@ -18,7 +18,9 @@ export class FeaturesComponent implements OnInit {
   checked: boolean = false;
   tipos: Phone[] = [];
   paises: City[] = [];
+  loadingCity: boolean = false;
   cities: City[];
+  pais: string = 'País';
   selectedCity: any | undefined;
   LoginForm: FormGroup | undefined;
   constructor(private AR: ActivatedRoute, private packageService: PackageService, private router: Router, private helperService: HelpersService) {
@@ -91,22 +93,26 @@ export class FeaturesComponent implements OnInit {
       });
   }
   consultarCiudad(event: any) {
-
     console.log(event);
     if (event === "internacional") {
+      this.pais = 'País'
+      this.loadingCity = true
       this.helperService.getCityInternational()
         .subscribe(({ data }) => {
           this.paises = data.getCatCiudadesInt
+          this.loadingCity = false
           console.log(data);
 
         });
     } else if (event === "nacional") {
+      this.pais = 'Cuidad'
+      this.loadingCity = true
       this.helperService.getCityNacional()
         .subscribe(({ data }) => {
+
           this.paises = data.getCatCiudadesNac
+          this.loadingCity = false
           console.log(data);
-
-
         });
     }
   }
